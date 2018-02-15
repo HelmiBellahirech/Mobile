@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorpane3" prefHeight="352.0" prefWidth="640.0" style="-fx-background-color: #DEDCDC;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.FXMLAfficheCovoiturageController">
+   <children>
+      <ImageView fx:id="img11" fitHeight="360.0" fitWidth="655.0" opacity="0.59" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../m3_infos-pratiques-m3.2services-pratiques-se-deplacer-autrement-2ajava.jpg" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="DepartInput" layoutX="42.0" layoutY="228.0" opacity="0.79" prefHeight="27.0" prefWidth="150.0" promptText="Depart" style="-fx-background-color: #FFFFFF;" />
+      <JFXTextField fx:id="ArriveInput" layoutX="221.0" layoutY="228.0" opacity="0.79" prefHeight="27.0" prefWidth="150.0" promptText="Arrivé" style="-fx-background-color: #FFFFFF;" />
+      <JFXButton fx:id="Rechercher" layoutX="391.0" layoutY="221.0" onAction="#On_btn_Rechercher" opacity="0.76" prefHeight="41.0" prefWidth="163.0" style="-fx-background-color: #E21C1C;" text="Rechercher  Un Trajet" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </JFXButton>
+      <Label alignment="CENTER" layoutY="-1.0" prefHeight="41.0" prefWidth="640.0" text="Annoncez Ou Trouvez un covoiturage" textFill="#7c7979">
+         <font>
+            <Font name="Berlin Sans FB Bold" size="27.0" />
+         </font>
+      </Label>
+      <JFXButton fx:id="Ajouter" layoutX="391.0" layoutY="272.0" onAction="#On_btn_Ajouter" opacity="0.82" prefHeight="80.0" prefWidth="235.0" style="-fx-background-color: #3448d0;" text="   Vous etes conducteur?&#10;        Publier un trajet" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

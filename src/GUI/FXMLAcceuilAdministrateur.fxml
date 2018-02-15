@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="677.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.FXMLAcceuilAdministrateurController">
+   <children>
+      <Pane fx:id="Contenu" layoutX="163.0" layoutY="70.0" prefHeight="412.0" prefWidth="515.0" />
+      <Pane layoutX="131.0" prefHeight="70.0" prefWidth="547.0">
+         <children>
+            <Label alignment="BASELINE_LEFT" layoutX="32.0" prefHeight="70.0" prefWidth="515.0" style="-fx-background-color: #E21C1C;" text="Bienvenue" textFill="WHITE">
+               <font>
+                  <Font name="Arial Black" size="32.0" />
+               </font>
+            </Label>
+            <JFXButton id="labels" fx:id="Decnx" layoutX="431.0" layoutY="14.0" onAction="#On_btn_Decnx" prefHeight="37.0" prefWidth="102.0" style="-fx-background-color: #DEDCDC; -fx-background-radius: 50px;" text="Deconnexion" textFill="#222222">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </Pane>
+      <VBox id="labels" prefHeight="480.0" prefWidth="164.0" style="-fx-background-color: #E21C1C;" stylesheets="@../CSS/StyleSheet.css">
+         <children>
+            <ImageView fx:id="img" fitHeight="123.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@icone_admin.png" />
+               </image>
+            </ImageView>
+            <JFXButton id="labels" fx:id="Profil" onAction="#On_btn_Profil" prefHeight="53.0" prefWidth="164.0" style="-fx-background-color: #E21C1C;" text="Profil" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton id="labels" fx:id="Annonce" onAction="#On_btn_Annonce" prefHeight="55.0" prefWidth="168.0" style="-fx-background-color: #E21C1C;" text="Annonces" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton id="labels" fx:id="Utilisateur" onAction="#On_btn_Utilisateur" prefHeight="54.0" prefWidth="164.0" style="-fx-background-color: #E21C1C;" text="Gestion Utilisateur" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
