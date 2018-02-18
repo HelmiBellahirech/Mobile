@@ -69,12 +69,5 @@ public class FXMLAfficheCovoiturageController implements Initializable {
 
     }
 
-    public String getDepart() {
-        return DepartInput.getText();
-    }
-
-    public String getArrive() {
-        return ArriveInput.getText();
-    }
-
+   
 }

@@ -41,9 +41,10 @@ public class FXMLAcceuilUtilisateurController implements Initializable {
     @FXML
     private Pane backgroundPane;
 
-    NavigationDrawerFXMLController nv = new NavigationDrawerFXMLController(); 
+    NavigationDrawerFXMLController nv = new NavigationDrawerFXMLController();
     @FXML
     private JFXButton Covoiturage;
+
     /**
      * Initializes the controller class.
      */
@@ -55,44 +56,44 @@ public class FXMLAcceuilUtilisateurController implements Initializable {
             fadeout.setToValue(0);
             fadeout.play();
             fadeout.setOnFinished(event -> {
-                
-                backgroundPane.setStyle(" -fx-background-image: url(\"/covoiturage.gif\");");
-                
+
+                backgroundPane.setStyle(" -fx-background-image: url(\"/cov.jpg\");");
+
                 FadeTransition fadein = new FadeTransition(Duration.seconds(2.5), backgroundPane);
                 fadein.setFromValue(0);
                 fadein.setToValue(0.6);
                 fadein.play();
-                
+
                 fadein.setOnFinished(e -> {
-                    
-                    backgroundPane.setStyle(" -fx-background-image: url(\"/collocation.jpg\");");
+
+                    backgroundPane.setStyle(" -fx-background-image: url(\"/col.jpg\");");
                     FadeTransition fadein2 = new FadeTransition(Duration.seconds(2.5), backgroundPane);
                     fadein2.setFromValue(0);
                     fadein2.setToValue(1);
                     fadein2.play();
-                    
+
                     fadein2.setOnFinished(event2 -> {
-                        
+
                         backgroundPane.setStyle(" -fx-background-image: url(\"/revision.jpg\");");
-                        
+
                         FadeTransition fadein3 = new FadeTransition(Duration.seconds(2.5), backgroundPane);
                         fadein3.setFromValue(1);
                         fadein3.setToValue(0);
                         fadein3.play();
-             
+
                         fadein3.setOnFinished(event3 -> {
-                            backgroundPane.setStyle(" -fx-background-image: url(\"/lostfound.png\");");
-                            
+                            backgroundPane.setStyle(" -fx-background-image: url(\"/perdu.png\");");
+
                             FadeTransition fadein4 = new FadeTransition(Duration.seconds(2.5), backgroundPane);
                             fadein4.setFromValue(0);
                             fadein4.setToValue(1);
                             fadein4.play();
+
                             
-                            
-                            
+
                         });
                     });
-                    
+
                 });
 
             });
@@ -105,25 +106,23 @@ public class FXMLAcceuilUtilisateurController implements Initializable {
             hamburger.addEventHandler(MouseEvent.MOUSE_PRESSED, (e) -> {
                 hamburderTrans.setRate(hamburderTrans.getRate() * -1);
                 hamburderTrans.play();
-                
+
                 if (drawer.isShown()) {
                     drawer.close();
                 } else {
                     drawer.open();
                 }
-                
+
             });
         } catch (IOException ex) {
-               ex.printStackTrace();
+            ex.printStackTrace();
         }
     }
 
     @FXML
     private void On_btn_Covoiturage(ActionEvent event) throws IOException {
-                    esprit_entraide.Esprit_Entraide.getInstance().getStage().hide();
-            esprit_entraide.Esprit_Entraide.getInstance().ChangeScene(new Scene(FXMLLoader.load(getClass().getResource("/GUI/FXMLAfficheCovoiturage.fxml"))));
-            esprit_entraide.Esprit_Entraide.getInstance().getStage().show();
+        esprit_entraide.Esprit_Entraide.getInstance().getStage().hide();
+        esprit_entraide.Esprit_Entraide.getInstance().ChangeScene(new Scene(FXMLLoader.load(getClass().getResource("/GUI/FXMLAfficheCovoiturage.fxml"))));
+        esprit_entraide.Esprit_Entraide.getInstance().getStage().show();
     }
- }
-    
-
+}

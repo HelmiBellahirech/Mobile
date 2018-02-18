@@ -16,26 +16,26 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="537.0" prefWidth="797.0" stylesheets="@../CSS/StyleSheet.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.FXMLAcceuilUtilisateurController">
    <children>
-      <Pane fx:id="backgroundPane" layoutX="1.0" layoutY="-3.0" prefHeight="543.0" prefWidth="797.0">
+      <Label layoutX="241.0" layoutY="29.0" text="Welcome">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="49.0" />
+         </font>
+      </Label>
+      <Label layoutX="351.0" layoutY="88.0" prefHeight="42.0" prefWidth="289.0" text="To Esprit Entr'aide">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="31.0" />
+         </font>
+      </Label>
+      <Pane fx:id="backgroundPane" prefHeight="537.0" prefWidth="797.0">
          <children>
             <JFXHamburger fx:id="hamburger" layoutX="746.0" layoutY="25.0" />
-            <Label layoutX="235.0" layoutY="35.0" text="Welcome">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="49.0" />
-               </font>
-            </Label>
-            <Label layoutX="345.0" layoutY="94.0" prefHeight="42.0" prefWidth="289.0" text="To Esprit Entr'aide">
-               <font>
-                  <Font name="Arial Rounded MT Bold" size="31.0" />
-               </font>
-            </Label>
          </children>
       </Pane>
       <GridPane layoutX="93.0" layoutY="150.0" opacity="0.8" prefHeight="357.0" prefWidth="612.0">
          <children>
-            <Pane id="hhh" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #807B7B;">
+            <Pane id="hhh" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #807B7B;" stylesheets="@../CSS/StyleSheet.css">
                <children>
-                  <JFXButton id="labels" fx:id="zx" alignment="BOTTOM_CENTER" prefHeight="119.0" prefWidth="204.0" style="-fx-background-color: #807B7B;" text="Profil" textFill="WHITE">
+                  <JFXButton id="labels" fx:id="zx" alignment="BOTTOM_CENTER" layoutY="2.0" prefHeight="119.0" prefWidth="204.0" style="-fx-background-color: #807B7B;" stylesheets="@../CSS/StyleSheet.css" text="Profil" textFill="WHITE">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -50,9 +50,9 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FA1E25;" GridPane.columnIndex="1">
+            <Pane id="labels" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #FA1E25;" stylesheets="@../CSS/StyleSheet.css" GridPane.columnIndex="1">
                <children>
-                  <JFXButton id="labels" fx:id="Covoiturage" alignment="BOTTOM_CENTER" onAction="#On_btn_Covoiturage" prefHeight="119.0" prefWidth="204.0" style="-fx-background-color: #FA1E25;" text="Covoiturage" textFill="WHITE">
+                  <JFXButton id="labels" fx:id="Covoiturage" alignment="BOTTOM_CENTER" onAction="#On_btn_Covoiturage" prefHeight="119.0" prefWidth="204.0" style="-fx-background-color: #FA1E25;" stylesheets="@../CSS/StyleSheet.css" text="Covoiturage" textFill="WHITE">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -69,7 +69,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #807B7B;" GridPane.columnIndex="2">
                <children>
-                  <JFXButton id="labels" alignment="BOTTOM_CENTER" prefHeight="119.0" prefWidth="204.0" style="-fx-background-color: #807B7B;" text="Collocation" textFill="WHITE">
+                  <JFXButton id="labels" alignment="BOTTOM_CENTER" prefHeight="119.0" prefWidth="204.0" style="-fx-background-color: #807B7B;" stylesheets="@../CSS/StyleSheet.css" text="Collocation" textFill="WHITE">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -86,7 +86,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #908B8C;" GridPane.rowIndex="1">
                <children>
-                  <JFXButton id="labels" alignment="BOTTOM_CENTER" layoutY="-2.0" prefHeight="119.0" prefWidth="204.0" style="-fx-background-color: #908B8C;" text="Lost&amp;Found" textFill="WHITE">
+                  <JFXButton id="labels" alignment="BOTTOM_CENTER" layoutY="-2.0" prefHeight="119.0" prefWidth="204.0" style="-fx-background-color: #908B8C;" stylesheets="@../CSS/StyleSheet.css" text="Lost&amp;Found" textFill="WHITE">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -103,7 +103,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #F63B42;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <JFXButton id="labels" alignment="BOTTOM_CENTER" prefHeight="119.0" prefWidth="204.0" style="-fx-background-color: #F63B42;" text="Mes annonces" textFill="WHITE">
+                  <JFXButton id="labels" alignment="BOTTOM_CENTER" prefHeight="119.0" prefWidth="204.0" style="-fx-background-color: #F63B42;" stylesheets="@../CSS/StyleSheet.css" text="Mes annonces" textFill="WHITE">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -120,7 +120,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #908B8C;" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
-                  <JFXButton id="labels" alignment="BOTTOM_CENTER" prefHeight="119.0" prefWidth="204.0" style="-fx-background-color: #908B8C;" text="Mes réservations" textFill="WHITE">
+                  <JFXButton id="labels" alignment="BOTTOM_CENTER" prefHeight="119.0" prefWidth="204.0" style="-fx-background-color: #908B8C;" stylesheets="@../CSS/StyleSheet.css" text="Mes réservations" textFill="WHITE">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -137,7 +137,7 @@
             </Pane>
             <Pane prefHeight="97.0" prefWidth="139.0" style="-fx-background-color: #9B9898;" GridPane.rowIndex="2">
                <children>
-                  <JFXButton id="labels" alignment="BOTTOM_CENTER" prefHeight="119.0" prefWidth="204.0" style="-fx-background-color: #9B9898;" text="Forum" textFill="WHITE">
+                  <JFXButton id="labels" alignment="BOTTOM_CENTER" prefHeight="119.0" prefWidth="204.0" style="-fx-background-color: #9B9898;" stylesheets="@../CSS/StyleSheet.css" text="Forum" textFill="WHITE">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -154,7 +154,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #F24D53;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <JFXButton id="labels" alignment="BOTTOM_CENTER" prefHeight="119.0" prefWidth="204.0" style="-fx-background-color: #F24D53;" text="Revision" textFill="WHITE">
+                  <JFXButton id="labels" alignment="BOTTOM_CENTER" prefHeight="119.0" prefWidth="204.0" style="-fx-background-color: #F24D53;" stylesheets="@../CSS/StyleSheet.css" text="Revision" textFill="WHITE">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -171,7 +171,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #9B9898;" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <children>
-                  <JFXButton id="labels" alignment="BOTTOM_CENTER" prefHeight="119.0" prefWidth="204.0" style="-fx-background-color: #9B9898;" text="Espace Clubs" textFill="WHITE">
+                  <JFXButton id="labels" alignment="BOTTOM_CENTER" prefHeight="119.0" prefWidth="204.0" style="-fx-background-color: #9B9898;" stylesheets="@../CSS/StyleSheet.css" text="Espace Clubs" textFill="WHITE">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -198,9 +198,9 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
       </GridPane>
-      <Pane prefHeight="410.0" prefWidth="30.0">
+      <Pane prefHeight="410.0" prefWidth="105.0">
          <children>
-            <JFXDrawer fx:id="drawer" layoutX="1.0" prefHeight="317.0" prefWidth="30.0" />
+            <JFXDrawer fx:id="drawer" layoutX="1.0" prefHeight="336.0" prefWidth="96.0" />
          </children>
       </Pane>
    </children>
