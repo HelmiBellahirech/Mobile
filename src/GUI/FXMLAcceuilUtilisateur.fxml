@@ -14,24 +14,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="537.0" prefWidth="797.0" stylesheets="@../CSS/StyleSheet.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.FXMLAcceuilUtilisateurController">
+<AnchorPane fx:id="rootpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="720.0" stylesheets="@../CSS/StyleSheet.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.FXMLAcceuilUtilisateurController">
    <children>
-      <Label layoutX="241.0" layoutY="29.0" text="Welcome">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="49.0" />
-         </font>
-      </Label>
-      <Label layoutX="351.0" layoutY="88.0" prefHeight="42.0" prefWidth="289.0" text="To Esprit Entr'aide">
-         <font>
-            <Font name="Arial Rounded MT Bold" size="31.0" />
-         </font>
-      </Label>
-      <Pane fx:id="backgroundPane" prefHeight="537.0" prefWidth="797.0">
+      <Pane fx:id="backgroundPane" prefHeight="545.0" prefWidth="720.0">
          <children>
-            <JFXHamburger fx:id="hamburger" layoutX="746.0" layoutY="25.0" />
+            <JFXHamburger fx:id="hamburger" layoutX="670.0" layoutY="27.0" />
          </children>
       </Pane>
-      <GridPane layoutX="93.0" layoutY="150.0" opacity="0.8" prefHeight="357.0" prefWidth="612.0">
+      <GridPane layoutX="54.0" layoutY="164.0" opacity="0.8" prefHeight="357.0" prefWidth="612.0">
          <children>
             <Pane id="hhh" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #807B7B;" stylesheets="@../CSS/StyleSheet.css">
                <children>
@@ -103,7 +93,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #F63B42;" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <JFXButton id="labels" alignment="BOTTOM_CENTER" prefHeight="119.0" prefWidth="204.0" style="-fx-background-color: #F63B42;" stylesheets="@../CSS/StyleSheet.css" text="Mes annonces" textFill="WHITE">
+                  <JFXButton id="labels" fx:id="MesAnnonces" alignment="BOTTOM_CENTER" onAction="#On_btn_MesAnnonces" prefHeight="119.0" prefWidth="204.0" style="-fx-background-color: #F63B42;" stylesheets="@../CSS/StyleSheet.css" text="Mes annonces" textFill="WHITE">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -200,8 +190,18 @@
       </GridPane>
       <Pane prefHeight="410.0" prefWidth="105.0">
          <children>
-            <JFXDrawer fx:id="drawer" layoutX="1.0" prefHeight="336.0" prefWidth="96.0" />
+            <JFXDrawer fx:id="drawer" prefHeight="336.0" prefWidth="96.0" />
          </children>
       </Pane>
+      <Label layoutX="215.0" layoutY="29.0" text="Welcome">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="49.0" />
+         </font>
+      </Label>
+      <Label layoutX="341.0" layoutY="99.0" prefHeight="42.0" prefWidth="289.0" text="To Esprit Entr'aide">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="31.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

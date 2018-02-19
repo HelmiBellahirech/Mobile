@@ -37,6 +37,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -76,6 +77,8 @@ public class FXMLAjoutCovoiturageController implements Initializable {
     private RadioButton oui;
     @FXML
     private RadioButton non;
+    @FXML
+    private AnchorPane rootpane;
 
     /**
      * Initializes the controller class.
@@ -158,9 +161,13 @@ public class FXMLAjoutCovoiturageController implements Initializable {
     @FXML
     private void On_btn_retour(ActionEvent event) throws IOException {
 
-        esprit_entraide.Esprit_Entraide.getInstance().getStage().hide();
-        esprit_entraide.Esprit_Entraide.getInstance().ChangeScene(new Scene(FXMLLoader.load(getClass().getResource("/GUI/FXMLAfficheCovoiturage.fxml"))));
-        esprit_entraide.Esprit_Entraide.getInstance().getStage().show();
+         AnchorPane pane = new AnchorPane();
+                                    try {
+                                        pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLAfficheCovoiturage.fxml"));
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(FXMLAjoutCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                    rootpane.getChildren().setAll(pane);
     }
 
 }

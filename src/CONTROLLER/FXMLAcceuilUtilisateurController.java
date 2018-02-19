@@ -44,6 +44,10 @@ public class FXMLAcceuilUtilisateurController implements Initializable {
     NavigationDrawerFXMLController nv = new NavigationDrawerFXMLController();
     @FXML
     private JFXButton Covoiturage;
+    @FXML
+    private AnchorPane rootpane;
+    @FXML
+    private JFXButton MesAnnonces;
 
     /**
      * Initializes the controller class.
@@ -121,8 +125,24 @@ public class FXMLAcceuilUtilisateurController implements Initializable {
 
     @FXML
     private void On_btn_Covoiturage(ActionEvent event) throws IOException {
-        esprit_entraide.Esprit_Entraide.getInstance().getStage().hide();
-        esprit_entraide.Esprit_Entraide.getInstance().ChangeScene(new Scene(FXMLLoader.load(getClass().getResource("/GUI/FXMLAfficheCovoiturage.fxml"))));
-        esprit_entraide.Esprit_Entraide.getInstance().getStage().show();
+       AnchorPane pane = new AnchorPane();
+                                    try {
+                                        pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLAfficheCovoiturage.fxml"));
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(FXMLAfficheCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                    rootpane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void On_btn_MesAnnonces(ActionEvent event) {
+         AnchorPane pane = new AnchorPane();
+                                    try {
+                                        pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLMesAnnonces.fxml"));
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(FXMLAfficheCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                    rootpane.getChildren().setAll(pane);
+        
     }
 }

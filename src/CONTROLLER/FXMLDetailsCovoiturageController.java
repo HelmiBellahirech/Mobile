@@ -57,7 +57,7 @@ public class FXMLDetailsCovoiturageController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Covoiturage c= new Covoiturage_service().findId(id ); 
+        Covoiturage c= new Covoiturage_service().findId(id); 
         departtitre.setText(c.getDepart());
         arrivetitre.setText(c.getArrive());
         depart.setText(c.getDepart());
@@ -80,8 +80,13 @@ public class FXMLDetailsCovoiturageController implements Initializable {
 
     @FXML
     private void a(ActionEvent event) throws IOException {
-          esprit_entraide.Esprit_Entraide.getInstance().getStage().hide();
-        esprit_entraide.Esprit_Entraide.getInstance().ChangeScene(new Scene(FXMLLoader.load(getClass().getResource("/GUI/FXMLTajriba.fxml"))));
-        esprit_entraide.Esprit_Entraide.getInstance().getStage().show();
+        
+         AnchorPane pane = new AnchorPane();
+                                    try {
+                                        pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLTajriba.fxml"));
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(FXMLDetailsCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                    rootpane.getChildren().setAll(pane);
     }
 }

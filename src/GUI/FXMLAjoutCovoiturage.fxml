@@ -17,21 +17,21 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="506.0" prefWidth="727.0" style="-fx-background-color: #CDCDCD;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.FXMLAjoutCovoiturageController">
+<AnchorPane id="AnchorPane" fx:id="rootpane" prefHeight="545.0" prefWidth="720.0" style="-fx-background-color: #CDCDCD;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.FXMLAjoutCovoiturageController">
    <children>
-      <Pane layoutX="25.0" layoutY="23.0" prefHeight="461.0" prefWidth="682.0" style="-fx-background-color: #DEDCDC; -fx-background-radius: 50px 50px 50px 0px;">
+      <Pane layoutX="17.0" layoutY="21.0" prefHeight="503.0" prefWidth="686.0" style="-fx-background-color: #DEDCDC; -fx-background-radius: 50px 50px 50px 0px;">
          <children>
-            <JFXButton fx:id="btn_valider" buttonType="RAISED" layoutX="398.0" layoutY="413.0" onAction="#On_btn_valider" prefHeight="35.0" prefWidth="107.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px;" text="Valider" textFill="WHITE">
+            <JFXButton fx:id="btn_valider" buttonType="RAISED" layoutX="477.0" layoutY="440.0" onAction="#On_btn_valider" prefHeight="35.0" prefWidth="107.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px;" text="Valider" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btn_retour" layoutX="146.0" layoutY="413.0" onAction="#On_btn_retour" prefHeight="35.0" prefWidth="107.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px;" text="Retour" textFill="#fffafa">
+            <JFXButton fx:id="btn_retour" layoutX="157.0" layoutY="440.0" onAction="#On_btn_retour" prefHeight="35.0" prefWidth="107.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px;" text="Annuler" textFill="#fffafa">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
             </JFXButton>
-            <Label layoutX="97.0" layoutY="101.0" prefHeight="27.0" prefWidth="49.0" text="Depart">
+            <Label layoutX="94.0" layoutY="128.0" prefHeight="27.0" prefWidth="49.0" text="Depart">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -39,7 +39,7 @@
                   <Blend />
                </effect>
             </Label>
-            <Label layoutX="99.0" layoutY="185.0" text="Arrivé">
+            <Label layoutX="98.0" layoutY="208.0" text="Arrivé">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -47,7 +47,7 @@
                   <Blend />
                </effect>
             </Label>
-            <Label layoutX="104.0" layoutY="262.0" text="Date">
+            <Label layoutX="106.0" layoutY="288.0" text="Date">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -55,7 +55,7 @@
                   <Blend />
                </effect>
             </Label>
-            <Label layoutX="99.0" layoutY="330.0" text="Heure">
+            <Label layoutX="99.0" layoutY="366.0" text="Heure">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -63,7 +63,7 @@
                   <Blend />
                </effect>
             </Label>
-            <Label layoutX="389.0" layoutY="185.0" text="Comfort">
+            <Label layoutX="388.0" layoutY="209.0" text="Comfort">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -71,7 +71,7 @@
                   <Blend />
                </effect>
             </Label>
-            <Label fx:id="FumeurRadio" layoutX="392.0" layoutY="262.0" text="Fumeur">
+            <Label fx:id="FumeurRadio" layoutX="391.0" layoutY="287.0" text="Fumeur">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -79,7 +79,7 @@
                   <Blend />
                </effect>
             </Label>
-            <Label layoutX="383.0" layoutY="330.0" text="Prix en DT">
+            <Label layoutX="382.0" layoutY="366.0" text="Prix en DT">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
@@ -87,16 +87,16 @@
                   <Blend />
                </effect>
             </Label>
-            <JFXTextField fx:id="DepartInput" focusColor="#e21c1c" layoutX="173.0" layoutY="103.0" prefHeight="25.0" prefWidth="125.0" />
-            <JFXTextField fx:id="ArriveInput" focusColor="#e21c1c" layoutX="173.0" layoutY="183.0" prefHeight="25.0" prefWidth="125.0" />
-            <JFXComboBox fx:id="ComfortCombobox" focusColor="#e21c1c" layoutX="469.0" layoutY="183.0" prefHeight="25.0" prefWidth="107.0" stylesheets="@../CSS/StyleSheet.css" />
-            <Label layoutX="366.0" layoutY="118.0" prefHeight="20.0" prefWidth="125.0" text="Nombre de places">
+            <JFXTextField fx:id="DepartInput" focusColor="#e21c1c" layoutX="173.0" layoutY="129.0" prefHeight="25.0" prefWidth="125.0" />
+            <JFXTextField fx:id="ArriveInput" focusColor="#e21c1c" layoutX="173.0" layoutY="206.0" prefHeight="25.0" prefWidth="125.0" />
+            <JFXComboBox fx:id="ComfortCombobox" focusColor="#e21c1c" layoutX="470.0" layoutY="206.0" prefHeight="25.0" prefWidth="107.0" stylesheets="@../CSS/StyleSheet.css" />
+            <Label layoutX="366.0" layoutY="132.0" prefHeight="20.0" prefWidth="125.0" text="Nombre de places">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <JFXComboBox fx:id="NbPlacesCombobox" focusColor="#e21c1c" layoutX="505.0" layoutY="116.0" prefHeight="25.0" prefWidth="40.0" stylesheets="@../CSS/StyleSheet.css" />
-            <RadioButton fx:id="oui" layoutX="465.0" layoutY="264.0" mnemonicParsing="false" selected="true" styleClass="jfx-combo-box" stylesheets="@../CSS/StyleSheet.css" text="Oui">
+            <JFXComboBox fx:id="NbPlacesCombobox" focusColor="#e21c1c" layoutX="506.0" layoutY="130.0" prefHeight="25.0" prefWidth="40.0" stylesheets="@../CSS/StyleSheet.css" />
+            <RadioButton fx:id="oui" layoutX="471.0" layoutY="289.0" mnemonicParsing="false" selected="true" styleClass="jfx-combo-box" stylesheets="@../CSS/StyleSheet.css" text="Oui">
                <toggleGroup>
                   <ToggleGroup fx:id="Mygroup" />
                </toggleGroup>
@@ -107,18 +107,18 @@
                   <Glow />
                </effect>
             </RadioButton>
-            <RadioButton fx:id="non" layoutX="523.0" layoutY="264.0" mnemonicParsing="false" selected="true" styleClass="jfx-combo-box" stylesheets="@../CSS/StyleSheet.css" text="Non" toggleGroup="$Mygroup">
+            <RadioButton fx:id="non" layoutX="523.0" layoutY="289.0" mnemonicParsing="false" selected="true" styleClass="jfx-combo-box" stylesheets="@../CSS/StyleSheet.css" text="Non" toggleGroup="$Mygroup">
                <font>
                   <Font name="System Bold" size="12.0" />
                </font>
                <effect>
                   <Glow />
                </effect></RadioButton>
-            <JFXTimePicker fx:id="HeureInput" defaultColor="#e21c1c" layoutX="157.0" layoutY="327.0" prefHeight="28.0" prefWidth="166.0" />
-            <Pane prefHeight="462.0" prefWidth="68.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px 0px;" />
-            <JFXTextField fx:id="PrixInput" focusColor="#e21c1c" layoutX="471.0" layoutY="328.0" prefHeight="25.0" prefWidth="49.0" />
-            <JFXDatePicker fx:id="DateInput" defaultColor="#e21c1c" layoutX="168.0" layoutY="259.0" prefHeight="28.0" prefWidth="142.0" />
-            <ImageView fitHeight="145.0" fitWidth="142.0" layoutX="295.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+            <JFXTimePicker fx:id="HeureInput" defaultColor="#e21c1c" layoutX="156.0" layoutY="362.0" prefHeight="28.0" prefWidth="166.0" />
+            <Pane prefHeight="503.0" prefWidth="68.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px 0px;" />
+            <JFXTextField fx:id="PrixInput" focusColor="#e21c1c" layoutX="467.0" layoutY="364.0" prefHeight="25.0" prefWidth="49.0" />
+            <JFXDatePicker fx:id="DateInput" defaultColor="#e21c1c" layoutX="168.0" layoutY="283.0" prefHeight="28.0" prefWidth="142.0" />
+            <ImageView fitHeight="145.0" fitWidth="142.0" layoutX="272.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@e969c148-71ea-4e0d-97ce-d07c6bb5cfe1.png" />
                </image>

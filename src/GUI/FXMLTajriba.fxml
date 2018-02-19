@@ -8,10 +8,11 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="rootpane" prefHeight="469.0" prefWidth="666.0" style="-fx-background-color: #DEDCDC; -fx-background-radius: 50px 50px 50px 0px;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.FXMLTajribaController">
+<AnchorPane id="AnchorPane" fx:id="rootpane" prefHeight="546.0" prefWidth="720.0" style="-fx-background-color: #DEDCDC; -fx-background-radius: 50px 50px 50px 0px;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.FXMLTajribaController">
    <children>
-      <JFXListView fx:id="List" layoutX="180.0" layoutY="112.0" prefHeight="352.0" prefWidth="336.0" stylesheets="@../CSS/StyleSheet.css">
+      <JFXListView fx:id="List" layoutX="192.0" layoutY="115.0" prefHeight="417.0" prefWidth="336.0" stylesheets="@../CSS/StyleSheet.css">
          <effect>
             <DropShadow />
          </effect></JFXListView>
@@ -21,7 +22,15 @@
       <Label layoutX="413.0" layoutY="48.0" prefHeight="25.0" prefWidth="60.0" text="Prix Max" />
       <JFXTextField fx:id="min" focusColor="#e21c1c" layoutX="336.0" layoutY="48.0" prefHeight="25.0" prefWidth="39.0" />
       <JFXTextField fx:id="max" focusColor="#e21c1c" layoutX="465.0" layoutY="48.0" prefHeight="25.0" prefWidth="39.0" />
-      <JFXButton fx:id="Recherche" layoutX="545.0" layoutY="60.0" onAction="#On_btn_Recherche" prefHeight="27.0" prefWidth="86.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px;" text="Rechercher" textFill="WHITE" />
-      <Pane layoutY="-2.0" prefHeight="480.0" prefWidth="70.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px 0px;" />
+      <JFXButton fx:id="Recherche" layoutX="545.0" layoutY="49.0" onAction="#On_btn_Recherche" prefHeight="38.0" prefWidth="106.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px;" text="Rechercher" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></JFXButton>
+      <Pane layoutY="-2.0" prefHeight="548.0" prefWidth="70.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px 0px;" />
+      <JFXButton fx:id="Retour" layoutX="99.0" layoutY="299.0" onAction="#On_btn_Retour" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px;" text="Retour" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

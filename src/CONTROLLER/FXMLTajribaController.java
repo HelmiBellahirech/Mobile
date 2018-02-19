@@ -33,6 +33,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -76,6 +77,8 @@ public class FXMLTajribaController implements Initializable {
     private JFXButton Recherche;
     @FXML
     private AnchorPane rootpane;
+    @FXML
+    private JFXButton Retour;
 
     @Override
 
@@ -125,15 +128,18 @@ public class FXMLTajribaController implements Initializable {
 
                         // store the rounded image in the imageView.
                         imgview.setImage(image);
+                        TextField id = new TextField(String.valueOf(e.getID()));
+                            id.setVisible(true);
+                             setId(String.valueOf(e.getID()));
                         List.setOnMouseClicked(new EventHandler<MouseEvent>() {
                             @Override
                             public void handle(MouseEvent event) {
-                                if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2
-                                        && (event.getTarget() instanceof LabeledText || ((GridPane) event.getTarget()).getChildren().size() > 0)) {
-                                    System.out.println("salut");
+                                if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() == 2) {
+                                   Covoiturage cov = List.getItems().get(List.getSelectionModel().getSelectedIndex()) ; 
 
                                     FXMLDetailsCovoiturageController l = new FXMLDetailsCovoiturageController();
-                                    l.redirect(String.valueOf(e.getID()));
+                                    l.redirect(String.valueOf(cov.getID()));
+                                    System.out.println(cov.getID());
                                     AnchorPane pane = new AnchorPane();
                                     try {
                                         pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLDetailsCovoiturage.fxml"));
@@ -267,6 +273,17 @@ public class FXMLTajribaController implements Initializable {
         });
         List.setItems(items);
 
+    }
+
+    @FXML
+    private void On_btn_Retour(ActionEvent event) {
+        AnchorPane pane = new AnchorPane();
+        try {
+            pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLAfficheCovoiturage.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLDetailsCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        rootpane.getChildren().setAll(pane);
     }
 
 }

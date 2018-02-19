@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="687.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.FXMLDetailsCovoiturageController">
+<AnchorPane fx:id="rootpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="720.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.FXMLDetailsCovoiturageController">
    <children>
       <Pane layoutX="14.0" layoutY="94.0" prefHeight="219.0" prefWidth="329.0" style="-fx-background-color: #DEDCDC;">
          <children>
@@ -82,32 +82,32 @@
       </Pane>
       <Pane layoutX="98.0" layoutY="14.0" prefHeight="58.0" prefWidth="539.0" style="-fx-background-color: #DEDCDC;">
          <children>
-            <Label layoutX="37.0" layoutY="18.0" prefHeight="27.0" prefWidth="105.0" text="Voyage de" textFill="#4d4a4a">
+            <Label layoutX="70.0" layoutY="16.0" prefHeight="27.0" prefWidth="105.0" text="Voyage de" textFill="#4d4a4a">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="departtitre" layoutX="142.0" layoutY="18.0" prefHeight="25.0" prefWidth="57.0" text="Label" textFill="#4d4a4a">
+            <Label fx:id="departtitre" layoutX="175.0" layoutY="16.0" prefHeight="25.0" prefWidth="57.0" text="Label" textFill="#4d4a4a">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="213.0" layoutY="16.0" text="à" textFill="#4d4a4a">
+            <Label layoutX="239.0" layoutY="16.0" text="à" textFill="#4d4a4a">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="arrivetitre" layoutX="241.0" layoutY="18.0" prefHeight="27.0" prefWidth="66.0" text="Label" textFill="#4d4a4a">
+            <Label fx:id="arrivetitre" layoutX="260.0" layoutY="16.0" prefHeight="27.0" prefWidth="66.0" text="Label" textFill="#4d4a4a">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label layoutX="322.0" layoutY="18.0" text="le" textFill="#4d4a4a">
+            <Label layoutX="338.0" layoutY="16.0" text="le" textFill="#4d4a4a">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="datetitre" layoutX="345.0" layoutY="18.0" prefHeight="25.0" prefWidth="105.0" text="Label" textFill="#4d4a4a">
+            <Label fx:id="datetitre" layoutX="365.0" layoutY="16.0" prefHeight="25.0" prefWidth="105.0" text="Label" textFill="#4d4a4a">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -122,12 +122,12 @@
             <InnerShadow />
          </effect>
       </Pane>
-      <JFXButton fx:id="a" layoutX="23.0" layoutY="451.0" onAction="#a" prefHeight="35.0" prefWidth="98.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px;" text="Retour" textFill="WHITE">
+      <JFXButton fx:id="a" layoutX="23.0" layoutY="483.0" onAction="#a" prefHeight="35.0" prefWidth="98.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px;" text="Retour" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </JFXButton>
-      <ImageView fitHeight="35.0" fitWidth="29.0" layoutX="23.0" layoutY="454.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="35.0" fitWidth="29.0" layoutX="23.0" layoutY="486.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../back.png" />
          </image>
