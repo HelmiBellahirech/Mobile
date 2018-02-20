@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="rootpane" prefHeight="484.0" prefWidth="720.0" style="-fx-background-color: #DEDCDC; -fx-background-radius: 50px 50px 50px 0px;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.FXMLMesCovoiturageController">
+   <children>
+      <JFXListView fx:id="List" layoutX="208.0" layoutY="34.0" prefHeight="416.0" prefWidth="305.0" stylesheets="@../CSS/StyleSheet.css" />
+   </children>
+</AnchorPane>
