@@ -23,5 +23,7 @@ import javafx.collections.ObservableList;
 public interface IcovoiturageService extends Iservice<Covoiturage,Integer>{
    public List<Covoiturage> findByDepartArrive(String Depart,String Arrive); 
     public List<Covoiturage> findId_user(Integer r) ;
+     public List<Covoiturage> findByDepart(String Depart); 
+      public List<Covoiturage> findByArrive(String Arrive); 
    
 }

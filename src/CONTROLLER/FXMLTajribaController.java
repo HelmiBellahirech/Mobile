@@ -59,7 +59,7 @@ public class FXMLTajribaController implements Initializable {
      * Initializes the controller class.
      */
     Covoiturage_service cs = new Covoiturage_service();
-    List<Covoiturage> covoiturages = cs.findByDepartArrive(FXMLAfficheCovoiturageController.Depart, FXMLAfficheCovoiturageController.Arrive);
+    
     String depart = FXMLAfficheCovoiturageController.Depart;
     String arrive = FXMLAfficheCovoiturageController.Arrive;
     @FXML
@@ -79,13 +79,32 @@ public class FXMLTajribaController implements Initializable {
     private AnchorPane rootpane;
     @FXML
     private JFXButton Retour;
-
+ List<Covoiturage> covoiturages = new ArrayList<>() ; 
+        
     @Override
 
     public void initialize(URL url, ResourceBundle rb) {
 
         ComfortCombobox.setItems(Comfortoption);
-
+       
+       
+         if(depart.equals("")&&arrive.equals(""))
+        {
+            covoiturages = cs.getAll();
+        }
+        if(depart.equals("")&&(!arrive.equals("")))
+        {
+            
+            covoiturages= cs.findByArrive(arrive);
+        }
+        if((!depart.equals(""))&&(arrive.equals("")))
+        {
+           
+            covoiturages= cs.findByDepart(depart);
+        }
+        if((!depart.equals(""))&&(!arrive.equals("")))
+        {covoiturages=cs.findByDepartArrive(depart, arrive) ; }
+        
         ObservableList<Covoiturage> items = FXCollections.observableArrayList(covoiturages);
 
         List.setCellFactory((ListView<Covoiturage> arg0) -> {
@@ -170,6 +189,7 @@ public class FXMLTajribaController implements Initializable {
 
     @FXML
     private void On_btn_Recherche(ActionEvent event) {
+       
         if (min.getText().equals("") == true) {
             min.setText("0");
         }
@@ -179,16 +199,51 @@ public class FXMLTajribaController implements Initializable {
         if (ComfortCombobox.getValue() == null) {
             ComfortCombobox.setValue("");
         }
-
-        covoiturages = new Covoiturage_service().getAll().stream()
-                .filter(s -> s.getDepart().equals(depart))
+  if(depart.equals("")&&arrive.equals(""))
+        {
+            covoiturages = new Covoiturage_service().getAll().stream()
+              
+                .filter(s -> s.getComfort().contains(ComfortCombobox.getValue()))
+                .filter(s -> s.getPrix() >= Integer.parseInt(min.getText()))
+                .filter(s -> s.getPrix() <= Integer.parseInt(max.getText()))
+                .collect(Collectors.toList());
+        }
+        if(depart.equals("")&&(!arrive.equals("")))
+        {
+            
+           covoiturages = new Covoiturage_service().getAll().stream()
+                
                 .filter(s -> s.getArrive().equals(arrive))
                 .filter(s -> s.getComfort().contains(ComfortCombobox.getValue()))
                 .filter(s -> s.getPrix() >= Integer.parseInt(min.getText()))
                 .filter(s -> s.getPrix() <= Integer.parseInt(max.getText()))
                 .collect(Collectors.toList());
+        }
+        if((!depart.equals(""))&&(arrive.equals("")))
+        {
+           
+            covoiturages = new Covoiturage_service().getAll().stream()
+                .filter(s -> s.getDepart().equals(depart))
+           
+                .filter(s -> s.getComfort().contains(ComfortCombobox.getValue()))
+                .filter(s -> s.getPrix() >= Integer.parseInt(min.getText()))
+                .filter(s -> s.getPrix() <= Integer.parseInt(max.getText()))
+                .collect(Collectors.toList());
+        }
+        if((!depart.equals(""))&&(!arrive.equals("")))
+        {covoiturages = new Covoiturage_service().getAll().stream()
+                .filter(s -> s.getDepart().equals(depart))
+                .filter(s -> s.getArrive().equals(arrive))
+                .filter(s -> s.getComfort().contains(ComfortCombobox.getValue()))
+                .filter(s -> s.getPrix() >= Integer.parseInt(min.getText()))
+                .filter(s -> s.getPrix() <= Integer.parseInt(max.getText()))
+                .collect(Collectors.toList()); }
+        
+        
+        
 
         ObservableList<Covoiturage> items = FXCollections.observableArrayList(covoiturages);
+        System.out.println(covoiturages);
         items.clear();
         List.getItems().clear();
         max.setText("");
@@ -259,7 +314,7 @@ public class FXMLTajribaController implements Initializable {
                             }
 
                         });
-                        setText(e.getDepart() + "----->" + e.getArrive() + "\n" + " En " + e.getDate() + " à " + e.getHeure() + "\n" + " Nombre de Places disponible " + e.getNbrPlaces() + "\n" + "               Prix En DT " + e.getPrix() + e.getID_USER());
+                         setText(e.getDepart() + "----->" + e.getArrive() + "\n" + " En " + e.getDate() + " à " + e.getHeure() + "\n  " + "    Nombre de Places disponible " + e.getNbrPlaces() + "\n" + "                   Prix En DT " + e.getPrix());
 
                         setFont(Font.font("Berlin Sans FB Demi Bold", 13));
 

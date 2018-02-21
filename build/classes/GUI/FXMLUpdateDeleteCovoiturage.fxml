@@ -12,61 +12,61 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="rootpane" prefHeight="475.0" prefWidth="720.0" style="-fx-background-color: #DEDCDC;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.FXMLUpdateDeleteCovoiturageController">
+<AnchorPane id="AnchorPane" fx:id="rootpane" prefHeight="620.0" prefWidth="1000.0" style="-fx-background-color: #DEDCDC;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.FXMLUpdateDeleteCovoiturageController">
    <children>
-      <Label layoutX="101.0" layoutY="77.0" prefHeight="31.0" prefWidth="89.0" text="Depart" textFill="#5e5a5a">
+      <Label layoutX="196.0" layoutY="121.0" prefHeight="31.0" prefWidth="89.0" text="Depart" textFill="#5e5a5a">
          <font>
-            <Font name="Arial Black" size="18.0" />
+            <Font name="Arial Unicode MS" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="98.0" layoutY="127.0" prefHeight="31.0" prefWidth="68.0" text="Arrivé" textFill="#5e5a5a">
+      <Label layoutX="198.0" layoutY="186.0" prefHeight="31.0" prefWidth="68.0" text="Arrivé" textFill="#5e5a5a">
          <font>
-            <Font name="Arial Black" size="18.0" />
+            <Font name="Arial Unicode MS" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="101.0" layoutY="179.0" prefHeight="31.0" prefWidth="111.0" text="Prix en DT" textFill="#5e5a5a">
+      <Label layoutX="200.0" layoutY="241.0" prefHeight="31.0" prefWidth="111.0" text="Prix en DT" textFill="#5e5a5a">
          <font>
-            <Font name="Arial Black" size="18.0" />
+            <Font name="Arial Unicode MS" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="105.0" layoutY="232.0" prefHeight="31.0" prefWidth="53.0" text="Date" textFill="#5e5a5a">
+      <Label layoutX="200.0" layoutY="293.0" prefHeight="31.0" prefWidth="53.0" text="Date" textFill="#5e5a5a">
          <font>
-            <Font name="Arial Black" size="18.0" />
+            <Font name="Arial Unicode MS" size="21.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="departInput" layoutX="335.0" layoutY="67.0" />
-      <JFXTextField fx:id="arriveInput" layoutX="335.0" layoutY="117.0" />
-      <JFXTextField fx:id="prixInput" layoutX="335.0" layoutY="169.0" />
-      <JFXDatePicker fx:id="DateInpuit" layoutX="336.0" layoutY="219.0" />
-      <JFXTimePicker fx:id="heureInput" layoutX="335.0" layoutY="266.0" />
-      <JFXComboBox fx:id="comfortcombobox" layoutX="331.0" layoutY="383.0" prefHeight="25.0" prefWidth="155.0" />
-      <JFXRadioButton fx:id="oui" layoutX="331.0" layoutY="441.0" text="Oui">
+      <JFXTextField fx:id="departInput" layoutX="450.0" layoutY="121.0" />
+      <JFXTextField fx:id="arriveInput" layoutX="450.0" layoutY="174.0" />
+      <JFXTextField fx:id="prixInput" layoutX="448.0" layoutY="228.0" />
+      <JFXDatePicker fx:id="DateInpuit" layoutX="448.0" layoutY="280.0" />
+      <JFXTimePicker fx:id="heureInput" layoutX="449.0" layoutY="340.0" />
+      <JFXComboBox fx:id="comfortcombobox" layoutX="456.0" layoutY="455.0" prefHeight="25.0" prefWidth="135.0" />
+      <JFXRadioButton fx:id="oui" layoutX="440.0" layoutY="527.0" text="Oui">
          <toggleGroup>
             <ToggleGroup fx:id="fumeur" />
          </toggleGroup>
       </JFXRadioButton>
-      <JFXRadioButton fx:id="non" layoutX="421.0" layoutY="441.0" text="Non" toggleGroup="$fumeur" />
-      <Label layoutX="101.0" layoutY="281.0" text="Heure" textFill="#5e5a5a">
+      <JFXRadioButton fx:id="non" layoutX="534.0" layoutY="527.0" text="Non" toggleGroup="$fumeur" />
+      <Label layoutX="203.0" layoutY="353.0" text="Heure" textFill="#5e5a5a">
          <font>
-            <Font name="Arial Black" size="18.0" />
+            <Font name="Arial Unicode MS" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="101.0" layoutY="343.0" text="Nombre de place" textFill="#5e5a5a">
+      <Label layoutX="200.0" layoutY="413.0" text="Nombre de place" textFill="#5e5a5a">
          <font>
-            <Font name="Arial Black" size="18.0" />
+            <Font name="Arial Unicode MS" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="101.0" layoutY="395.0" prefHeight="27.0" prefWidth="111.0" text="Comfort" textFill="#5e5a5a">
+      <Label layoutX="200.0" layoutY="467.0" prefHeight="27.0" prefWidth="111.0" text="Comfort" textFill="#5e5a5a">
          <font>
-            <Font name="Arial Black" size="18.0" />
+            <Font name="Arial Unicode MS" size="21.0" />
          </font>
       </Label>
-      <Label layoutX="101.0" layoutY="434.0" prefHeight="31.0" prefWidth="111.0" text="Fumeur" textFill="#5e5a5a">
+      <Label layoutX="200.0" layoutY="520.0" prefHeight="31.0" prefWidth="111.0" text="Fumeur" textFill="#5e5a5a">
          <font>
-            <Font name="Arial Black" size="18.0" />
+            <Font name="Arial Unicode MS" size="21.0" />
          </font>
       </Label>
-      <Pane layoutX="181.0" layoutY="-1.0" opacity="0.51" prefHeight="31.0" prefWidth="387.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 0px 0px 50px 50px;">
+      <Pane layoutX="324.0" opacity="0.51" prefHeight="31.0" prefWidth="387.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 0px 0px 50px 50px;">
          <children>
             <Label layoutX="30.0" layoutY="-2.0" prefHeight="31.0" prefWidth="327.0" text="Modifier/Supprimer Votre Annonce" textFill="WHITE">
                <font>
@@ -75,16 +75,21 @@
             </Label>
          </children>
       </Pane>
-      <JFXButton fx:id="Modifier" layoutX="571.0" layoutY="265.0" onAction="#On_btn_Modifier" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px;" text="Modifier" textFill="WHITE">
+      <JFXButton fx:id="Modifier" layoutX="803.0" layoutY="295.0" onAction="#On_btn_Modifier" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px;" text="Modifier" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="Supprimer" layoutX="571.0" layoutY="195.0" onAction="#On_btn_Supprimer" prefHeight="31.0" prefWidth="89.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px;" text="Supprimer" textFill="WHITE">
+      <JFXButton fx:id="Supprimer" layoutX="805.0" layoutY="225.0" onAction="#On_btn_Supprimer" prefHeight="31.0" prefWidth="89.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px;" text="Supprimer" textFill="WHITE">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXComboBox fx:id="NbPlacesCombobox" layoutX="348.0" layoutY="344.0" prefHeight="25.0" prefWidth="53.0" />
+      <JFXComboBox fx:id="NbPlacesCombobox" layoutX="449.0" layoutY="416.0" prefHeight="25.0" prefWidth="53.0" />
+      <JFXButton fx:id="Annuler" layoutX="804.0" layoutY="369.0" onAction="#On_btn_Annuler" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px;" text="Annuler" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

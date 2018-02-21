@@ -64,12 +64,12 @@
     -fx-opacity: .4;
 }
 
-#labels:hover{
-   -fx-background-color: #fbad1b; 
+#btn:hover{
+   -fx-background-color: #E21C1C; 
    -fx-text-decoration-line: underline ; 
    -fx-text-underline-position:below; 
 }
-#labels:pressed{
+#btn:pressed{
     -fx-background-color: #d63c3c; 
 }
 .list-view {

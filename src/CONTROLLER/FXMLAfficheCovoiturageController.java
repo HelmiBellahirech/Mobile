@@ -79,5 +79,16 @@ public class FXMLAfficheCovoiturageController implements Initializable {
 
     }
 
+    @FXML
+    private void On_btn_Menu(ActionEvent event) {
+        AnchorPane pane = new AnchorPane();
+            try {
+                                        pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLAcceuilUtilisateur.fxml"));
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(FXMLAjoutCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                    rootpane.getChildren().setAll(pane);
+    }
+
    
 }

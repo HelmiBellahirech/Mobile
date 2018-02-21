@@ -71,6 +71,8 @@ public class FXMLUpdateDeleteCovoiturageController implements Initializable {
             = FXCollections.observableArrayList("1", "2", "3", "4");
     @FXML
     private AnchorPane rootpane;
+    @FXML
+    private JFXButton Annuler;
 
     /**
      * Initializes the controller class.
@@ -193,6 +195,18 @@ if (alert.getResult() == ButtonType.YES) {
                 rootpane.getChildren().setAll(pane);
 }
      
+    }
+
+    @FXML
+    private void On_btn_Annuler(ActionEvent event) {
+          AnchorPane pane = new AnchorPane();
+                try {
+                    pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLMesCovoiturage.fxml"));
+                } catch (IOException ex) {
+                    Logger.getLogger(FXMLUpdateDeleteCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                rootpane.getChildren().setAll(pane);
+        
     }
 
 }
