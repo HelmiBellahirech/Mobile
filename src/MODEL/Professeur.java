@@ -13,24 +13,38 @@ import java.sql.Date;
  */
 public class Professeur extends Utilisateur {
 
-    private String Matiere;
+    private String Specialite;
 
-    public Professeur(String Matiere, String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Sexe, Date Date_Creation, String Role) {
-        super(Email, username, Password, Nom, Prenom, Telephone, Sexe, Date_Creation, Role);
-        this.Matiere = Matiere;
+    public String getSpecialite() {
+        return Specialite;
     }
 
-    public Professeur(String Matiere, int ID, String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe, String Role) {
-        super(ID, Email, username, Password, Nom, Prenom, Telephone, Photo, Sexe, Role);
-        this.Matiere = Matiere;
+    public void setSpecialite(String Specialite) {
+        this.Specialite = Specialite;
     }
 
-    public String getMatiere() {
-        return Matiere;
+    public Professeur(String Specialite, String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe, String Matricule) {
+        super(Email, username, Password, Nom, Prenom, Telephone, Photo, Sexe, Matricule);
+        this.Specialite = Specialite;
     }
 
-    public void setMatiere(String Matiere) {
-        this.Matiere = Matiere;
+    public Professeur(String Specialite, String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Sexe, String Matricule) {
+        super(Email, username, Password, Nom, Prenom, Telephone, Sexe,  Matricule);
+        this.Specialite = Specialite;
     }
 
+    public Professeur(String Specialite, int ID, String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe, String Matricule, String Role) {
+        super(ID, Email, username, Password, Nom, Prenom, Telephone, Photo, Sexe, Matricule, Role);
+        this.Specialite = Specialite;
+    }
+
+    
+    
+    
+
+    public Professeur(String Specialite) {
+        this.Specialite = Specialite;
+    }
+
+  
 }

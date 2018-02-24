@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="rootpane" prefHeight="620.0" prefWidth="1000.0" style="-fx-background-color: #DEDCDC;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.FXMLMesReservationCovController">
+   <children>
+      <JFXListView fx:id="List" layoutX="344.0" layoutY="118.0" prefHeight="462.0" prefWidth="312.0" stylesheets="@../CSS/StyleSheet.css" />
+      <Label layoutX="107.0" layoutY="44.0" prefHeight="51.0" prefWidth="291.0" text="Vos Reservations" textFill="#e21c1c">
+         <font>
+            <Font name="Calisto MT" size="39.0" />
+         </font>
+      </Label>
+      <Pane prefHeight="620.0" prefWidth="70.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px 0px;" />
+      <JFXButton fx:id="Retour" layoutX="35.0" layoutY="21.0" onAction="#On_btn_Retour" prefHeight="27.0" prefWidth="80.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px;" text="Retour" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+      <JFXComboBox fx:id="EtatCombobox" focusColor="#c32020" layoutX="479.0" layoutY="57.0" onAction="#On_Combo_etat" prefHeight="25.0" prefWidth="140.0" promptText="Etat" stylesheets="@../CSS/StyleSheet.css" />
+   </children>
+</AnchorPane>

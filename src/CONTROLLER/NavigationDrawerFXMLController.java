@@ -73,9 +73,11 @@ public class NavigationDrawerFXMLController implements Initializable {
         usernameLB.setText(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getUsername());
         NameLB.setText(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getNom()+" "+esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getPrenom());
         Email.setText(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getEmail());
-        File file = new File(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getPhoto());
-                        file.getParentFile().mkdirs();
-                        Image IMAGE_RUBY = new Image(file.toURI().toString());
+        File f = new File("C:\\xampp\\htdocs\\pi\\"+esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getPhoto());
+        System.out.println(f.toURI().toString());
+        
+        
+                        Image IMAGE_RUBY = new Image(f.toURI().toString());
                         //   Image IMAGE_RUBY = new Image(ps.findById(e.getPassager().getId()).getAvatar());
                             
                         photo.setFitHeight(100);

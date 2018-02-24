@@ -5,6 +5,7 @@
  */
 package CONTROLLER;
 
+import SERVICE.ReservationcovService;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDrawer;
 import com.jfoenix.controls.JFXHamburger;
@@ -20,10 +21,13 @@ import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -48,13 +52,23 @@ public class FXMLAcceuilUtilisateurController implements Initializable {
     private AnchorPane rootpane;
     @FXML
     private JFXButton MesAnnonces;
+    @FXML
+    private JFXButton MesReservation;
+    @FXML
+    private JFXButton Demande;
+    @FXML
+    private Label notif;
+    @FXML
+    private ImageView img;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ReservationcovService rs = new ReservationcovService();
         try {
+
             FadeTransition fadeout = new FadeTransition(Duration.seconds(2.5), backgroundPane); // TODO
             fadeout.setFromValue(1);
             fadeout.setToValue(0);
@@ -129,6 +143,15 @@ public class FXMLAcceuilUtilisateurController implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+        notif.setText("0");
+        if (rs.findByChauffeurb(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getID(), false).stream().count() != 0) {
+            TrayNotification tray = new TrayNotification();
+            tray.setTitle("Notification covoiturage");
+            tray.setMessage("Vous avez " + rs.findByChauffeurb(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getID(), false).stream().count() + " demande de covoiturage ");
+            tray.showAndDismiss(Duration.seconds(4));
+            notif.setText(String.valueOf(rs.findByChauffeurb(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getID(), false).stream().count()));
+        }
+
     }
 
     @FXML
@@ -162,5 +185,41 @@ public class FXMLAcceuilUtilisateurController implements Initializable {
             Logger.getLogger(FXMLAfficheCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
         }
         rootpane.getChildren().setAll(pane);
+        
+
     }
+
+    @FXML
+    private void On_btn_MesReservation(ActionEvent event) {
+        AnchorPane pane = new AnchorPane();
+        try {
+            pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLMesReservationCov.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLDetailsCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        rootpane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void On_btn_Demande(ActionEvent event) {
+        AnchorPane pane = new AnchorPane();
+        try {
+            pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLDemandeCov.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLDetailsCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        rootpane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void dmnd(MouseEvent event) {
+        AnchorPane pane = new AnchorPane();
+        try {
+            pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLDemandeCov.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLDetailsCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        rootpane.getChildren().setAll(pane);
+    }
+
 }
