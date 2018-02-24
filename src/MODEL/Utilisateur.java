@@ -23,7 +23,7 @@ public class Utilisateur {
     private String Photo;
     private String Sexe;
     private Date Date_Creation;
-    private String Matricule ;
+    private String Matricule;
     private String Role;
 
     public Utilisateur(String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Sexe, String Matricule) {
@@ -34,12 +34,12 @@ public class Utilisateur {
         this.Prenom = Prenom;
         this.Telephone = Telephone;
         this.Sexe = Sexe;
-      
+
         this.Matricule = Matricule;
-       
+
     }
 
-    public Utilisateur(int ID, String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe,String Matricule, String Role) {
+    public Utilisateur(int ID, String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe, String Matricule, String Role) {
         this.ID = ID;
         this.Email = Email;
         this.username = username;
@@ -54,7 +54,7 @@ public class Utilisateur {
     }
 
     public Utilisateur() {
-     
+
     }
 
     public Utilisateur(String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe, String Matricule) {
@@ -158,6 +158,7 @@ public class Utilisateur {
     }
 
     public String getRole() {
+        System.out.println(Role);
         return Role;
     }
 

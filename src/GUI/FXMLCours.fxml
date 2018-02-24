@@ -29,7 +29,7 @@
                   <TableColumn fx:id="actionCol" prefWidth="75.0" text="Action" />
               </columns>
             </TableView>
-            <VBox>
+            <VBox fx:id="crudVBox">
                <children>
                   <GridPane>
                     <columnConstraints>

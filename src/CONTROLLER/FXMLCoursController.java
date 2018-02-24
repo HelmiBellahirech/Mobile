@@ -11,6 +11,7 @@ import ISERVICE.IProfService;
 import MODEL.Cours;
 import MODEL.Etudiant;
 import MODEL.Professeur;
+import MODEL.Utilisateur;
 import SERVICE.CoursService;
 import SERVICE.EtudiantService;
 import SERVICE.ProfService;
@@ -46,6 +47,7 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javax.sql.rowset.serial.SerialBlob;
 import UTILS.MailHelpers;
+import javafx.scene.layout.VBox;
 
 /**
  *
@@ -85,8 +87,13 @@ public class FXMLCoursController implements Initializable {
     @FXML
     private TableColumn<Cours, Button> actionCol;
 
+    @FXML
+    private VBox crudVBox;
+    
     ObservableList<Cours> data = FXCollections.observableArrayList();
     List<Etudiant> etudiantList;
+
+    Utilisateur loggedUser;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -106,6 +113,11 @@ public class FXMLCoursController implements Initializable {
         });
 
         etudiantList = etudiantService.getAll();
+        loggedUser = esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser();
+        if (loggedUser.getRole().equals("Etudiant")) {
+            crudVBox.setVisible(false);
+            actionCol.setVisible(false);
+        }        
     }
 
     @FXML
@@ -208,7 +220,7 @@ public class FXMLCoursController implements Initializable {
 
         @Override
         protected void updateItem(Button t, boolean empty) {
-            super.updateItem(t, empty);           
+            super.updateItem(t, empty);
             if (!empty) {
                 setGraphic(deleteButton);
             } else {
