@@ -30,7 +30,7 @@ public class Covoiturage_service implements IcovoiturageService {
     }
 
     @Override
-    public void add(Covoiturage t) {
+    public boolean add(Covoiturage t) {
         String req = "insert into covoiturage (depart,arrive,prix,date_sys,date,heure,nbrPlaces,comfort,fumeur,id_user) values (?,?,?,?,?,?,?,?,?,?)";
 
         PreparedStatement preparedStatement;
@@ -53,14 +53,15 @@ public class Covoiturage_service implements IcovoiturageService {
             preparedStatement.setString(8, t.getComfort());
             preparedStatement.setString(9, t.getFumeur());
             preparedStatement.setInt(10, esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getID());
-            preparedStatement.executeUpdate();
+            return preparedStatement.executeUpdate() > 0;
         } catch (SQLException ex) {
             ex.printStackTrace();
+            return false;
         }
     }
 
     @Override
-    public void update(Covoiturage t) {
+    public boolean update(Covoiturage t) {
 
         String req = "update covoiturage set  depart=?,arrive=?,prix=?,date=?,heure=?,nbrPlaces=?,comfort=?,fumeur=? where ID = ?";
         PreparedStatement preparedStatement;
@@ -83,22 +84,24 @@ public class Covoiturage_service implements IcovoiturageService {
             preparedStatement.setString(8, t.getFumeur());
             preparedStatement.setInt(9, t.getID());
             //preparedStatement.setInt(9, t.getID_USER());
-            preparedStatement.executeUpdate();
+            return preparedStatement.executeUpdate() > 0;
         } catch (SQLException ex) {
             ex.printStackTrace();
+            return false;
         }
     }
 
     @Override
-    public void remove(Integer r) {
+    public boolean remove(Integer r) {
         String req = "delete from covoiturage where id=?";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
             preparedStatement.setInt(1, r);
-            preparedStatement.executeUpdate();
+            return preparedStatement.executeUpdate() > 0;
         } catch (SQLException ex) {
             ex.printStackTrace();
+            return false;
         }
     }
 

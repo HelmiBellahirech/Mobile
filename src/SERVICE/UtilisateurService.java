@@ -32,17 +32,17 @@ public class UtilisateurService implements IutilisateurService {
     }
 
     @Override
-    public void add(Utilisateur t) {
+    public boolean add(Utilisateur t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void update(Utilisateur t) {
+    public boolean update(Utilisateur t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void remove(Integer r) {
+    public boolean remove(Integer r) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

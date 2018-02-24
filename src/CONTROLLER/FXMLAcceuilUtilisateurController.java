@@ -54,62 +54,61 @@ public class FXMLAcceuilUtilisateurController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-      try {
-        FadeTransition fadeout = new FadeTransition(Duration.seconds(2.5), backgroundPane); // TODO
-        fadeout.setFromValue(1);
-        fadeout.setToValue(0);
-        fadeout.play();
-        fadeout.setOnFinished(event -> {
-            
-            backgroundPane.setStyle(" -fx-background-image: url(\"dest2.jpg\");");
-            
-            FadeTransition fadein = new FadeTransition(Duration.seconds(2.5), backgroundPane);
-            fadein.setFromValue(0);
-            fadein.setToValue(0.6);
-            fadein.play();
-            
-            fadein.setOnFinished(e -> {
-                
-                backgroundPane.setStyle(" -fx-background-image: url(\"dest3.jpg\");");
-                FadeTransition fadein2 = new FadeTransition(Duration.seconds(2.5), backgroundPane);
-                fadein2.setFromValue(0);
-                fadein2.setToValue(1);
-                fadein2.play();
-                
-                fadein2.setOnFinished(event2 -> {
-                    
-                    backgroundPane.setStyle(" -fx-background-image: url(\"dest2.jpg\");");
-                    
-                    FadeTransition fadein3 = new FadeTransition(Duration.seconds(2.5), backgroundPane);
-                    fadein3.setFromValue(1);
-                    fadein3.setToValue(0);
-                    fadein3.play();
-                    
-                    fadein3.setOnFinished(event3 -> {
-                        backgroundPane.setStyle(" -fx-background-image: url(\"dest4.jpg\");");
-                        
-                        FadeTransition fadein4 = new FadeTransition(Duration.seconds(2.5), backgroundPane);
-                        fadein4.setFromValue(0);
-                        fadein4.setToValue(1);
-                        fadein4.play();
-                        
-                        fadein4.setOnFinished(event4 -> {
-                            backgroundPane.setStyle(" -fx-background-image: url(\"w.png\");");
-                            
-                            FadeTransition fadein5 = new FadeTransition(Duration.seconds(2.5), backgroundPane);
-                            fadein5.setFromValue(0);
-                            fadein5.setToValue(1);
-                            fadein5.play();
-                            
-                    
+        try {
+            FadeTransition fadeout = new FadeTransition(Duration.seconds(2.5), backgroundPane); // TODO
+            fadeout.setFromValue(1);
+            fadeout.setToValue(0);
+            fadeout.play();
+            fadeout.setOnFinished(event -> {
+
+                backgroundPane.setStyle(" -fx-background-image: url(\"dest2.jpg\");");
+
+                FadeTransition fadein = new FadeTransition(Duration.seconds(2.5), backgroundPane);
+                fadein.setFromValue(0);
+                fadein.setToValue(0.6);
+                fadein.play();
+
+                fadein.setOnFinished(e -> {
+
+                    backgroundPane.setStyle(" -fx-background-image: url(\"dest3.jpg\");");
+                    FadeTransition fadein2 = new FadeTransition(Duration.seconds(2.5), backgroundPane);
+                    fadein2.setFromValue(0);
+                    fadein2.setToValue(1);
+                    fadein2.play();
+
+                    fadein2.setOnFinished(event2 -> {
+
+                        backgroundPane.setStyle(" -fx-background-image: url(\"dest2.jpg\");");
+
+                        FadeTransition fadein3 = new FadeTransition(Duration.seconds(2.5), backgroundPane);
+                        fadein3.setFromValue(1);
+                        fadein3.setToValue(0);
+                        fadein3.play();
+
+                        fadein3.setOnFinished(event3 -> {
+                            backgroundPane.setStyle(" -fx-background-image: url(\"dest4.jpg\");");
+
+                            FadeTransition fadein4 = new FadeTransition(Duration.seconds(2.5), backgroundPane);
+                            fadein4.setFromValue(0);
+                            fadein4.setToValue(1);
+                            fadein4.play();
+
+                            fadein4.setOnFinished(event4 -> {
+                                backgroundPane.setStyle(" -fx-background-image: url(\"w.png\");");
+
+                                FadeTransition fadein5 = new FadeTransition(Duration.seconds(2.5), backgroundPane);
+                                fadein5.setFromValue(0);
+                                fadein5.setToValue(1);
+                                fadein5.play();
+
+                            });
+
                         });
-                        
                     });
+
                 });
 
             });
-            
-        });
             nv.setPage("Utilisateur");
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/NavigationDrawerFXML.fxml"));
             AnchorPane pane = loader.load();
@@ -134,24 +133,34 @@ public class FXMLAcceuilUtilisateurController implements Initializable {
 
     @FXML
     private void On_btn_Covoiturage(ActionEvent event) throws IOException {
-       AnchorPane pane = new AnchorPane();
-                                    try {
-                                        pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLAfficheCovoiturage.fxml"));
-                                    } catch (IOException ex) {
-                                        Logger.getLogger(FXMLAfficheCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
-                                    }
-                                    rootpane.getChildren().setAll(pane);
+        AnchorPane pane = new AnchorPane();
+        try {
+            pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLAfficheCovoiturage.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLAfficheCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        rootpane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void On_btn_Cours(ActionEvent event) {
+        AnchorPane pane = new AnchorPane();
+        try {
+            pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLCours.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLAfficheCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        rootpane.getChildren().setAll(pane);
     }
 
     @FXML
     private void On_btn_MesAnnonces(ActionEvent event) {
-         AnchorPane pane = new AnchorPane();
-                                    try {
-                                        pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLMesAnnonces.fxml"));
-                                    } catch (IOException ex) {
-                                        Logger.getLogger(FXMLAfficheCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
-                                    }
-                                    rootpane.getChildren().setAll(pane);
-        
+        AnchorPane pane = new AnchorPane();
+        try {
+            pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLMesAnnonces.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLAfficheCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        rootpane.getChildren().setAll(pane);
     }
 }
