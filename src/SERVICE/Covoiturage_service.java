@@ -138,17 +138,36 @@ public class Covoiturage_service implements IcovoiturageService {
         }
         return covoiturages;
     }
-
-    @Override
-    public List<Covoiturage> findByDepartArrive(String Depart, String Arrive) {
+@Override
+    public List<Covoiturage> getAllSaufUser(Integer ID) {
         Covoiturage covoiturage = null;
         List<Covoiturage> covoiturages = new ArrayList<>();
-        String req = "select * from covoiturage where Depart =? AND Arrive=?";
+        String req = "select * from covoiturage where ID_USER!=?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setInt(1,ID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                covoiturage = new Covoiturage(resultSet.getInt("ID"), resultSet.getString("depart"), resultSet.getString("arrive"), resultSet.getFloat("prix"),  resultSet.getDate("date"),resultSet.getDate("date_sys"), resultSet.getString("heure"), resultSet.getInt("nbrPlaces"), resultSet.getString("comfort"), resultSet.getString("fumeur"), resultSet.getInt("ID_USER"));
+                covoiturages.add(covoiturage);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return covoiturages;
+    }
+    @Override
+    public List<Covoiturage> findByDepartArrive(String Depart, String Arrive,Integer ID) {
+        Covoiturage covoiturage = null;
+        List<Covoiturage> covoiturages = new ArrayList<>();
+        String req = "select * from covoiturage where Depart =? AND Arrive=? AND ID_USER!=?";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
             preparedStatement.setString(1,Depart);
             preparedStatement.setString(2,Arrive);
+            preparedStatement.setInt(3,ID);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 covoiturage = new Covoiturage(resultSet.getInt("ID"), resultSet.getString("depart"), resultSet.getString("arrive"), resultSet.getFloat("prix"),  resultSet.getDate("date"),resultSet.getDate("date_sys"), resultSet.getString("heure"), resultSet.getInt("nbrPlaces"), resultSet.getString("comfort"), resultSet.getString("fumeur"), resultSet.getInt("ID_USER"));
@@ -180,15 +199,16 @@ public class Covoiturage_service implements IcovoiturageService {
         return covoiturages;
     }
 @Override
-    public List<Covoiturage> findByArrive(String Arrive) {
+    public List<Covoiturage> findByArrive(String Arrive,Integer ID) {
         Covoiturage covoiturage = null;
         List<Covoiturage> covoiturages = new ArrayList<>();
-        String req = "select * from covoiturage where arrive=?";
+        String req = "select * from covoiturage where arrive=? AND ID_USER!=?";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
             
             preparedStatement.setString(1,Arrive);
+            preparedStatement.setInt(2,ID);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 covoiturage = new Covoiturage(resultSet.getInt("ID"), resultSet.getString("depart"), resultSet.getString("arrive"), resultSet.getFloat("prix"),  resultSet.getDate("date"),resultSet.getDate("date_sys"), resultSet.getString("heure"), resultSet.getInt("nbrPlaces"), resultSet.getString("comfort"), resultSet.getString("fumeur"), resultSet.getInt("ID_USER"));
@@ -200,15 +220,15 @@ public class Covoiturage_service implements IcovoiturageService {
         return covoiturages;
     }
     @Override
-    public List<Covoiturage> findByDepart(String Depart) {
+    public List<Covoiturage> findByDepart(String Depart,Integer ID) {
         Covoiturage covoiturage = null;
         List<Covoiturage> covoiturages = new ArrayList<>();
-        String req = "select * from covoiturage where depart =? ";
+        String req = "select * from covoiturage where depart =? AND ID_USER!=? ";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
             preparedStatement.setString(1,Depart);
-            
+            preparedStatement.setInt(2,ID);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 covoiturage = new Covoiturage(resultSet.getInt("ID"), resultSet.getString("depart"), resultSet.getString("arrive"), resultSet.getFloat("prix"),  resultSet.getDate("date"),resultSet.getDate("date_sys"), resultSet.getString("heure"), resultSet.getInt("nbrPlaces"), resultSet.getString("comfort"), resultSet.getString("fumeur"), resultSet.getInt("ID_USER"));
@@ -218,5 +238,27 @@ public class Covoiturage_service implements IcovoiturageService {
             ex.printStackTrace();
         }
         return covoiturages;
+    }
+    public void miseajour()
+    {
+        java.util.Date date_util = new java.util.Date();
+        java.sql.Date date_sql = new java.sql.Date(date_util.getTime());
+        String req = "delete from covoiturage where date<?";
+          String req1 = "delete from covoiturage where nbrPlaces=?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setDate(1,date_sql );
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        try {
+            preparedStatement = connection.prepareStatement(req1);
+            preparedStatement.setInt(1,0 );
+            preparedStatement.executeUpdate();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 }

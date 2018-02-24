@@ -5,11 +5,13 @@
  */
 package CONTROLLER;
 
+import SERVICE.Covoiturage_service;
 import SERVICE.UtilisateurService;
 import UTILS.InputValidation;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -24,6 +26,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.media.AudioClip;
 
 /**
  * FXML Controller class
@@ -62,9 +65,11 @@ public class FXMLLoginController implements Initializable {
     /**
      * Initializes the controller class.
      */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+    
+
     }
 
     @FXML
@@ -94,10 +99,15 @@ public class FXMLLoginController implements Initializable {
             Alert alertEmail = new InputValidation().getAlert("Utilisateur inexistant", "Cette adresse email ne correspond à aucun utilisateur");
             alertEmail.showAndWait();
         }
+        Covoiturage_service cs=new Covoiturage_service();
+        cs.miseajour();
     }
 
     @FXML
-    private void On_btn_inscrire(ActionEvent event) {
+    private void On_btn_inscrire(ActionEvent event) throws IOException {
+        esprit_entraide.Esprit_Entraide.getInstance().getStage().hide();
+            esprit_entraide.Esprit_Entraide.getInstance().ChangeScene(new Scene(FXMLLoader.load(getClass().getResource("/GUI/FXMLSignup.fxml"))));
+            esprit_entraide.Esprit_Entraide.getInstance().getStage().show();
     }
 
     @FXML

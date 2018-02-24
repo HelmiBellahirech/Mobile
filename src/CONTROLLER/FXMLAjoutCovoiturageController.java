@@ -161,13 +161,13 @@ public class FXMLAjoutCovoiturageController implements Initializable {
     @FXML
     private void On_btn_retour(ActionEvent event) throws IOException {
 
-         AnchorPane pane = new AnchorPane();
-                                    try {
-                                        pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLAfficheCovoiturage.fxml"));
-                                    } catch (IOException ex) {
-                                        Logger.getLogger(FXMLAjoutCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
-                                    }
-                                    rootpane.getChildren().setAll(pane);
+        AnchorPane pane = new AnchorPane();
+        try {
+            pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLAfficheCovoiturage.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLAjoutCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        rootpane.getChildren().setAll(pane);
     }
 
 }

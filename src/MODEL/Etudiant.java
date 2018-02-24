@@ -15,15 +15,26 @@ public class Etudiant extends Utilisateur {
 
     private String Classe;
 
-    public Etudiant(String Classe, String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Sexe, Date Date_Creation, String Role) {
-        super(Email, username, Password, Nom, Prenom, Telephone, Sexe, Date_Creation, Role);
+    public Etudiant(String Classe) {
         this.Classe = Classe;
     }
 
-    public Etudiant(String Classe, int ID, String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe, String Role) {
-        super(ID, Email, username, Password, Nom, Prenom, Telephone, Photo, Sexe, Role);
+    public Etudiant(String Classe, String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe, String Matricule) {
+        super(Email, username, Password, Nom, Prenom, Telephone, Photo, Sexe, Matricule);
         this.Classe = Classe;
     }
+
+    public Etudiant( String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Sexe,String Matricule, String Classe) {
+        super(Email, username, Password, Nom, Prenom, Telephone, Sexe,  Matricule);
+        this.Classe = Classe;
+    }
+
+    public Etudiant(String Classe, int ID, String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe, String Matricule, String Role) {
+        super(ID, Email, username, Password, Nom, Prenom, Telephone, Photo, Sexe, Matricule, Role);
+        this.Classe = Classe;
+    }
+
+ 
 
     public String getClasse() {
         return Classe;
