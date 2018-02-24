@@ -91,8 +91,8 @@ public class CoursService implements ICoursService {
             while (resultSet.next()) {
                 prof = new Professeur("", resultSet.getInt("ID"), resultSet.getString("Email"),
                         resultSet.getString("username"), resultSet.getString("Password"), resultSet.getString("Nom"),
-                        resultSet.getString("Prenom"), resultSet.getString("Telephone"), resultSet.getString("Sexe"),
-                        resultSet.getString("Date_Creation"), resultSet.getString("Role"));
+                        resultSet.getString("Prenom"), resultSet.getString("Telephone"), resultSet.getString("Photo"),
+                        resultSet.getString("Sexe"), resultSet.getString("Matricule"), resultSet.getString("Role"));
                 cours = new Cours(resultSet.getInt("id"), prof, resultSet.getString("module"), resultSet.getString("matiere"), resultSet.getDate("date_pub"), resultSet.getBlob("fichier"));
             }
         } catch (SQLException ex) {
@@ -115,8 +115,8 @@ public class CoursService implements ICoursService {
             while (resultSet.next()) {
                 prof = new Professeur("", resultSet.getInt("ID"), resultSet.getString("Email"),
                         resultSet.getString("username"), resultSet.getString("Password"), resultSet.getString("Nom"),
-                        resultSet.getString("Prenom"), resultSet.getString("Telephone"), resultSet.getString("Sexe"),
-                        resultSet.getString("Date_Creation"), resultSet.getString("Role"));
+                        resultSet.getString("Prenom"), resultSet.getString("Telephone"), resultSet.getString("Photo"),
+                        resultSet.getString("Sexe"), resultSet.getString("Matricule"), resultSet.getString("Role"));
                 cours = new Cours(resultSet.getInt("id"), prof, resultSet.getString("module"), resultSet.getString("matiere"), resultSet.getDate("date_pub"), resultSet.getBlob("fichier"));
                 coursList.add(cours);
             }

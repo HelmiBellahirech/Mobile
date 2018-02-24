@@ -19,16 +19,16 @@ import java.util.List;
  *
  * @author OrbitG
  */
-public class ReservationcovService implements IreservationcovService{
-    
+public class ReservationcovService implements IreservationcovService {
+
     Connection connection;
 
     public ReservationcovService() {
         connection = DataSource.getInstance().getConnection();
     }
-    
+
     @Override
-    public void add(Reservationcov t) {
+    public boolean add(Reservationcov t) {
         String req = "insert into reservationcovoiturage (ID_RESERVE,ID_CHAUFFEUR,ID_ANNONCE,ETAT,NBPLACES) values (?,?,?,?,?)";
 
         PreparedStatement preparedStatement;
@@ -43,19 +43,20 @@ public class ReservationcovService implements IreservationcovService{
             // 
             preparedStatement.setInt(1, t.getID_RESERVE());
             preparedStatement.setInt(2, t.getID_CAHUFFEUR());
-             preparedStatement.setInt(3, t.getID_ANNONCE());
-              
+            preparedStatement.setInt(3, t.getID_ANNONCE());
+
             preparedStatement.setBoolean(4, t.isETAT());
             preparedStatement.setInt(5, t.getNBPLACES());
-            preparedStatement.executeUpdate();
+            return preparedStatement.executeUpdate() > 0;
         } catch (SQLException ex) {
             ex.printStackTrace();
+            return false;
         }
     }
 
     @Override
-    public void update(Reservationcov t) {
-       String req = "update reservationcovoiturage set  ID_RESERVE=?,ID_CHAUFFEUR=?,ID_ANNONCE=?,ETAT=?,NBPLACES=? where ID = ?";
+    public boolean update(Reservationcov t) {
+        String req = "update reservationcovoiturage set  ID_RESERVE=?,ID_CHAUFFEUR=?,ID_ANNONCE=?,ETAT=?,NBPLACES=? where ID = ?";
         PreparedStatement preparedStatement;
         java.util.Date date_util = new java.util.Date();
 //Tu fais tes traitement sur date_util...
@@ -65,35 +66,37 @@ public class ReservationcovService implements IreservationcovService{
         try {
             preparedStatement = connection.prepareStatement(req);
 
-           preparedStatement.setInt(1, t.getID_RESERVE());
+            preparedStatement.setInt(1, t.getID_RESERVE());
             preparedStatement.setInt(2, t.getID_CAHUFFEUR());
             preparedStatement.setInt(3, t.getID_ANNONCE());
             preparedStatement.setBoolean(4, t.isETAT());
             preparedStatement.setInt(5, t.getNBPLACES());
-             
-             preparedStatement.setInt(6, t.getID());
-            preparedStatement.executeUpdate();
-        } catch (SQLException ex) {
+
+            preparedStatement.setInt(6, t.getID());
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException ex) {            
             ex.printStackTrace();
+            return false;
         }
     }
 
     @Override
-    public void remove(Integer r) {
-  String req = "delete from reservationcovoiturage where ID=?";
+    public boolean remove(Integer r) {
+        String req = "delete from reservationcovoiturage where ID=?";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
             preparedStatement.setInt(1, r);
-            preparedStatement.executeUpdate();
+            return preparedStatement.executeUpdate() > 0;
         } catch (SQLException ex) {
             ex.printStackTrace();
+            return false;
         }
     }
 
     @Override
     public Reservationcov findId(Integer r) {
-      Reservationcov reservationcov = null;
+        Reservationcov reservationcov = null;
         String req = "select * from reservationcovoiturage where ID =?";
         PreparedStatement preparedStatement;
         try {
@@ -101,7 +104,7 @@ public class ReservationcovService implements IreservationcovService{
             preparedStatement.setInt(1, r);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                reservationcov = new Reservationcov(resultSet.getInt("ID"), resultSet.getInt("ID_RESERVE"), resultSet.getInt("ID_CHAUFFEUR"), resultSet.getInt("ID_ANNONCE"),resultSet.getBoolean("ETAT"),resultSet.getInt("NBPLACES"));
+                reservationcov = new Reservationcov(resultSet.getInt("ID"), resultSet.getInt("ID_RESERVE"), resultSet.getInt("ID_CHAUFFEUR"), resultSet.getInt("ID_ANNONCE"), resultSet.getBoolean("ETAT"), resultSet.getInt("NBPLACES"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
@@ -111,7 +114,7 @@ public class ReservationcovService implements IreservationcovService{
 
     @Override
     public List<Reservationcov> getAll() {
-         Reservationcov reservationcov = null;
+        Reservationcov reservationcov = null;
         List<Reservationcov> reservationcovs = new ArrayList<>();
         String req = "select * from reservationcovoiturage";
         PreparedStatement preparedStatement;
@@ -119,7 +122,7 @@ public class ReservationcovService implements IreservationcovService{
             preparedStatement = connection.prepareStatement(req);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                reservationcov = new Reservationcov(resultSet.getInt("ID"), resultSet.getInt("ID_RESERVE"), resultSet.getInt("ID_CHAUFFEUR"), resultSet.getInt("ID_ANNONCE"),  resultSet.getBoolean("ETAT"),  resultSet.getInt("NBPLACES"));
+                reservationcov = new Reservationcov(resultSet.getInt("ID"), resultSet.getInt("ID_RESERVE"), resultSet.getInt("ID_CHAUFFEUR"), resultSet.getInt("ID_ANNONCE"), resultSet.getBoolean("ETAT"), resultSet.getInt("NBPLACES"));
                 reservationcovs.add(reservationcov);
             }
         } catch (SQLException ex) {
@@ -127,19 +130,20 @@ public class ReservationcovService implements IreservationcovService{
         }
         return reservationcovs;
     }
+
     @Override
-    public List<Reservationcov> findByReserve(Integer r ) {
-         Reservationcov reservationcov = null;
+    public List<Reservationcov> findByReserve(Integer r) {
+        Reservationcov reservationcov = null;
         List<Reservationcov> reservationcovs = new ArrayList<>();
         String req = "select * from reservationcovoiturage where ID_RESERVE=?";
-        
+
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
             preparedStatement.setInt(1, r);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                reservationcov = new Reservationcov(resultSet.getInt("ID"), resultSet.getInt("ID_RESERVE"), resultSet.getInt("ID_CHAUFFEUR"), resultSet.getInt("ID_ANNONCE"),  resultSet.getBoolean("ETAT"),  resultSet.getInt("NBPLACES"));
+                reservationcov = new Reservationcov(resultSet.getInt("ID"), resultSet.getInt("ID_RESERVE"), resultSet.getInt("ID_CHAUFFEUR"), resultSet.getInt("ID_ANNONCE"), resultSet.getBoolean("ETAT"), resultSet.getInt("NBPLACES"));
                 reservationcovs.add(reservationcov);
             }
         } catch (SQLException ex) {
@@ -147,19 +151,20 @@ public class ReservationcovService implements IreservationcovService{
         }
         return reservationcovs;
     }
-     @Override
-    public List<Reservationcov> findByChauffeur(Integer r ) {
-         Reservationcov reservationcov = null;
+
+    @Override
+    public List<Reservationcov> findByChauffeur(Integer r) {
+        Reservationcov reservationcov = null;
         List<Reservationcov> reservationcovs = new ArrayList<>();
         String req = "select * from reservationcovoiturage where ID_CHAUFFEUR=?";
-        
+
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
             preparedStatement.setInt(1, r);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                reservationcov = new Reservationcov(resultSet.getInt("ID"), resultSet.getInt("ID_RESERVE"), resultSet.getInt("ID_CHAUFFEUR"), resultSet.getInt("ID_ANNONCE"),  resultSet.getBoolean("ETAT"),  resultSet.getInt("NBPLACES"));
+                reservationcov = new Reservationcov(resultSet.getInt("ID"), resultSet.getInt("ID_RESERVE"), resultSet.getInt("ID_CHAUFFEUR"), resultSet.getInt("ID_ANNONCE"), resultSet.getBoolean("ETAT"), resultSet.getInt("NBPLACES"));
                 reservationcovs.add(reservationcov);
             }
         } catch (SQLException ex) {
@@ -167,10 +172,10 @@ public class ReservationcovService implements IreservationcovService{
         }
         return reservationcovs;
     }
+
     @Override
-    public Reservationcov verifReservation(Reservationcov res) 
-    {
-         Reservationcov reservationcov = null;
+    public Reservationcov verifReservation(Reservationcov res) {
+        Reservationcov reservationcov = null;
         String req = "select * from reservationcovoiturage where ID_RESERVE=? AND ID_CHAUFFEUR=? AND ID_ANNONCE=?";
         PreparedStatement preparedStatement;
         try {
@@ -178,22 +183,23 @@ public class ReservationcovService implements IreservationcovService{
             preparedStatement.setInt(1, res.getID_RESERVE());
             preparedStatement.setInt(2, res.getID_CAHUFFEUR());
             preparedStatement.setInt(3, res.getID_ANNONCE());
-            
+
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                reservationcov = new Reservationcov(resultSet.getInt("ID"), resultSet.getInt("ID_RESERVE"), resultSet.getInt("ID_CHAUFFEUR"), resultSet.getInt("ID_ANNONCE"),resultSet.getBoolean("ETAT"),resultSet.getInt("NBPLACES"));
+                reservationcov = new Reservationcov(resultSet.getInt("ID"), resultSet.getInt("ID_RESERVE"), resultSet.getInt("ID_CHAUFFEUR"), resultSet.getInt("ID_ANNONCE"), resultSet.getBoolean("ETAT"), resultSet.getInt("NBPLACES"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return reservationcov;
     }
+
     @Override
-public List<Reservationcov> findByChauffeurb(Integer r,Boolean b) {
-         Reservationcov reservationcov = null;
+    public List<Reservationcov> findByChauffeurb(Integer r, Boolean b) {
+        Reservationcov reservationcov = null;
         List<Reservationcov> reservationcovs = new ArrayList<>();
         String req = "select * from reservationcovoiturage where ID_CHAUFFEUR=? AND ETAT=?";
-        
+
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -201,13 +207,13 @@ public List<Reservationcov> findByChauffeurb(Integer r,Boolean b) {
             preparedStatement.setBoolean(2, b);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                reservationcov = new Reservationcov(resultSet.getInt("ID"), resultSet.getInt("ID_RESERVE"), resultSet.getInt("ID_CHAUFFEUR"), resultSet.getInt("ID_ANNONCE"),  resultSet.getBoolean("ETAT"),  resultSet.getInt("NBPLACES"));
+                reservationcov = new Reservationcov(resultSet.getInt("ID"), resultSet.getInt("ID_RESERVE"), resultSet.getInt("ID_CHAUFFEUR"), resultSet.getInt("ID_ANNONCE"), resultSet.getBoolean("ETAT"), resultSet.getInt("NBPLACES"));
                 reservationcovs.add(reservationcov);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         return reservationcovs;
-}
+    }
 
 }

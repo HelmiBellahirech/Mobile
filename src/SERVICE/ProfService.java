@@ -54,8 +54,8 @@ public class ProfService implements IProfService {
             resultSet.next();
             prof = new Professeur("", resultSet.getInt("ID"), resultSet.getString("Email"),
                     resultSet.getString("username"), resultSet.getString("Password"), resultSet.getString("Nom"),
-                    resultSet.getString("Prenom"), resultSet.getString("Telephone"), resultSet.getString("Sexe"),
-                    resultSet.getString("Date_Creation"), resultSet.getString("Role"));
+                    resultSet.getString("Prenom"), resultSet.getString("Telephone"), resultSet.getString("photo"),
+                    resultSet.getString("Sexe"), resultSet.getString("Matricule"), resultSet.getString("Role"));
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

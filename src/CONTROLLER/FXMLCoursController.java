@@ -208,8 +208,7 @@ public class FXMLCoursController implements Initializable {
 
         @Override
         protected void updateItem(Button t, boolean empty) {
-            super.updateItem(t, empty);
-            System.out.print(empty + "!!");
+            super.updateItem(t, empty);           
             if (!empty) {
                 setGraphic(deleteButton);
             } else {

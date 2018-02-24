@@ -57,7 +57,11 @@ public class EtudiantService implements IEtudiantService {
             preparedStatement = connection.prepareStatement(req);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
-                etudiant = new Etudiant(resultSet.getString("Classe"), resultSet.getString("Email"), resultSet.getString("Username"), resultSet.getString("Password"), resultSet.getString("Nom"), resultSet.getString("Prenom"), resultSet.getString("Telephone"), resultSet.getString("Sexe"), resultSet.getDate("Date_Creation"), resultSet.getString("Role"));
+                etudiant = new Etudiant(resultSet.getString("Classe"), resultSet.getInt("ID"),
+                        resultSet.getString("Email"), resultSet.getString("Username"),
+                        resultSet.getString("Password"), resultSet.getString("Nom"), resultSet.getString("Prenom"),
+                        resultSet.getString("Telephone"), resultSet.getString("Photo"), resultSet.getString("Sexe"),
+                        resultSet.getString("Matricule"), resultSet.getString("Role"));
                 etudiantList.add(etudiant);
             }
         } catch (SQLException ex) {

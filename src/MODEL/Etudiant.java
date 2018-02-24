@@ -29,7 +29,8 @@ public class Etudiant extends Utilisateur {
         this.Classe = Classe;
     }
 
-    public Etudiant(String Classe, int ID, String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe, String Matricule, String Role) {
+    public Etudiant(String Classe, int ID, String Email, String username, String Password,
+            String Nom, String Prenom, String Telephone, String Photo, String Sexe, String Matricule, String Role) {
         super(ID, Email, username, Password, Nom, Prenom, Telephone, Photo, Sexe, Matricule, Role);
         this.Classe = Classe;
     }

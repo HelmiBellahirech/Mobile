@@ -123,11 +123,13 @@ public class UtilisateurService implements IutilisateurService {
                 preparedStatement.setString(11, r.getNom_Club());
                 preparedStatement.setString(12, r.getPhoto_Club());
 
-                preparedStatement.executeUpdate();
+                return preparedStatement.executeUpdate() > 0;
             } catch (SQLException ex) {
                 ex.printStackTrace();
+                return false;
             }
         }
+        return false;
     }
 
     @Override
