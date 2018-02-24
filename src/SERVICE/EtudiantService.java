@@ -51,7 +51,7 @@ public class EtudiantService implements IEtudiantService {
     public List<Etudiant> getAll() {
         Etudiant etudiant;
         List<Etudiant> etudiantList = new ArrayList<>();
-        String req = "SELECT * FROM utilisateur ";
+        String req = "SELECT * FROM utilisateur where ROLE='Etudiant'";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);

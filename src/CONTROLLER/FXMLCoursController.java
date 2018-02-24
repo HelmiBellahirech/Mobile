@@ -79,14 +79,15 @@ public class FXMLCoursController implements Initializable {
     @FXML
     private TableColumn<Cours, String> matiereCol;
     @FXML
-    private TableColumn<Cours, String> fileCol;
+    private TableColumn<Cours, Button> fileCol;
     @FXML
     private TableColumn<Cours, Date> dateCol;
     @FXML
-    private TableColumn<Cours, String> actionCol;
+    private TableColumn<Cours, Button> actionCol;
 
     ObservableList<Cours> data = FXCollections.observableArrayList();
     List<Etudiant> etudiantList;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         moduleCb.getItems().addAll("Math", "Informatique", "réseau", "unix", "analyse");
@@ -103,8 +104,8 @@ public class FXMLCoursController implements Initializable {
                 matiereCb.setValue(cours.getMatiere());
             }
         });
-        
-        etudiantList = etudiantService.getAll();        
+
+        etudiantList = etudiantService.getAll();
     }
 
     @FXML
@@ -120,9 +121,10 @@ public class FXMLCoursController implements Initializable {
         Professeur prof = profService.findId(1);
         Cours cours = new Cours(nada, moduleCb.getValue().toString(), matiereCb.getValue().toString(), new Date(), blob);
         if (coursService.add(cours)) {
-            data.add(cours);   
-            for(int i = 0; i < etudiantList.size(); i++)
+            data.add(cours);
+            for (int i = 0; i < etudiantList.size(); i++) {
                 MailHelpers.sendMail(etudiantList.get(i).getEmail(), cours, prof);
+            }
         }
     }
 
@@ -183,12 +185,12 @@ public class FXMLCoursController implements Initializable {
         moduleCol.setCellValueFactory(new PropertyValueFactory<>("module"));
         matiereCol.setCellValueFactory(new PropertyValueFactory<>("matiere"));
         //intégrer la cellule personalisé "télécharger"
-        fileCol.setCellFactory((TableColumn<Cours, String> p) -> new ButtonCell(coursTable));
+        fileCol.setCellFactory((TableColumn<Cours, Button> p) -> new ButtonCell(coursTable));
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date_pub"));
-        actionCol.setCellFactory((TableColumn<Cours, String> p) -> new ActionCell(coursTable));
+        actionCol.setCellFactory((TableColumn<Cours, Button> p) -> new ActionCell(coursTable));
     }
 
-    public class ActionCell extends TableCell<Cours, String> {
+    public class ActionCell extends TableCell<Cours, Button> {
 
         final Button deleteButton = new Button("Supprimer");
 
@@ -197,7 +199,7 @@ public class FXMLCoursController implements Initializable {
                 int selectdIndex = getTableRow().getIndex();
                 Cours cours = (Cours) tblView.getItems().get(selectdIndex);
                 if (coursService.remove(cours.getId())) {
-                    data.remove(cours);
+                    tblView.getItems().remove(selectdIndex);
                 } else {
                     System.out.println("Erreur suppression cours : " + cours.getId());
                 }
@@ -205,16 +207,19 @@ public class FXMLCoursController implements Initializable {
         }
 
         @Override
-        protected void updateItem(String t, boolean empty) {
+        protected void updateItem(Button t, boolean empty) {
             super.updateItem(t, empty);
+            System.out.print(empty + "!!");
             if (!empty) {
                 setGraphic(deleteButton);
+            } else {
+                setGraphic(null);
             }
         }
     }
     //créer une cellule personnalisé avec button "Télécharger" pour l'intégrer au TableView
 
-    public class ButtonCell extends TableCell<Cours, String> {
+    public class ButtonCell extends TableCell<Cours, Button> {
 
         final Button cellButton = new Button("Télécharger");
 
@@ -237,10 +242,13 @@ public class FXMLCoursController implements Initializable {
         }
 
         @Override
-        protected void updateItem(String t, boolean empty) {
+        protected void updateItem(Button t, boolean empty) {
             super.updateItem(t, empty);
             if (!empty) {
                 setGraphic(cellButton);
+            } else {
+                setGraphic(null);
+
             }
         }
 
