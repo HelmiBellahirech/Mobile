@@ -47,6 +47,7 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javax.sql.rowset.serial.SerialBlob;
 import UTILS.MailHelpers;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.VBox;
 
 /**
@@ -89,7 +90,7 @@ public class FXMLCoursController implements Initializable {
 
     @FXML
     private VBox crudVBox;
-    
+
     ObservableList<Cours> data = FXCollections.observableArrayList();
     List<Etudiant> etudiantList;
 
@@ -117,7 +118,7 @@ public class FXMLCoursController implements Initializable {
         if (loggedUser.getRole().equals("Etudiant")) {
             crudVBox.setVisible(false);
             actionCol.setVisible(false);
-        }        
+        }
     }
 
     @FXML
@@ -138,6 +139,18 @@ public class FXMLCoursController implements Initializable {
                 MailHelpers.sendMail(etudiantList.get(i).getEmail(), cours, prof);
             }
         }
+    }
+
+    @FXML
+    private void On_btn_Menu(ActionEvent event) {
+        System.out.println("menu principal");
+        AnchorPane pane = new AnchorPane();
+        try {
+            pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLAcceuilUtilisateur.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLAjoutCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        rootContainer.getChildren().setAll(pane);
     }
 
     @FXML
