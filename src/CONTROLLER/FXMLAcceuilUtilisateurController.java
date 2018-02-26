@@ -185,8 +185,18 @@ public class FXMLAcceuilUtilisateurController implements Initializable {
             Logger.getLogger(FXMLAfficheCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
         }
         rootpane.getChildren().setAll(pane);
-        
 
+    }
+
+    @FXML
+    private void On_btn_ReservSalle(ActionEvent event) {
+        AnchorPane pane = new AnchorPane();
+        try {
+            pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLReservationSalle.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLDetailsCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        rootpane.getChildren().setAll(pane);
     }
 
     @FXML
