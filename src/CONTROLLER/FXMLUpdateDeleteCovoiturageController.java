@@ -11,12 +11,12 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
-import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalTime;
+import com.jfoenix.controls.JFXTextField;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -98,7 +98,9 @@ public class FXMLUpdateDeleteCovoiturageController implements Initializable {
         } else if (c.getFumeur().equals("Non")) {
             fumeur.selectToggle(non);
         }
-
+        
+       
+        
     }
     
 

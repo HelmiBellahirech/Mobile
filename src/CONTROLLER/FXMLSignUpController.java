@@ -159,7 +159,7 @@ public class FXMLSignUpController implements Initializable {
                                 Alert alertnum = new InputValidation().getAlert("Numero Telephone", "Saisissez un numero de telephone valide");
                                 alertnum.showAndWait();
                             } else {
-                                Utilisateur u = new Etudiant(Email, Username, Motdepasse, Nom, Prenom, NumTel, Sexe, Classe, Matricule);
+                                Utilisateur u = new Etudiant(Email, Username, Motdepasse, Nom, Prenom, NumTel, Sexe, Classe, Matricule,true);
 
                                 u.setPhoto(uuid);
                                 if ((u.getPhoto() == null) && (u.getSexe().equals("Homme"))) {
@@ -171,7 +171,7 @@ public class FXMLSignUpController implements Initializable {
                                     u.setPhoto("userf.png");
                                 }
                                 int existe = c.addUser(u);
-
+                                
                                 if (existe == 1) {
                                     Alert alertEmail = new InputValidation().getAlert("Email", "Cet email existe déjà !");
                                     alertEmail.showAndWait();

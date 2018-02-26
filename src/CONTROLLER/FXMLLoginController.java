@@ -5,6 +5,7 @@
  */
 package CONTROLLER;
 
+import MODEL.Utilisateur;
 import SERVICE.Covoiturage_service;
 import SERVICE.UtilisateurService;
 import UTILS.InputValidation;
@@ -14,6 +15,7 @@ import com.jfoenix.controls.JFXTextField;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,10 +25,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.AudioClip;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
 
 /**
  * FXML Controller class
@@ -61,14 +67,14 @@ public class FXMLLoginController implements Initializable {
     private ImageView img4;
 
     UtilisateurService us = new UtilisateurService();
-
+    public static final String ACCOUNT_SID = "AC652f43806e3fbc03f53fccd5fdaa9212";
+    public static final String AUTH_TOKEN = "2b9eb9158e11e5cbaede12228616354b";
+    
     /**
      * Initializes the controller class.
      */
-    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    
 
     }
 
@@ -92,26 +98,63 @@ public class FXMLLoginController implements Initializable {
             esprit_entraide.Esprit_Entraide.getInstance().getStage().hide();
             esprit_entraide.Esprit_Entraide.getInstance().ChangeScene(new Scene(FXMLLoader.load(getClass().getResource("/GUI/FXMLAccueilResponsable.fxml"))));
             esprit_entraide.Esprit_Entraide.getInstance().getStage().show();
-        } else if (resultatU == 1) {
+        }  else if (resultatU == 5) {
+            esprit_entraide.Esprit_Entraide.getInstance().getStage().hide();
+            esprit_entraide.Esprit_Entraide.getInstance().ChangeScene(new Scene(FXMLLoader.load(getClass().getResource("/GUI/FXMLAcceuilUtilisateur.fxml"))));
+            esprit_entraide.Esprit_Entraide.getInstance().getStage().show();
+        }
+        else if (resultatU == 1) {
             Alert alertMDP = new InputValidation().getAlert("Mot de passe", "Mot de passe incorrect");
             alertMDP.showAndWait();
         } else if (resultatU == 2) {
             Alert alertEmail = new InputValidation().getAlert("Utilisateur inexistant", "Cette adresse email ne correspond à aucun utilisateur");
             alertEmail.showAndWait();
         }
-        Covoiturage_service cs=new Covoiturage_service();
+        Covoiturage_service cs = new Covoiturage_service();
         cs.miseajour();
     }
 
     @FXML
     private void On_btn_inscrire(ActionEvent event) throws IOException {
         esprit_entraide.Esprit_Entraide.getInstance().getStage().hide();
-            esprit_entraide.Esprit_Entraide.getInstance().ChangeScene(new Scene(FXMLLoader.load(getClass().getResource("/GUI/FXMLSignup.fxml"))));
-            esprit_entraide.Esprit_Entraide.getInstance().getStage().show();
+        esprit_entraide.Esprit_Entraide.getInstance().ChangeScene(new Scene(FXMLLoader.load(getClass().getResource("/GUI/FXMLSignup.fxml"))));
+        esprit_entraide.Esprit_Entraide.getInstance().getStage().show();
     }
 
     @FXML
     private void On_forgetpw(ActionEvent event) {
-    }
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle("Mot de passe oublié ?");
+        dialog.setHeaderText("Veuillez saisir votre numero de telephone");
+        dialog.setContentText("Saissizer votre numero:");
 
+// Traditional way to get the response value.
+        Optional<String> result = dialog.showAndWait();
+        if (result.isPresent()) {
+            if (InputValidation.isPhoneNumber(result.get()) == 0) {
+                Alert alert = new InputValidation().getAlert("ERREUR", "Attention! Numero Invalide!");
+                alert.showAndWait();
+            } else {
+                Utilisateur U = new Utilisateur();
+                UtilisateurService us = new UtilisateurService();
+                U= us.findbynum(result.get()) ; 
+                if(us.findbynum(result.get())==null)
+                {
+                     Alert alert = new InputValidation().getAlert("ERREUR", "Attention! Utilisateur n'existe pas!");
+                alert.showAndWait();
+                }else{
+                Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+                Message message = Message
+                        .creator(new PhoneNumber("+21658365637"), new PhoneNumber("+18443427816"),
+                                "Votre mot de passe = "+U.getPassword())
+                        .create();
+
+                System.out.println(message.getSid());
+                 Alert alert = new InputValidation().getAlert("SUCCES", "Votre mot de passe a été envoyé à "+U.getTelephone());
+                alert.showAndWait();
+            }
+        }
+    }
+    }
 }

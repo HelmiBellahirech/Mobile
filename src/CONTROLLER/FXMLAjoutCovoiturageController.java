@@ -29,6 +29,7 @@ import java.util.logging.Logger;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
 import SERVICE.Covoiturage_service;
+import UTILS.InputValidation;
 import com.jfoenix.controls.JFXTimePicker;
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
@@ -38,6 +39,7 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+
 
 /**
  * FXML Controller class
@@ -87,6 +89,11 @@ public class FXMLAjoutCovoiturageController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         ComfortCombobox.setItems(Comfortoption);
         NbPlacesCombobox.setItems(Nbplacesoption);
+        String [] possibility = {"Ariana","Béja","Ben Arous","Bizerte","Gabès","Gafsa","Jendouba",
+            "Kairouan","Kasserine","Kébili","Le Kef",
+            "Mahdia","La Manouba","Médenine","Monastir","Nabeul",
+            "Sfax","Sidi Bouzid","Sousse","Tataouine","Tozeur","Tunis","Zaghouan"};
+                              
     }
 
     @FXML
@@ -133,6 +140,15 @@ public class FXMLAjoutCovoiturageController implements Initializable {
                 alert.setHeaderText(null);
                 alert.setContentText("Attention ! Date invalide !");
                 alert.showAndWait();
+            } else if(InputValidation.isNumber(PrixInput.getText())==0)
+            {
+                
+          
+                  Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Echec de l'ajout");
+                alert.setHeaderText(null);
+                alert.setContentText("Attention ! Prix invalide!");
+                alert.showAndWait();
             } else {
                 float prix = Float.parseFloat(PrixInput.getText());
                 int nbrplaces = Integer.parseInt(NbPlacesCombobox.getValue());
@@ -145,6 +161,13 @@ public class FXMLAjoutCovoiturageController implements Initializable {
                 alert.setContentText("Votre Annonce a ete ajouté !");
 
                 alert.showAndWait();
+                AnchorPane pane = new AnchorPane();
+        try {
+            pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLAfficheCovoiturage.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLAjoutCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        rootpane.getChildren().setAll(pane);
             }
 
         } else {

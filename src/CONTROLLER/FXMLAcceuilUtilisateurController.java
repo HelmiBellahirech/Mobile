@@ -222,4 +222,16 @@ public class FXMLAcceuilUtilisateurController implements Initializable {
         rootpane.getChildren().setAll(pane);
     }
 
-}
+    @FXML
+    private void On_btn_Profil(ActionEvent event) {
+        AnchorPane pane = new AnchorPane();
+        try {
+            pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLProfilUtilisateur.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLDetailsCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        rootpane.getChildren().setAll(pane);
+    }
+    }
+
+
