@@ -18,7 +18,7 @@
                   <Font name="Arial Rounded MT Bold" size="14.0" />
                </font>
                <graphic>
-                  <ImageView fitHeight="60.0" fitWidth="49.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="60.0" fitWidth="49.0" onDragDetected="#On_btn_Retour" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../back.png" />
                      </image>
@@ -41,7 +41,7 @@
                   <Font name="Arial Rounded MT Bold" size="28.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="Reclamation" prefHeight="54.0" prefWidth="368.0" style="-fx-background-color: #E21C1C;" text="Lost&amp;Found" textFill="WHITE">
+            <JFXButton fx:id="Reclamation" onAction="#On_btn_Reclamation" prefHeight="54.0" prefWidth="368.0" style="-fx-background-color: #E21C1C;" text="Lost&amp;Found" textFill="WHITE">
                <effect>
                   <DropShadow />
                </effect>
@@ -51,6 +51,6 @@
             </JFXButton>
          </children>
       </HBox>
-      <Pane fx:id="backgroundPane" layoutY="54.0" prefHeight="567.0" prefWidth="1000.0" />
+      <Pane fx:id="backgroundPane" layoutX="14.0" layoutY="63.0" prefHeight="567.0" prefWidth="1000.0" />
    </children>
 </AnchorPane>

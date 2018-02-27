@@ -23,9 +23,12 @@ public class Utilisateur {
     private String Photo;
     private String Sexe;
     private Date Date_Creation;
+    private String Matricule;
     private String Role;
+    private int ID_CLUB;
+    private boolean Block;
 
-    public Utilisateur(String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Sexe, Date Date_Creation, String Role) {
+    public Utilisateur(String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Sexe, String Matricule, Boolean Block) {
         this.Email = Email;
         this.username = username;
         this.Password = Password;
@@ -33,11 +36,13 @@ public class Utilisateur {
         this.Prenom = Prenom;
         this.Telephone = Telephone;
         this.Sexe = Sexe;
-        this.Date_Creation = Date_Creation;
-        this.Role = Role;
+
+        this.Matricule = Matricule;
+        this.Block = Block;
+
     }
 
-    public Utilisateur(int ID, String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe, String Role) {
+    public Utilisateur(int ID, String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe, String Matricule, String Role, Boolean Block) {
         this.ID = ID;
         this.Email = Email;
         this.username = username;
@@ -47,11 +52,96 @@ public class Utilisateur {
         this.Telephone = Telephone;
         this.Photo = Photo;
         this.Sexe = Sexe;
+        this.Matricule = Matricule;
         this.Role = Role;
+        this.Block = Block;
+    }
+
+    public Utilisateur(int ID, String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe, String Matricule, String Role) {
+        this.ID = ID;
+        this.Email = Email;
+        this.username = username;
+        this.Password = Password;
+        this.Nom = Nom;
+        this.Prenom = Prenom;
+        this.Telephone = Telephone;
+        this.Photo = Photo;
+        this.Sexe = Sexe;
+        this.Matricule = Matricule;
+        this.Role = Role;
+
     }
 
     public Utilisateur() {
-     
+
+    }
+
+    public Utilisateur(String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe, String Matricule, Boolean Block) {
+        this.Email = Email;
+        this.username = username;
+        this.Password = Password;
+        this.Nom = Nom;
+        this.Prenom = Prenom;
+        this.Telephone = Telephone;
+        this.Photo = Photo;
+        this.Sexe = Sexe;
+        this.Matricule = Matricule;
+        this.Block = Block;
+    }
+
+    public Utilisateur(int ID, String Email, String username, String Telephone, String Photo) {
+        this.ID = ID;
+        this.Email = Email;
+        this.username = username;
+        this.Telephone = Telephone;
+        this.Photo = Photo;
+    }
+
+    public Utilisateur(int ID, String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe, Date Date_Creation, String Matricule, String Role, int ID_CLUB, Boolean Block) {
+        this.ID = ID;
+        this.Email = Email;
+        this.username = username;
+        this.Password = Password;
+        this.Nom = Nom;
+        this.Prenom = Prenom;
+        this.Telephone = Telephone;
+        this.Photo = Photo;
+        this.Sexe = Sexe;
+        this.Date_Creation = Date_Creation;
+        this.Matricule = Matricule;
+        this.Role = Role;
+        this.ID_CLUB = ID_CLUB;
+        this.Block = Block;
+
+    }
+
+    public Utilisateur(String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe, int ID_CLUB, Boolean Block) {
+        this.Email = Email;
+        this.username = username;
+        this.Password = Password;
+        this.Nom = Nom;
+        this.Prenom = Prenom;
+        this.Telephone = Telephone;
+        this.Photo = Photo;
+        this.Sexe = Sexe;
+        this.ID_CLUB = ID_CLUB;
+        this.Block = Block;
+    }
+
+    public boolean isBlock() {
+        return Block;
+    }
+
+    public void setBlock(boolean Block) {
+        this.Block = Block;
+    }
+
+    public String getMatricule() {
+        return Matricule;
+    }
+
+    public void setMatricule(String Matricule) {
+        this.Matricule = Matricule;
     }
 
     public int getID() {
@@ -135,6 +225,7 @@ public class Utilisateur {
     }
 
     public String getRole() {
+        System.out.println(Role);
         return Role;
     }
 
@@ -142,9 +233,20 @@ public class Utilisateur {
         this.Role = Role;
     }
 
+    
+
+    public int getID_CLUB() {
+        return ID_CLUB;
+    }
+
+    public void setID_CLUB(int ID_CLUB) {
+        this.ID_CLUB = ID_CLUB;
+
+    }
+
     @Override
     public String toString() {
-        return "Utilisateur{" + "ID=" + ID + ", Email=" + Email + ", username=" + username + ", Password=" + Password + ", Nom=" + Nom + ", Prenom=" + Prenom + ", Telephone=" + Telephone + ", Photo=" + Photo + ", Sexe=" + Sexe + ", Date_Creation=" + Date_Creation + ", Role=" + Role + '}';
+        return "Utilisateur{" + "ID=" + ID + ", Email=" + Email + ", username=" + username + ", Password=" + Password + ", Nom=" + Nom + ", Prenom=" + Prenom + ", Telephone=" + Telephone + ", Photo=" + Photo + ", Sexe=" + Sexe + ", Date_Creation=" + Date_Creation + ", Matricule=" + Matricule + ", Role=" + Role + ", ID_CLUB=" + ID_CLUB + ", Block=" + Block + '}';
     }
 
     @Override

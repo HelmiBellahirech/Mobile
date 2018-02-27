@@ -31,6 +31,7 @@ public class InputValidation {
         }
         return i;
     }
+    
 
     public static int validModifPwd(String mdp, String VMdp) {
         int i = 0;
@@ -89,6 +90,16 @@ public class InputValidation {
                 return i;
             }
         }
+        return i;
+    }
+     public static int isNumber(String ch) {
+       int i=0;
+            try {
+                i = Integer.parseInt(ch);
+            } catch (NumberFormatException e) {
+                return i;
+            }
+        
         return i;
     }
 

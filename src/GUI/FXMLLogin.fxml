@@ -21,6 +21,11 @@
                   <Blend />
                </effect>
             </JFXTextField>
+            <JFXPasswordField fx:id="Input_pw" focusColor="#a1a3ab" labelFloat="true" layoutX="85.0" layoutY="321.0" prefHeight="25.0" prefWidth="185.0" promptText="Mot de passe" unFocusColor="#e21c1c">
+               <effect>
+                  <Blend />
+               </effect>
+            </JFXPasswordField>
             <JFXButton fx:id="btn_connexion" alignment="CENTER" contentDisplay="CENTER" layoutX="33.0" layoutY="396.0" onAction="#on_btn_connexion" prefHeight="37.0" prefWidth="113.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px;" text="Connexion" textFill="WHITE">
                <effect>
                   <Blend />
@@ -37,11 +42,6 @@
                   <Font size="17.0" />
                </font>
             </JFXButton>
-            <JFXPasswordField fx:id="Input_pw" focusColor="#a1a3ab" labelFloat="true" layoutX="85.0" layoutY="321.0" prefHeight="25.0" prefWidth="185.0" promptText="Mot de passe" unFocusColor="#e21c1c">
-               <effect>
-                  <Blend />
-               </effect>
-            </JFXPasswordField>
             <Hyperlink fx:id="forgetpw" layoutX="106.0" layoutY="445.0" onAction="#On_forgetpw" prefHeight="36.0" prefWidth="113.0" text="Forget password?" textFill="#5e5a5a" underline="true">
                <effect>
                   <Blend />

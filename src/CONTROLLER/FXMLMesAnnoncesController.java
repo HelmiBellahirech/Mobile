@@ -40,42 +40,52 @@ public class FXMLMesAnnoncesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-
-    @FXML
-    private void On_btn_Covoiturage(ActionEvent event) {
-         AnchorPane pane = new AnchorPane();
-                                    try {
-                                        pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLMesCovoiturage.fxml"));
-                                    } catch (IOException ex) {
-                                        Logger.getLogger(FXMLAfficheCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
-                                    }
-                                    backgroundPane.getChildren().setAll(pane);
     }
 
     @FXML
+    private void On_btn_Covoiturage(ActionEvent event) {
+        AnchorPane pane = new AnchorPane();
+        try {
+            pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLMesCovoiturage.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLAfficheCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        backgroundPane.getChildren().setAll(pane);
+    }
+
+    @FXML
+
     private void On_btn_Collocation(ActionEvent event) {
-         AnchorPane pane = new AnchorPane();
-                                    try {
-                                        pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLMesCollocation.fxml"));
-                                    } catch (IOException ex) {
-                                        Logger.getLogger(FXMLAfficheCollocationController.class.getName()).log(Level.SEVERE, null, ex);
-                                    }
-                                    rootpane.getChildren().setAll(pane);
-        
+        AnchorPane pane = new AnchorPane();
+        try {
+            pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLMesCollocation.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLAfficheCollocationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        rootpane.getChildren().setAll(pane);
+    }
+
+    @FXML
+    private void On_btn_Reclamation(ActionEvent event) {
+        AnchorPane pane = new AnchorPane();
+        try {
+            pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLMesReclamation.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLAfficheCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        backgroundPane.getChildren().setAll(pane);
+
     }
 
     @FXML
     private void On_btn_Retour(ActionEvent event) {
         AnchorPane pane = new AnchorPane();
-                                    try {
-                                        pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLAcceuilUtilisateur.fxml"));
-                                    } catch (IOException ex) {
-                                        Logger.getLogger(FXMLAfficheCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
-                                    }
-                                    rootpane.getChildren().setAll(pane);
+        try {
+            pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLAcceuilUtilisateur.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLAfficheCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        rootpane.getChildren().setAll(pane);
     }
 
-  
-    
 }

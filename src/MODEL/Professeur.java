@@ -13,24 +13,63 @@ import java.sql.Date;
  */
 public class Professeur extends Utilisateur {
 
-    private String Matiere;
+    private String Specialite;
 
-    public Professeur(String Matiere, String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Sexe, Date Date_Creation, String Role) {
-        super(Email, username, Password, Nom, Prenom, Telephone, Sexe, Date_Creation, Role);
-        this.Matiere = Matiere;
+    public Professeur(String string, int aInt, String string0, String string1, String string2, String string3, String string4, String string5, String string6, String string7, String string8, String string9) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Professeur(String Matiere, int ID, String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe, String Role) {
-        super(ID, Email, username, Password, Nom, Prenom, Telephone, Photo, Sexe, Role);
-        this.Matiere = Matiere;
+    public String getSpecialite() {
+        return Specialite;
     }
 
-    public String getMatiere() {
-        return Matiere;
+    public void setSpecialite(String Specialite) {
+        this.Specialite = Specialite;
     }
 
-    public void setMatiere(String Matiere) {
-        this.Matiere = Matiere;
+    public Professeur() {
+    }
+
+    @Override
+    public String toString() {
+        return "Professeur{" + "Specialite=" + Specialite + '}';
+    }
+
+    public Professeur(String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Sexe, String Specialite, String Matricule, Boolean Block) {
+        super(Email, username, Password, Nom, Prenom, Telephone, Sexe, Matricule, Block);
+        this.Specialite = Specialite;
+    }
+
+    public Professeur(int ID, String Email, String username, String Password, String Nom, String Prenom,
+            String Telephone, String Photo, String Sexe, String Specialite, String Matricule,
+            String Role, Boolean Block) {
+        super(ID, Email, username, Password, Nom, Prenom, Telephone, Photo, Sexe, Matricule, Role, Block);
+        this.Specialite = Specialite;
+    }
+
+    public Professeur(int ID, String Email, String username, String Password, String Nom, String Prenom,
+            String Telephone, String Photo, String Sexe, String Specialite, String Matricule, String Role) {
+        super(ID, Email, username, Password, Nom, Prenom, Telephone, Photo, Sexe, Matricule, Role);
+        this.Specialite = Specialite;
+    }
+
+    public Professeur(String Specialite) {
+        this.Specialite = Specialite;
+    }
+
+    public Professeur(String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe, String Matricule, String Specialite, Boolean Block) {
+        super(Email, username, Password, Nom, Prenom, Telephone, Photo, Sexe, Matricule, Block);
+        this.Specialite = Specialite;
+    }
+
+    public Professeur(int ID, String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe, Date Date_Creation, String Matricule, String Specialite, String Role, int ID_CLUB, Boolean Block) {
+        super(ID, Email, username, Password, Nom, Prenom, Telephone, Photo, Sexe, Date_Creation, Matricule, Role, ID_CLUB, Block);
+        this.Specialite = Specialite;
+    }
+
+    public Professeur(String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe, String Specialite, int ID_CLUB, Boolean Block) {
+        super(Email, username, Password, Nom, Prenom, Telephone, Photo, Sexe, ID_CLUB, Block);
+        this.Specialite = Specialite;
     }
 
 }

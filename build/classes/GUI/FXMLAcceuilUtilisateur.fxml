@@ -19,13 +19,23 @@
       <Pane fx:id="backgroundPane" prefHeight="620.0" prefWidth="1000.0">
          <children>
             <JFXHamburger fx:id="hamburger" layoutX="937.0" layoutY="21.0" prefHeight="36.0" prefWidth="38.0" />
+            <ImageView fx:id="img" fitHeight="36.0" fitWidth="37.0" layoutX="47.0" layoutY="21.0" onMouseClicked="#dmnd" opacity="0.71" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../notificationicon.png" />
+               </image>
+            </ImageView>
+            <Pane layoutX="65.0" layoutY="18.0" opacity="0.8" prefHeight="15.0" prefWidth="15.0" style="-fx-border-radius: 50px; -fx-background-radius: 50px; -fx-background-color: #E21C1C;">
+               <children>
+                  <Label fx:id="notif" layoutX="4.0" layoutY="-1.0" prefHeight="17.0" prefWidth="15.0" text=" " textFill="WHITE" />
+               </children>
+            </Pane>
          </children>
       </Pane>
       <GridPane layoutX="139.0" layoutY="111.0" opacity="0.8" prefHeight="485.0" prefWidth="718.0">
          <children>
             <Pane id="hhh" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #807B7B;" stylesheets="@../CSS/StyleSheet.css">
                <children>
-                  <JFXButton id="btn" fx:id="zx" alignment="BOTTOM_CENTER" layoutY="2.0" prefHeight="154.0" prefWidth="240.0" stylesheets="@../CSS/StyleSheet.css" text="Profil" textFill="WHITE">
+                  <JFXButton id="btn" fx:id="zx" alignment="BOTTOM_CENTER" layoutY="-2.0" onAction="#On_btn_Profil" prefHeight="159.0" prefWidth="240.0" stylesheets="@../CSS/StyleSheet.css" text="Profil" textFill="WHITE">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -33,7 +43,7 @@
                         <Insets bottom="20.0" />
                      </padding>
                   </JFXButton>
-                  <ImageView fitHeight="49.0" fitWidth="48.0" layoutX="98.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="49.0" fitWidth="48.0" layoutX="104.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@fdddd.png" />
                      </image>
@@ -76,7 +86,11 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #908B8C;" GridPane.rowIndex="1">
                <children>
-                  <JFXButton id="btn" fx:id="Reclamation" alignment="BOTTOM_CENTER" layoutY="-2.0" prefHeight="166.0" prefWidth="239.0" stylesheets="@../CSS/StyleSheet.css" text="Lost&amp;Found" textFill="WHITE">
+
+
+
+                  <JFXButton id="btn" fx:id="Reclamation" alignment="BOTTOM_CENTER" layoutY="-2.0" onAction="#On_btn_Reclamation" prefHeight="166.0" prefWidth="239.0" stylesheets="@../CSS/StyleSheet.css" text="Lost&amp;Found" textFill="WHITE">
+
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -110,7 +124,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #908B8C;" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <children>
-                  <JFXButton id="btn" alignment="BOTTOM_CENTER" prefHeight="166.0" prefWidth="239.0" stylesheets="@../CSS/StyleSheet.css" text="Mes réservations" textFill="WHITE">
+                  <JFXButton id="btn" fx:id="MesReservation" alignment="BOTTOM_CENTER" onAction="#On_btn_MesReservation" prefHeight="166.0" prefWidth="239.0" stylesheets="@../CSS/StyleSheet.css" text="Mes réservations" textFill="WHITE">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -127,7 +141,7 @@
             </Pane>
             <Pane prefHeight="97.0" prefWidth="139.0" style="-fx-background-color: #9B9898;" GridPane.rowIndex="2">
                <children>
-                  <JFXButton id="btn" alignment="BOTTOM_CENTER" prefHeight="161.0" prefWidth="240.0" stylesheets="@../CSS/StyleSheet.css" text="Forum" textFill="WHITE">
+                  <JFXButton id="btn" fx:id="Demande" alignment="BOTTOM_CENTER" onAction="#On_btn_Demande" prefHeight="161.0" prefWidth="240.0" stylesheets="@../CSS/StyleSheet.css" text="Demande" textFill="WHITE">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -144,7 +158,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #F24D53;" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <JFXButton id="btn" alignment="BOTTOM_CENTER" prefHeight="161.0" prefWidth="239.0" stylesheets="@../CSS/StyleSheet.css" text="Revision" textFill="WHITE">
+                  <JFXButton id="btn" alignment="BOTTOM_CENTER" onAction="#On_btn_Cours" prefHeight="161.0" prefWidth="239.0" stylesheets="@../CSS/StyleSheet.css" text="Cours" textFill="WHITE">
                      <font>
                         <Font size="19.0" />
                      </font>

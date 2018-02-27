@@ -33,7 +33,7 @@ public class Colocation_service implements Icolocationservice{
         connection = DataSource.getInstance().getConnection();
     }
     @Override
-    public void add(Colocation t) {
+    public boolean add(Colocation t) {
          String req = "insert into colocation (id_user,nbChambre,nbPersonne,type_log,adresse,etage,date_dispo,meuble,prix,titre,photo) values (?,?,?,?,?,?,?,?,?,?,?)";
               
 
@@ -59,14 +59,16 @@ public class Colocation_service implements Icolocationservice{
             preparedStatement.setString(11, t.getPhoto());
            
             // preparedStatement.setInt(9, t.getID_USER());
-          preparedStatement.executeUpdate();
+        
+            return preparedStatement.executeUpdate() > 0;
         } catch (SQLException ex) {
             ex.printStackTrace();
+            return false;
         }
     }
 
     @Override
-    public void update(Colocation t) {
+    public boolean update(Colocation t) {
            String req = "update colocation set  nbChambre=?,nbPersonne=?,type_log=?,adresse=?,etage=?,date_dispo=?,meuble=?,prix=?,titre=?,photo=? where id = ?";
         PreparedStatement preparedStatement;
         java.util.Date date_util = new java.util.Date();
@@ -91,23 +93,27 @@ public class Colocation_service implements Icolocationservice{
             preparedStatement.setString(10, t.getPhoto());
             preparedStatement.setInt(11, t.getId());
             //preparedStatement.setInt(9, t.getID_USER());
-          preparedStatement.executeUpdate();
+         
+             return preparedStatement.executeUpdate() > 0;
         } catch (SQLException ex) {
             ex.printStackTrace();
+            return false;
         }
     }
 
   
     @Override
-    public void remove(Integer r) {
+    public boolean remove(Integer r) {
          String req = "delete from colocation where id=?";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
             preparedStatement.setInt(1, r);
-            preparedStatement.executeUpdate();
+            
+             return preparedStatement.executeUpdate() > 0;
         } catch (SQLException ex) {
             ex.printStackTrace();
+            return false;
         }
     }
 
@@ -163,30 +169,13 @@ public class Colocation_service implements Icolocationservice{
             while (resultSet.next()) {
                 colocation = new Colocation(resultSet.getInt("id"),resultSet.getInt("id_user"), resultSet.getInt("nbChambre"), resultSet.getInt("nbPersonne"), resultSet.getString("type_log"), resultSet.getString("adresse"), resultSet.getString("etage"), resultSet.getDate("date_dispo"), resultSet.getString("meuble"), resultSet.getFloat("prix"), resultSet.getString("titre"), resultSet.getString("photo"));
                 colocations.add(colocation);
-                      InputStream is = resultSet.getBinaryStream("photo");
-                    OutputStream os = new FileOutputStream(new File("photo.jpg"));
-                     byte[]content = new byte[1024];
-                    int size = 0;
-                    while((size=is.read(content))!= -1)
-                    {
-                        os.write(content,0,size);
-                    }
-                    os.close();
-                    is.close();
-                Image imagex = new Image("file:photo.jpg",250,250,true,true);
-                imgView.setImage(imagex);
-                imgView.setFitWidth(100);
-                imgView.setFitHeight(150);
+                     
                
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-         catch (FileNotFoundException ex) {
-          Logger.getLogger(Colocation_service.class.getName()).log(Level.SEVERE, null, ex);
-      } catch (IOException ex) {
-          Logger.getLogger(Colocation_service.class.getName()).log(Level.SEVERE, null, ex);
-      }
+        
         return colocations;
     }
        @Override
