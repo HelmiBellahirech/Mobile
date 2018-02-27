@@ -73,8 +73,7 @@ public class FXMLCoursController implements Initializable {
     Professeur nada;
     IProfService profService = new ProfService();
     ICoursService coursService = new CoursService();
-    IEtudiantService etudiantService = new EtudiantService();
-    private AnchorPane rootContainer;
+    IEtudiantService etudiantService = new EtudiantService();    
     @FXML
     private TableColumn<Cours, Integer> idCol;
     @FXML
@@ -99,6 +98,8 @@ public class FXMLCoursController implements Initializable {
     Utilisateur loggedUser;
     @FXML
     private CheckBox notifCk;
+    @FXML
+    private AnchorPane rootContainer;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
