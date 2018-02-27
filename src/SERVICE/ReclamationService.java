@@ -27,7 +27,7 @@ public class ReclamationService implements IreclamationService{
         connection= DataSource.getInstance().getConnection(); 
     }
      @Override
-   public void add(Reclamation t) {
+   public boolean add(Reclamation t) {
        String req = "insert into reclamation (description,date_decouverte,lieu_decouverte,typeobj_perdu,type,autretypeobj_perdu,localisation,autrelocalisation,etage,salle,photo,id_user) values (?,?,?,?,?,?,?,?,?,?,?,?)";
               
 
@@ -57,10 +57,11 @@ public class ReclamationService implements IreclamationService{
             preparedStatement.setString(11, t.getPhoto());
             preparedStatement.setInt(12, esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getID());
             // preparedStatement.setInt(9, t.getID_USER());
-          preparedStatement.executeUpdate();
+         return preparedStatement.executeUpdate() > 0;
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        return false; 
     }
    @Override
    public void addMal(Reclamation t) {
@@ -87,7 +88,7 @@ public class ReclamationService implements IreclamationService{
             ex.printStackTrace();
         }}
     @Override
-     public void update(Reclamation t) {
+     public boolean update(Reclamation t) {
         String req = "update reclamation set  description=?,date_decouverte=?,lieu_decouverte=?,typeobj_perdu=?,type=?,autretypeobj_perdu=?,localisation=?,autrelocalisation=?,etage=?,salle=?,photo=? where id =?";
         PreparedStatement preparedStatement;
         try {
@@ -110,11 +111,12 @@ public class ReclamationService implements IreclamationService{
             preparedStatement.setInt(12, t.getId());
             System.out.println(t.getDescription()+t.getLieu_decouverte()+t.getLieu_decouverte()+t.getTypeobj_perdu()+t.getType()+t.getAutretypeobj_perdu()+t.getLocalisation()+t.getAutrelocalisation()+t.getEtage()+t.getSalle()+t.getPhoto()+t.getId());
             System.out.println(t.getId());
-          preparedStatement.executeUpdate();
+          return preparedStatement.executeUpdate()>0 ;
         } 
         catch (SQLException ex) {
             ex.printStackTrace();
         }
+        return false; 
     }
      
       @Override
@@ -140,16 +142,18 @@ public class ReclamationService implements IreclamationService{
         }
     }
        @Override
-       public void remove(Integer r) {
+       public boolean remove(Integer r) {
          String req = "delete from reclamation where id=?";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
             preparedStatement.setInt(1, r);
             preparedStatement.executeUpdate();
+            return true ; 
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        return false ; 
     } 
          @Override
     public List<Reclamation> getAll() {
@@ -208,13 +212,13 @@ public class ReclamationService implements IreclamationService{
         return reclamation;
     }
      @Override
-    public Utilisateur findUserByMatricule(Utilisateur u) {
+    public Utilisateur findUserByMatricule(String Matricule) {
         Utilisateur utilisateur = null;
         String req = "select * from utilisateur where matricule =?";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
-            preparedStatement.setString(1, u.getMatricule());
+            preparedStatement.setString(1, Matricule);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
                 utilisateur = new Utilisateur();

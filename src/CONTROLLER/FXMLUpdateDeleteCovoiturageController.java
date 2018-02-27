@@ -11,12 +11,12 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXRadioButton;
-import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.time.LocalTime;
+import com.jfoenix.controls.JFXTextField;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -98,7 +98,9 @@ public class FXMLUpdateDeleteCovoiturageController implements Initializable {
         } else if (c.getFumeur().equals("Non")) {
             fumeur.selectToggle(non);
         }
-
+        
+       
+        
     }
     
 
@@ -181,11 +183,12 @@ public class FXMLUpdateDeleteCovoiturageController implements Initializable {
     @FXML
     private void On_btn_Supprimer(ActionEvent event) {
         Covoiturage_service cs = new Covoiturage_service();
-        cs.remove(id);
+        
         Alert alert = new Alert(AlertType.CONFIRMATION, "Etes vous sur de vouloir supprimer " + " ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
         alert.showAndWait();
 
 if (alert.getResult() == ButtonType.YES) {
+    cs.remove(id);
        AnchorPane pane = new AnchorPane();
                 try {
                     pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLMesCovoiturage.fxml"));

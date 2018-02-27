@@ -16,17 +16,17 @@ import java.util.List;
 public class AdministrateurService implements IadminisrateurService{
 
     @Override
-    public void add(Administrateur t) {
+    public boolean add(Administrateur t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void update(Administrateur t) {
+    public boolean update(Administrateur t) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void remove(Integer r) {
+    public boolean remove(Integer r) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

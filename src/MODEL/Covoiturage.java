@@ -25,7 +25,7 @@ public class Covoiturage {
     private int nbrPlaces;
     private String comfort;
     private String fumeur;
-
+    
     public int getID() {
         return ID;
     }
@@ -117,6 +117,9 @@ public class Covoiturage {
     @Override
     public String toString() {
         return "Covoiturage{" + "ID=" + ID + ", ID_USER=" + ID_USER + ", depart=" + depart + ", arrive=" + arrive + ", prix=" + prix + ", date=" + date + ", Heure=" + Heure + ", nbrPlaces=" + nbrPlaces + ", comfort=" + comfort + ", fumeur=" + fumeur + '}';
+    }
+
+    public Covoiturage() {
     }
 
     public Covoiturage(String depart, String arrive, float prix, Date date, String Heure, int nbrPlaces, String comfort, String fumeur, int ID_USER) {

@@ -57,6 +57,14 @@ public class FXMLMesAnnoncesController implements Initializable {
 
     @FXML
     private void On_btn_Reclamation(ActionEvent event) {
+         AnchorPane pane = new AnchorPane();
+                                    try {
+                                        pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLMesReclamation.fxml"));
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(FXMLAfficheCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                    backgroundPane.getChildren().setAll(pane);
+        
     }
 
     @FXML

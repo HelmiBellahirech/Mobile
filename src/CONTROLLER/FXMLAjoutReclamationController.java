@@ -484,8 +484,9 @@ public class FXMLAjoutReclamationController implements Initializable {
     @FXML
     private void On_btn_Envoyer(ActionEvent event) {
         Utilisateur u =new Utilisateur();
-        final String username =u.getEmail(); // mail de la personne qui va envoyer 
-	  final String password =u.getPassword();// password de la personne qui va envoyer 
+        
+        final String username ="farah.falleh@esprit.tn"; // mail de la personne qui va envoyer 
+	  final String password ="farouhactt17R";// password de la personne qui va envoyer 
 
 		Properties props = new Properties();
 		props.put("mail.smtp.auth", "true");
@@ -503,10 +504,10 @@ public class FXMLAjoutReclamationController implements Initializable {
 		try {
                         ReclamationService rs=new ReclamationService();
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(u.getEmail())); // same email id
+			message.setFrom(new InternetAddress("farah.falleh@esprit.tn")); // same email id
 			message.setRecipients(Message.RecipientType.TO,
                                 //////////
-				InternetAddress.parse(rs.findUserByMatricule(u).getEmail()));// mail de la personne qui va recevoir le mail
+				InternetAddress.parse(rs.findUserByMatricule(matricule.getText()).getEmail()));// mail de la personne qui va recevoir le mail
 			message.setSubject("VOITURE MAL STATIONNEE");
 			message.setText("Merci de venir déplacer votre voiture,"
 				+ "\n\n Voiture mal garée !");
