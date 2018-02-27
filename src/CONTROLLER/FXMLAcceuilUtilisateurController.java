@@ -48,6 +48,8 @@ public class FXMLAcceuilUtilisateurController implements Initializable {
     private AnchorPane rootpane;
     @FXML
     private JFXButton MesAnnonces;
+    @FXML
+    private JFXButton Reclamation;
 
     /**
      * Initializes the controller class.
@@ -142,7 +144,16 @@ public class FXMLAcceuilUtilisateurController implements Initializable {
                                     }
                                     rootpane.getChildren().setAll(pane);
     }
-
+ @FXML
+    private void On_btn_Reclamation(ActionEvent event) {
+          AnchorPane pane = new AnchorPane();
+                                    try {
+                                        pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLAcceuilReclamation.fxml"));
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(FXMLAcceuilReclamationController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                    rootpane.getChildren().setAll(pane);
+    }
     @FXML
     private void On_btn_MesAnnonces(ActionEvent event) {
          AnchorPane pane = new AnchorPane();
@@ -154,4 +165,6 @@ public class FXMLAcceuilUtilisateurController implements Initializable {
                                     rootpane.getChildren().setAll(pane);
         
     }
+
+   
 }

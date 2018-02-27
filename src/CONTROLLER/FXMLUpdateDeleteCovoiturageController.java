@@ -183,7 +183,7 @@ public class FXMLUpdateDeleteCovoiturageController implements Initializable {
         Covoiturage_service cs = new Covoiturage_service();
         cs.remove(id);
         Alert alert = new Alert(AlertType.CONFIRMATION, "Etes vous sur de vouloir supprimer " + " ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
-alert.showAndWait();
+        alert.showAndWait();
 
 if (alert.getResult() == ButtonType.YES) {
        AnchorPane pane = new AnchorPane();

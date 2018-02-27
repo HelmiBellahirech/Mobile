@@ -24,6 +24,7 @@ public class Utilisateur {
     private String Sexe;
     private Date Date_Creation;
     private String Role;
+    private String Matricule;
 
     public Utilisateur(String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Sexe, Date Date_Creation, String Role) {
         this.Email = Email;
@@ -140,6 +141,14 @@ public class Utilisateur {
 
     public void setRole(String Role) {
         this.Role = Role;
+    }
+
+    public String getMatricule() {
+        return Matricule;
+    }
+
+    public void setMatricule(String Matricule) {
+        this.Matricule = Matricule;
     }
 
     @Override
