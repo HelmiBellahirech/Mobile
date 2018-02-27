@@ -16,4 +16,5 @@ public interface IreservationcovService extends Iservice<Reservationcov,Integer>
      public List<Reservationcov> findByChauffeur(Integer r );
      public Reservationcov verifReservation(Reservationcov res) ;
      public List<Reservationcov> findByChauffeurb(Integer r,Boolean b);
+     public List<Reservationcov> findByReserveb(Integer r, Boolean b);
 }

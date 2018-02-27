@@ -247,7 +247,7 @@ public class Covoiturage_service implements IcovoiturageService {
         java.util.Date date_util = new java.util.Date();
         java.sql.Date date_sql = new java.sql.Date(date_util.getTime());
         String req = "delete from covoiturage where date<?";
-          String req1 = "delete from covoiturage where nbrPlaces=?";
+          //String req1 = "delete from covoiturage where nbrPlaces=?";
         PreparedStatement preparedStatement;
         try {
             preparedStatement = connection.prepareStatement(req);
@@ -256,12 +256,12 @@ public class Covoiturage_service implements IcovoiturageService {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        try {
+     /*   try {
             preparedStatement = connection.prepareStatement(req1);
             preparedStatement.setInt(1,0 );
             preparedStatement.executeUpdate();
         } catch (SQLException ex) {
             ex.printStackTrace();
-        }
+        }*/
     }
 }

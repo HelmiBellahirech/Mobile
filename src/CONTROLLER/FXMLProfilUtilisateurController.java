@@ -10,6 +10,7 @@ import MODEL.Etudiant;
 import MODEL.Utilisateur;
 import SERVICE.Covoiturage_service;
 import SERVICE.UtilisateurService;
+import UTILS.InputValidation;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.io.File;
@@ -22,7 +23,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -75,31 +78,27 @@ public class FXMLProfilUtilisateurController implements Initializable {
     private Label AnMdplbl;
     @FXML
     private ImageView img;
-    @FXML
     private Label UsernameInput1;
-    @FXML
     private Label EmailInput1;
-    @FXML
     private Label TelInput1;
     @FXML
     private AnchorPane rootpane;
+    UtilisateurService us = new UtilisateurService(); 
+    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        
         Mdp.setVisible(false);
         Mdplbl.setVisible(false);
         AnMdp.setVisible(false);
         AnMdplbl.setVisible(false);
         ValidMdp.setVisible(false);
         ValidMdplbl.setVisible(false);
-        UsernameInput.setVisible(false);
-        EmailInput.setVisible(false);
-        TelInput.setVisible(false);
-        Update.setVisible(false);
+        
 
         //   if(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getRole().equals("Etudiant"))
         //Etudiant e = (Etudiant) esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser() ; 
@@ -110,7 +109,7 @@ public class FXMLProfilUtilisateurController implements Initializable {
         {
             Etudiant e =(Etudiant) esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser();
         Classelbl.setText(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getRole()+" en "+e.getClasse());
-        UsernameInput1.setText(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getUsername());
+        UsernameInput.setText(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getUsername());
        
         File f = new File("C:\\xampp\\htdocs\\pi\\" + esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getPhoto());
         System.out.println(f.toURI().toString());
@@ -140,8 +139,8 @@ public class FXMLProfilUtilisateurController implements Initializable {
         img.setEffect(new DropShadow(20, Color.BLACK));
 
         img.setImage(IMAGE_RUBY);
-        EmailInput1.setText(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getEmail());
-        TelInput1.setText(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getTelephone());
+        EmailInput.setText(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getEmail());
+        TelInput.setText(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getTelephone());
         }
         
     }
@@ -159,8 +158,21 @@ public class FXMLProfilUtilisateurController implements Initializable {
 
     @FXML
     private void On_btn_Modifier(ActionEvent event) {
-       
+      
+         int id = esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getID();
+        Utilisateur u = null;
+        u = us.getById(id);
+        String AMdp = AnMdp.getText();
+        String mdp = Mdp.getText();
+        String Vmdp = ValidMdp.getText();
         
+        
+        String AncienMdp = esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getPassword(); 
+       String email = EmailInput.getText();
+       
+       
+                
+              
     }
 
     @FXML
@@ -186,7 +198,6 @@ public class FXMLProfilUtilisateurController implements Initializable {
 
     }
 
-    @FXML
     private void On_Username_Clicked(MouseEvent event) {
         UsernameInput.setVisible(true);
         Update.setVisible(true);
@@ -196,7 +207,6 @@ public class FXMLProfilUtilisateurController implements Initializable {
 
     }
 
-    @FXML
     private void On_Email_Clicked(MouseEvent event) {
         EmailInput.setVisible(true);
         Update.setVisible(true);
@@ -205,7 +215,6 @@ public class FXMLProfilUtilisateurController implements Initializable {
         EmailInput1.setVisible(false);
     }
 
-    @FXML
     private void On_Telephone_Clicked(MouseEvent event) {
         TelInput.setVisible(true);
         Update.setVisible(true);

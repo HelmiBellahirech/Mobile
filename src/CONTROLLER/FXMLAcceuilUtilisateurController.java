@@ -19,7 +19,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -27,6 +29,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import tray.notification.TrayNotification;
 
 /**
@@ -148,10 +151,10 @@ public class FXMLAcceuilUtilisateurController implements Initializable {
             TrayNotification tray = new TrayNotification();
             tray.setTitle("Notification covoiturage");
             tray.setMessage("Vous avez " + rs.findByChauffeurb(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getID(), false).stream().count() + " demande de covoiturage ");
-            tray.showAndDismiss(Duration.seconds(4));
+            tray.showAndDismiss(Duration.seconds(3));
             notif.setText(String.valueOf(rs.findByChauffeurb(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getID(), false).stream().count()));
         }
-
+       
     }
 
     @FXML

@@ -4,11 +4,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/OrbitG/Desktop/3A9/JAVA/Esprit_Entraidee/src/SERVICE/EtudiantService.java</file>
-            <file>file:/C:/Users/OrbitG/Desktop/3A9/JAVA/Esprit_Entraidee/src/CONTROLLER/FXMLDetailsCovoiturageController.java</file>
+            <file>file:/C:/Users/OrbitG/Desktop/3A9/JAVA/Esprit_Entraidee/src/CONTROLLER/FXMLSignUpController.java</file>
             <file>file:/C:/Users/OrbitG/Desktop/3A9/JAVA/Esprit_Entraidee/src/CONTROLLER/FXMLAfficheCovoiturageController.java</file>
+            <file>file:/C:/Users/OrbitG/Desktop/3A9/JAVA/Esprit_Entraidee/src/CONTROLLER/FXMLAcceuilUtilisateurController.java.orig</file>
+            <file>file:/C:/Users/OrbitG/Desktop/3A9/JAVA/Esprit_Entraidee/src/ISERVICE/IreservationcovService.java</file>
             <file>file:/C:/Users/OrbitG/Desktop/3A9/JAVA/Esprit_Entraidee/src/DataSource/DataSource.java</file>
+            <file>file:/C:/Users/OrbitG/Desktop/3A9/JAVA/Esprit_Entraidee/src/CONTROLLER/FXMLAcceuilUtilisateurController.java</file>
             <file>file:/C:/Users/OrbitG/Desktop/3A9/JAVA/Esprit_Entraidee/src/CONTROLLER/FXMLAjoutCovoiturageController.java</file>
+            <file>file:/C:/Users/OrbitG/Desktop/3A9/JAVA/Esprit_Entraidee/src/CONTROLLER/FXMLMesReservationCovController.java</file>
             <file>file:/C:/Users/OrbitG/Desktop/3A9/JAVA/Esprit_Entraidee/src/esprit_entraide/Esprit_Entraide.java</file>
+            <file>file:/C:/Users/OrbitG/Desktop/3A9/JAVA/Esprit_Entraidee/src/SERVICE/ReservationcovService.java</file>
             <file>file:/C:/Users/OrbitG/Desktop/3A9/JAVA/Esprit_Entraidee/src/UTILS/InputValidation.java</file>
         </group>
     </open-files>

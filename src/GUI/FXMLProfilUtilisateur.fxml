@@ -8,8 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" fx:id="rootpane" prefHeight="620.0" prefWidth="1000.0" style="-fx-background-color: #DEDCDC;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/9" fx:controller="CONTROLLER.FXMLProfilUtilisateurController">
+<AnchorPane id="AnchorPane" fx:id="rootpane" prefHeight="620.0" prefWidth="1000.0" style="-fx-background-color: #DEDCDC;" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.FXMLProfilUtilisateurController">
    <children>
       <Pane layoutY="-4.0" prefHeight="628.0" prefWidth="70.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px 0px;" />
       <JFXButton fx:id="Retour" layoutX="35.0" layoutY="17.0" onAction="#On_btn_Retour" prefHeight="27.0" prefWidth="80.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px;" text="Retour" textFill="WHITE">
@@ -47,7 +46,7 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label fx:id="Classelbl" layoutX="343.0" layoutY="82.0" prefHeight="30.0" prefWidth="142.0" text="Classe" textFill="#5b5b5b">
+      <Label fx:id="Classelbl" layoutX="343.0" layoutY="82.0" prefHeight="30.0" prefWidth="309.0" text="Classe" textFill="#5b5b5b">
          <font>
             <Font size="20.0" />
          </font>
@@ -84,20 +83,5 @@
       <JFXButton fx:id="Annonce" layoutX="829.0" layoutY="557.0" onAction="#Consulter_Annonce" prefHeight="25.0" prefWidth="129.0" style="-fx-background-color: #E21C1C;" text="Consulter Annonce" textFill="WHITE" />
       <ImageView fx:id="img" fitHeight="110.0" fitWidth="159.0" layoutX="150.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true" />
       <Label fx:id="Date_Creation" layoutX="820.0" layoutY="14.0" prefHeight="25.0" prefWidth="166.0" text="Label" />
-      <Label fx:id="UsernameInput1" layoutX="523.0" layoutY="194.0" onMouseClicked="#On_Username_Clicked" prefHeight="17.0" prefWidth="166.0" text="Label">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label fx:id="EmailInput1" layoutX="523.0" layoutY="250.0" onMouseClicked="#On_Email_Clicked" prefHeight="17.0" prefWidth="166.0" text="Label">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
-      <Label fx:id="TelInput1" layoutX="523.0" layoutY="302.0" onMouseClicked="#On_Telephone_Clicked" prefHeight="17.0" prefWidth="166.0" text="Label">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>
