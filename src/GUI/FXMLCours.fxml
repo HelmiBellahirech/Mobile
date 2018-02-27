@@ -97,7 +97,7 @@
                   </Label>
                </children>
             </GridPane>
-            <CheckBox alignment="TOP_LEFT" mnemonicParsing="false" onAction="#notifCbClicked" text="Notifier les étudiants par Email" />
+            <CheckBox fx:id="notifCk" alignment="TOP_LEFT" mnemonicParsing="false" text="Notifier les étudiants par Email" />
             <HBox prefHeight="44.0" prefWidth="342.0" spacing="10.0">
                <children>
                   <JFXButton onAction="#addCours" prefHeight="36.0" prefWidth="166.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px;" text="Ajouter" textFill="WHITE">
@@ -121,12 +121,12 @@
          </padding>
       </VBox>
       <Pane prefHeight="620.0" prefWidth="83.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px 0px;" />
-      <ImageView fx:id="img" fitHeight="123.0" fitWidth="124.0" layoutX="644.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="123.0" fitWidth="124.0" layoutX="644.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@icone_admin.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="Retour" layoutX="61.0" layoutY="34.0" onAction="#On_btn_Menu" prefHeight="37.0" prefWidth="149.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px;" text="Menu Principale" textFill="WHITE">
+      <JFXButton layoutX="61.0" layoutY="34.0" onAction="#On_btn_Menu" prefHeight="37.0" prefWidth="149.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px;" text="Menu Principale" textFill="WHITE">
          <font>
             <Font size="16.0" />
          </font>

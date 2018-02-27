@@ -47,7 +47,10 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javax.sql.rowset.serial.SerialBlob;
 import UTILS.MailHelpers;
+import com.jfoenix.controls.JFXButton;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.CheckBox;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 
 /**
@@ -71,7 +74,6 @@ public class FXMLCoursController implements Initializable {
     IProfService profService = new ProfService();
     ICoursService coursService = new CoursService();
     IEtudiantService etudiantService = new EtudiantService();
-    @FXML
     private AnchorPane rootContainer;
     @FXML
     private TableColumn<Cours, Integer> idCol;
@@ -95,6 +97,8 @@ public class FXMLCoursController implements Initializable {
     List<Etudiant> etudiantList;
 
     Utilisateur loggedUser;
+    @FXML
+    private CheckBox notifCk;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -135,8 +139,10 @@ public class FXMLCoursController implements Initializable {
         Cours cours = new Cours(nada, moduleCb.getValue().toString(), matiereCb.getValue().toString(), new Date(), blob);
         if (coursService.add(cours)) {
             data.add(cours);
-            for (int i = 0; i < etudiantList.size(); i++) {
-                MailHelpers.sendMail(etudiantList.get(i).getEmail(), cours, prof);
+            if (notifCk.isSelected()) {
+                for (int i = 0; i < etudiantList.size(); i++) {
+                    MailHelpers.sendMail(etudiantList.get(i).getEmail(), cours, prof);
+                }
             }
         }
     }
