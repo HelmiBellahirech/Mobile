@@ -30,8 +30,6 @@ public class FXMLMesAnnoncesController implements Initializable {
     @FXML
     private JFXButton Collocation;
     @FXML
-    private JFXButton Reclamation;
-    @FXML
     private Pane backgroundPane;
     @FXML
     private AnchorPane rootpane;
@@ -56,7 +54,15 @@ public class FXMLMesAnnoncesController implements Initializable {
     }
 
     @FXML
-    private void On_btn_Reclamation(ActionEvent event) {
+    private void On_btn_Collocation(ActionEvent event) {
+         AnchorPane pane = new AnchorPane();
+                                    try {
+                                        pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLMesCollocation.fxml"));
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(FXMLAfficheCollocationController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                    rootpane.getChildren().setAll(pane);
+        
     }
 
     @FXML
@@ -69,5 +75,7 @@ public class FXMLMesAnnoncesController implements Initializable {
                                     }
                                     rootpane.getChildren().setAll(pane);
     }
+
+  
     
 }

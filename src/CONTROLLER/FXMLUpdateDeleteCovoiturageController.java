@@ -88,7 +88,7 @@ public class FXMLUpdateDeleteCovoiturageController implements Initializable {
         DateInpuit.setValue(c.getDate().toLocalDate());
         DateInpuit.setPromptText(c.getDate().toString());
         heureInput.setPromptText(c.getHeure());
-        heureInput.setValue(LocalTime.parse(c.getHeure()));
+        heureInput.setValue(LocalTime.parse(CharSequence.class.cast(c.getHeure())));
         NbPlacesCombobox.setPromptText(String.valueOf(c.getNbrPlaces()));
         NbPlacesCombobox.setValue(String.valueOf(c.getNbrPlaces()));
         comfortcombobox.setValue(c.getComfort());

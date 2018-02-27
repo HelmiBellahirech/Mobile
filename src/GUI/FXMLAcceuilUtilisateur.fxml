@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1000.0" stylesheets="@../CSS/StyleSheet.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.FXMLAcceuilUtilisateurController">
+<AnchorPane fx:id="rootpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1000.0" stylesheets="@../CSS/StyleSheet.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.FXMLAcceuilUtilisateurController">
    <children>
       <Pane fx:id="backgroundPane" prefHeight="620.0" prefWidth="1000.0">
          <children>
@@ -59,7 +59,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #807B7B;" GridPane.columnIndex="2">
                <children>
-                  <JFXButton id="btn" alignment="BOTTOM_CENTER" prefHeight="154.0" prefWidth="239.0" stylesheets="@../CSS/StyleSheet.css" text="Collocation" textFill="WHITE">
+                  <JFXButton id="btn" alignment="BOTTOM_CENTER" onAction="#btn_colocation" prefHeight="154.0" prefWidth="239.0" stylesheets="@../CSS/StyleSheet.css" text="Collocation" textFill="WHITE">
                      <font>
                         <Font size="19.0" />
                      </font>
@@ -76,7 +76,7 @@
             </Pane>
             <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #908B8C;" GridPane.rowIndex="1">
                <children>
-                  <JFXButton id="btn" alignment="BOTTOM_CENTER" layoutY="-2.0" prefHeight="166.0" prefWidth="239.0" stylesheets="@../CSS/StyleSheet.css" text="Lost&amp;Found" textFill="WHITE">
+                  <JFXButton id="btn" fx:id="Reclamation" alignment="BOTTOM_CENTER" layoutY="-2.0" prefHeight="166.0" prefWidth="239.0" stylesheets="@../CSS/StyleSheet.css" text="Lost&amp;Found" textFill="WHITE">
                      <font>
                         <Font size="19.0" />
                      </font>

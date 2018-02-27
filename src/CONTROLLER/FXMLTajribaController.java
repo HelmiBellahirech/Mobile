@@ -203,7 +203,7 @@ public class FXMLTajribaController implements Initializable {
         {
             covoiturages = new Covoiturage_service().getAll().stream()
               
-                .filter(s -> s.getComfort().contains(ComfortCombobox.getValue()))
+                .filter(s -> s.getComfort().contains(CharSequence.class.cast(ComfortCombobox.getValue())))
                 .filter(s -> s.getPrix() >= Integer.parseInt(min.getText()))
                 .filter(s -> s.getPrix() <= Integer.parseInt(max.getText()))
                 .collect(Collectors.toList());
@@ -214,7 +214,7 @@ public class FXMLTajribaController implements Initializable {
            covoiturages = new Covoiturage_service().getAll().stream()
                 
                 .filter(s -> s.getArrive().equals(arrive))
-                .filter(s -> s.getComfort().contains(ComfortCombobox.getValue()))
+                .filter(s -> s.getComfort().contains(CharSequence.class.cast(ComfortCombobox.getValue())))
                 .filter(s -> s.getPrix() >= Integer.parseInt(min.getText()))
                 .filter(s -> s.getPrix() <= Integer.parseInt(max.getText()))
                 .collect(Collectors.toList());
@@ -225,7 +225,7 @@ public class FXMLTajribaController implements Initializable {
             covoiturages = new Covoiturage_service().getAll().stream()
                 .filter(s -> s.getDepart().equals(depart))
            
-                .filter(s -> s.getComfort().contains(ComfortCombobox.getValue()))
+                .filter(s -> s.getComfort().contains(CharSequence.class.cast(ComfortCombobox.getValue())))
                 .filter(s -> s.getPrix() >= Integer.parseInt(min.getText()))
                 .filter(s -> s.getPrix() <= Integer.parseInt(max.getText()))
                 .collect(Collectors.toList());
@@ -234,7 +234,7 @@ public class FXMLTajribaController implements Initializable {
         {covoiturages = new Covoiturage_service().getAll().stream()
                 .filter(s -> s.getDepart().equals(depart))
                 .filter(s -> s.getArrive().equals(arrive))
-                .filter(s -> s.getComfort().contains(ComfortCombobox.getValue()))
+                .filter(s -> s.getComfort().contains(CharSequence.class.cast(ComfortCombobox.getValue())))
                 .filter(s -> s.getPrix() >= Integer.parseInt(min.getText()))
                 .filter(s -> s.getPrix() <= Integer.parseInt(max.getText()))
                 .collect(Collectors.toList()); }

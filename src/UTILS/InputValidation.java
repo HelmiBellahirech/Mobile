@@ -49,7 +49,7 @@ public class InputValidation {
 
         String emailPattern = "^[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
         Pattern pattern = Pattern.compile(emailPattern);
-        Matcher matcher = pattern.matcher(email);
+        Matcher matcher = pattern.matcher(CharSequence.class.cast(email));
         if (matcher.matches()) {
             status = true;
         }
@@ -61,7 +61,7 @@ public class InputValidation {
 
         String usernamePattern = "^[a-zA-Z]+[A-Za-z0-9-]*$";
         Pattern pattern = Pattern.compile(usernamePattern);
-        Matcher matcher = pattern.matcher(username);
+        Matcher matcher = pattern.matcher(CharSequence.class.cast(username));
         if (matcher.matches()) {
             status = true;
         }
