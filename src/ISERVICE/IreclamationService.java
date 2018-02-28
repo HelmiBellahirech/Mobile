@@ -17,5 +17,4 @@ public interface IreclamationService extends Iservice<Reclamation,Integer>{
      public List<Reclamation> findId_user(Integer r) ;
       public void addMal(Reclamation t) ;
       public void updateMal(Reclamation t) ;
-      public Utilisateur findUserByMatricule(String Matricule) ;
 }
