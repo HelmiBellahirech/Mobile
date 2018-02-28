@@ -13,9 +13,21 @@ import SERVICE.ReservationcovService;
 import SERVICE.UtilisateurService;
 import UTILS.InputValidation;
 import com.jfoenix.controls.JFXButton;
+import com.lynden.gmapsfx.GoogleMapView;
+import com.lynden.gmapsfx.MapComponentInitializedListener;
+import com.lynden.gmapsfx.javascript.object.GoogleMap;
+import com.lynden.gmapsfx.javascript.object.LatLong;
+import com.lynden.gmapsfx.javascript.object.MapOptions;
+import com.lynden.gmapsfx.javascript.object.Marker;
+import com.lynden.gmapsfx.javascript.object.MarkerOptions;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -37,16 +49,21 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * FXML Controller class
  *
  * @author OrbitG
  */
-public class FXMLDetailsCovoiturageController implements Initializable {
-
+public class FXMLDetailsCovoiturageController implements Initializable,MapComponentInitializedListener {
+   private GoogleMap map;
     @FXML
     private Label depart;
     @FXML
@@ -82,6 +99,11 @@ public class FXMLDetailsCovoiturageController implements Initializable {
     private Label nbr;
     @FXML
     private ImageView img;
+    @FXML
+    private GoogleMapView mapView;
+    @FXML
+    private Pane panemap;
+
 
     /**
      * Initializes the controller class.
@@ -133,8 +155,9 @@ public class FXMLDetailsCovoiturageController implements Initializable {
                         img.setEffect(new DropShadow(20, Color.BLACK));
 
         img.setImage(IMAGE_RUBY);
+         mapView.addMapInializedListener(this);
         
-        
+       
     }
 
     public void redirect(String id) {
@@ -217,5 +240,136 @@ public class FXMLDetailsCovoiturageController implements Initializable {
         }
 
     }
+ private static String readAll(Reader rd) throws IOException {
+    StringBuilder sb = new StringBuilder();
+    int cp;
+    while ((cp = rd.read()) != -1) {
+      sb.append((char) cp);
+    }
+    return sb.toString();
+  }
+  
+  
+  
+    public static JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
 
+  InputStream is = new URL(url).openStream();
+    try {
+      BufferedReader rd = new BufferedReader(new InputStreamReader(is, Charset.forName("UTF-8")));
+      String jsonText = readAll(rd);
+      JSONObject json = new JSONObject(jsonText);
+      return json;
+    } finally {
+      is.close();
+    }
+  }
+
+    
+  
+  
+
+@Override
+public void mapInitialized() {
+    Covoiturage_service cs = new Covoiturage_service();
+    Covoiturage c = new Covoiturage();
+    c= cs.findId(id);
+    //Set the initial properties of the map.
+    Double l =0.0;
+    Double log=0.0;
+    Double l1 =0.0;
+    Double log1=0.0;
+    String adresse=c.getDepart();
+      String adresse1=c.getArrive();
+    String lat, lon;
+    String locationAddres1 = adresse1.replaceAll(" ", "%20");
+       String locationAddres = adresse.replaceAll(" ", "%20");
+        String str = "http://maps.googleapis.com/maps/api/geocode/json?address=" + locationAddres + "&sensor=true";    
+           
+        String str1 = "http://maps.googleapis.com/maps/api/geocode/json?address=" + locationAddres1 + "&sensor=true";    
+          
+ 
+           
+      
+     try {
+         JSONObject json = readJsonFromUrl(str);
+          JSONObject geoMetryObject = new JSONObject();
+            JSONObject locations =json;
+            JSONArray jarr = json.getJSONArray("results");
+            int i;
+            for (i = 0; i < jarr.length(); i++) {
+                json = jarr.getJSONObject(i);
+                geoMetryObject = json.getJSONObject("geometry");
+                locations = geoMetryObject.getJSONObject("location");
+                l = locations.getDouble("lat");
+                log = locations.getDouble("lng");
+     
+            }
+                         
+ 
+         
+     } catch (IOException ex) {
+         Logger.getLogger(FXMLDetailsCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+     } catch (JSONException ex) {
+         Logger.getLogger(FXMLDetailsCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+     }
+  
+     try {
+         JSONObject json1 = readJsonFromUrl(str1);
+          JSONObject geoMetryObject1 = new JSONObject();
+            JSONObject locations1 =json1;
+            JSONArray jarr = json1.getJSONArray("results");
+            int i;
+            for (i = 0; i < jarr.length(); i++) {
+                json1 = jarr.getJSONObject(i);
+                geoMetryObject1 = json1.getJSONObject("geometry");
+                locations1 = geoMetryObject1.getJSONObject("location");
+                l1 = locations1.getDouble("lat");
+                log1 = locations1.getDouble("lng");
+     
+            }
+                         
+ 
+         
+     } catch (IOException ex) {
+         Logger.getLogger(FXMLDetailsCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+     } catch (JSONException ex) {
+         Logger.getLogger(FXMLDetailsCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+     }
+
+         
+    
+    MapOptions mapOptions = new MapOptions();
+
+    mapOptions.center(new LatLong(l, log))
+            .overviewMapControl(false)
+            .panControl(false)
+            .rotateControl(false)
+            .scaleControl(false)
+            .streetViewControl(false)
+            .zoomControl(false)
+            .zoom(12);
+    map = mapView.createMap(mapOptions);
+
+    //Add a marker to the map
+    MarkerOptions markerOptions = new MarkerOptions();
+
+    markerOptions.position( new LatLong(l, log) )
+                .visible(Boolean.TRUE)
+                .title("Depart");
+
+    Marker marker = new Marker( markerOptions );
+  MarkerOptions markerOptions1 = new MarkerOptions();
+
+    markerOptions1.position( new LatLong(l1, log1) )
+                .visible(Boolean.TRUE)
+                .title("Arrive");
+
+    Marker marker1 = new Marker( markerOptions1 );
+
+   
+    map.addMarker(marker);
+     map.addMarker(marker1);
+
+}
+    
 }

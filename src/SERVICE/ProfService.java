@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package SERVICE;
 
 import DataSource.DataSource;
@@ -52,10 +53,11 @@ public class ProfService implements IProfService {
             preparedStatement.setInt(1, r);
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
-            prof = new Professeur("", resultSet.getInt("ID"), resultSet.getString("Email"),
+            prof = new Professeur(resultSet.getInt("ID"), resultSet.getString("Email"),
                     resultSet.getString("username"), resultSet.getString("Password"), resultSet.getString("Nom"),
                     resultSet.getString("Prenom"), resultSet.getString("Telephone"), resultSet.getString("photo"),
-                    resultSet.getString("Sexe"), resultSet.getString("Matricule"), resultSet.getString("Role"));
+                    resultSet.getString("Sexe"), resultSet.getString("Specialite"), resultSet.getString("Matricule"),
+                    resultSet.getString("Role"), resultSet.getBoolean("Block"));
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

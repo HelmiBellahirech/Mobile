@@ -5,6 +5,7 @@
  */
 package esprit_entraide;
 
+import MODEL.Etudiant;
 import MODEL.Utilisateur;
 
 import java.io.IOException;
@@ -23,8 +24,17 @@ public class Esprit_Entraide extends Application {
     private Stage stage;
     private static Esprit_Entraide instance;
     private Scene scene;
+    private Etudiant loggedEtudiant; 
     private Utilisateur loggedUser;
     private Utilisateur loggedAdmin;
+
+    public Etudiant getLoggedEtudiant() {
+        return loggedEtudiant;
+    }
+
+    public void setLoggedEtudiant(Etudiant loggedEtudiant) {
+        this.loggedEtudiant = loggedEtudiant;
+    }
  
         
     public Esprit_Entraide() throws IOException {

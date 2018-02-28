@@ -34,12 +34,12 @@
             <Font name="Arial Unicode MS" size="21.0" />
          </font>
       </Label>
-      <JFXTextField fx:id="departInput" layoutX="450.0" layoutY="121.0" />
-      <JFXTextField fx:id="arriveInput" layoutX="450.0" layoutY="174.0" />
-      <JFXTextField fx:id="prixInput" layoutX="448.0" layoutY="228.0" />
-      <JFXDatePicker fx:id="DateInpuit" layoutX="448.0" layoutY="280.0" />
-      <JFXTimePicker fx:id="heureInput" layoutX="449.0" layoutY="340.0" />
-      <JFXComboBox fx:id="comfortcombobox" layoutX="456.0" layoutY="455.0" prefHeight="25.0" prefWidth="135.0" />
+      <JFXTextField fx:id="departInput" focusColor="#e21c1c" layoutX="450.0" layoutY="121.0" />
+      <JFXTextField fx:id="arriveInput" focusColor="#e21c1c" layoutX="450.0" layoutY="174.0" />
+      <JFXTextField fx:id="prixInput" focusColor="#e21c1c" layoutX="448.0" layoutY="228.0" />
+      <JFXDatePicker fx:id="DateInpuit" defaultColor="#e21c1c" layoutX="448.0" layoutY="280.0" />
+      <JFXTimePicker fx:id="heureInput" defaultColor="#e21c1c" layoutX="449.0" layoutY="340.0" />
+      <JFXComboBox fx:id="comfortcombobox" focusColor="#e21c1c" layoutX="456.0" layoutY="455.0" prefHeight="25.0" prefWidth="135.0" />
       <JFXRadioButton fx:id="oui" layoutX="440.0" layoutY="527.0" text="Oui">
          <toggleGroup>
             <ToggleGroup fx:id="fumeur" />
@@ -85,7 +85,7 @@
             <Font size="14.0" />
          </font>
       </JFXButton>
-      <JFXComboBox fx:id="NbPlacesCombobox" layoutX="449.0" layoutY="416.0" prefHeight="25.0" prefWidth="53.0" />
+      <JFXComboBox fx:id="NbPlacesCombobox" focusColor="#e21c1c" layoutX="449.0" layoutY="416.0" prefHeight="25.0" prefWidth="53.0" />
       <JFXButton fx:id="Annuler" layoutX="804.0" layoutY="369.0" onAction="#On_btn_Annuler" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: #E21C1C; -fx-background-radius: 50px;" text="Annuler" textFill="WHITE">
          <font>
             <Font size="14.0" />

@@ -96,6 +96,8 @@ public class FXMLSignUpController implements Initializable {
     final Stage stage = new Stage();
     @FXML
     private ImageView image;
+    @FXML
+    private JFXButton login;
 
     /**
      * Initializes the controller class.
@@ -109,14 +111,12 @@ public class FXMLSignUpController implements Initializable {
         matriculelbl.setVisible(false);
         SexeCombobox.setValue("Homme");
         ClasseCombobox.setValue("1ere Année");
-            MatriculeInput.setPromptText("147TUN2015");
+        MatriculeInput.setPromptText("147TUN2015");
 
     }
 
     @FXML
     private void On_inscrire_btn(ActionEvent event) throws IOException {
-
-    
 
         String Nom = NomInput.getText();
         String Prenom = PrenomInput.getText();
@@ -159,7 +159,7 @@ public class FXMLSignUpController implements Initializable {
                                 Alert alertnum = new InputValidation().getAlert("Numero Telephone", "Saisissez un numero de telephone valide");
                                 alertnum.showAndWait();
                             } else {
-                                Utilisateur u = new Etudiant(Email, Username, Motdepasse, Nom, Prenom, NumTel, Sexe, Classe, Matricule);
+                                Utilisateur u = new Etudiant(Email, Username, Motdepasse, Nom, Prenom, NumTel, Sexe, Classe, Matricule, true);
 
                                 u.setPhoto(uuid);
                                 if ((u.getPhoto() == null) && (u.getSexe().equals("Homme"))) {
@@ -231,5 +231,12 @@ public class FXMLSignUpController implements Initializable {
         matriculelbl.setVisible(false);
         System.out.println("hi");
 
+    }
+
+    @FXML
+    private void On_btn_Login(ActionEvent event) throws IOException {
+        esprit_entraide.Esprit_Entraide.getInstance().getStage().hide();
+                                    esprit_entraide.Esprit_Entraide.getInstance().ChangeScene(new Scene(FXMLLoader.load(getClass().getResource("/GUI/FXMLLogin.fxml"))));
+                                    esprit_entraide.Esprit_Entraide.getInstance().getStage().show();
     }
 }

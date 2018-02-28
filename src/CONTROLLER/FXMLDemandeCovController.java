@@ -94,7 +94,7 @@ public class FXMLDemandeCovController implements Initializable {
                     if (e != null) {
                         Covoiturage c = cs.findId(e.getID_ANNONCE());
                         Utilisateur U = new Utilisateur();
-                        U = us.getById(c.getID_USER());
+                        U = us.getById(e.getID_RESERVE());
                         //    File file = new File(ps.findById(e.getPassager().getId()).getAvatar());
                         File file = new File("C:\\xampp\\htdocs\\pi\\"+U.getPhoto());
                         

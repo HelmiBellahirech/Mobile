@@ -134,12 +134,115 @@ public class UtilisateurService implements IutilisateurService {
 
     @Override
     public boolean update(Utilisateur t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (t instanceof Etudiant) {
+            Etudiant e = (Etudiant) t;
+            String req = "update utilisateur set  Email=?,Username=?,Password=?,Nom=?,Prenom=?,Telephone=?,Photo=?,Sexe=?,Role=?,Classe=?,ID_CLUB=?,BLOCK=? where ID = ?";
+            PreparedStatement preparedStatement;
+            java.util.Date date_util = new java.util.Date();
+//Tu fais tes traitement sur date_util...
+
+//Tu castes à la fin pour insérer en base.
+            java.sql.Date date_sql = new java.sql.Date(date_util.getTime());
+            try {
+                preparedStatement = connection.prepareStatement(req);
+
+                preparedStatement.setString(1, e.getEmail());
+                preparedStatement.setString(2, e.getUsername());
+                preparedStatement.setString(3, e.getPassword());
+                preparedStatement.setString(4, e.getNom());
+                preparedStatement.setString(5, e.getPrenom());
+                preparedStatement.setString(6, e.getTelephone());
+                preparedStatement.setString(7, e.getPhoto());
+                preparedStatement.setString(8, e.getSexe());
+                preparedStatement.setString(9, "Etudiant");
+                preparedStatement.setString(10, e.getClasse());
+                preparedStatement.setInt(11, e.getID_CLUB());
+                preparedStatement.setBoolean(12, e.isBlock());
+                preparedStatement.setInt(13, e.getID());
+                return preparedStatement.executeUpdate() > 0;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                return false;
+            }
+        }
+        if (t instanceof Responsable) {
+            Responsable e = (Responsable) t;
+            String req = "update utilisateur set  Email=?,Username=?,Password=?,Nom=?,Prenom=?,Telephone=?,Photo=?,Sexe=?,Role=?,Nom_Club=?,Photo_Club=?,ID_CLUB=?,BLOCK=? where ID = ?";
+            PreparedStatement preparedStatement;
+            java.util.Date date_util = new java.util.Date();
+//Tu fais tes traitement sur date_util...
+
+//Tu castes à la fin pour insérer en base.
+            java.sql.Date date_sql = new java.sql.Date(date_util.getTime());
+            try {
+                preparedStatement = connection.prepareStatement(req);
+
+                preparedStatement.setString(1, e.getEmail());
+                preparedStatement.setString(2, e.getUsername());
+                preparedStatement.setString(3, e.getPassword());
+                preparedStatement.setString(4, e.getNom());
+                preparedStatement.setString(5, e.getPrenom());
+                preparedStatement.setString(6, e.getTelephone());
+                preparedStatement.setString(7, e.getPhoto());
+                preparedStatement.setString(8, e.getSexe());
+                preparedStatement.setString(9, "Responsable");
+                preparedStatement.setString(10, e.getNom_Club());
+                preparedStatement.setString(11, e.getPhoto_Club());
+                preparedStatement.setInt(12, e.getID_CLUB());
+                preparedStatement.setBoolean(13, e.isBlock());
+                preparedStatement.setInt(14, e.getID());
+                return preparedStatement.executeUpdate() > 0;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                return false;
+            }
+        }
+        if (t instanceof Professeur) {
+            Professeur e = (Professeur) t;
+            String req = "update utilisateur set  Email=?,Username=?,Password=?,Nom=?,Prenom=?,Telephone=?,Photo=?,Sexe=?,Role=?,Specialite=?,BLOCK=? where ID = ?";
+            PreparedStatement preparedStatement;
+            java.util.Date date_util = new java.util.Date();
+//Tu fais tes traitement sur date_util...
+
+//Tu castes à la fin pour insérer en base.
+            java.sql.Date date_sql = new java.sql.Date(date_util.getTime());
+            try {
+                preparedStatement = connection.prepareStatement(req);
+
+                preparedStatement.setString(1, e.getEmail());
+                preparedStatement.setString(2, e.getUsername());
+                preparedStatement.setString(3, e.getPassword());
+                preparedStatement.setString(4, e.getNom());
+                preparedStatement.setString(5, e.getPrenom());
+                preparedStatement.setString(6, e.getTelephone());
+                preparedStatement.setString(7, e.getPhoto());
+                preparedStatement.setString(8, e.getSexe());
+                preparedStatement.setString(10, "Professeur");
+                preparedStatement.setString(11, e.getSpecialite());
+                preparedStatement.setBoolean(12, e.isBlock());
+                preparedStatement.setInt(13, e.getID());
+
+                return preparedStatement.executeUpdate() > 0;
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+                return false;
+            }
+        }
+        return false;
     }
 
     @Override
     public boolean remove(Integer r) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String req = "delete from utilisateur where id=?";
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setInt(1, r);
+            return preparedStatement.executeUpdate() > 0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
     }
 
     @Override
@@ -178,19 +281,79 @@ public class UtilisateurService implements IutilisateurService {
                     u.setSexe(rs.getString("Sexe"));
                     u.setDate_Creation(rs.getDate("Date_Creation"));
                     u.setRole(rs.getString("Role"));
+                    /*   u.setNom(rs.getString("Nom_Club"));
+                    u.setRole(rs.getString("Photo_Club"));
+                    
+                    u.setRole(rs.getString("Specialite"));
+                    u.setRole(rs.getString("Matricule"));
+                    u.setRole(rs.getInt("ID_CLUB"));
+                    u.setRole(rs.getString("Matricule"));*/
 
                     System.out.println(rs.getString(11));
+
                     if (userService.getById(rs.getInt(1)).getRole().equals("Admin")) {
                         esprit_entraide.Esprit_Entraide.getInstance().setLoggedAdmin(u);
                         return 3;//email et mdp vrais administrateur
-                    } else if (userService.getById(rs.getInt(1)).getRole().equals("Etudiant") || userService.getById(rs.getInt(1)).getRole().equals("Professeur")) {
-                        esprit_entraide.Esprit_Entraide.getInstance().setLoggedUser(u);
-                        System.out.println(u);
+                    } else if (userService.getById(rs.getInt(1)).getRole().equals("Etudiant")) {
+                        System.out.println("hah");
+                        Etudiant e = new Etudiant();
+                        e.setID(rs.getInt("ID"));
+                        e.setEmail(rs.getString("Email"));
+                        e.setUsername(rs.getString("Username"));
+                        e.setPassword(rs.getString("password"));
+                        e.setNom(rs.getString("Nom"));
+                        e.setPrenom(rs.getString("Prenom"));
+                        e.setTelephone(rs.getString("Telephone"));
+                        e.setPhoto(rs.getString("Photo"));
+                        e.setSexe(rs.getString("Sexe"));
+                        e.setDate_Creation(rs.getDate("Date_Creation"));
+                        e.setRole(rs.getString("Role"));
+                        e.setBlock(rs.getBoolean("BLOCK"));
+                        e.setID_CLUB(rs.getInt("ID_ClUB"));
+                        e.setClasse(rs.getString("Classe"));
+                        esprit_entraide.Esprit_Entraide.getInstance().setLoggedUser(e);
+                        System.out.println(e);
                         return 0;//email et mdp vrais Etudiant
-                    } else {
-                        esprit_entraide.Esprit_Entraide.getInstance().setLoggedUser(u);
-                        System.out.println(u);
+                    } else if (userService.getById(rs.getInt(1)).getRole().equals("Responsable")) {
+                        Responsable e = new Responsable();
+                        e.setID(rs.getInt("ID"));
+                        e.setEmail(rs.getString("Email"));
+                        e.setUsername(rs.getString("Username"));
+                        e.setPassword(rs.getString("password"));
+                        e.setNom(rs.getString("Nom"));
+                        e.setPrenom(rs.getString("Prenom"));
+                        e.setTelephone(rs.getString("Telephone"));
+                        e.setPhoto(rs.getString("Photo"));
+                        e.setSexe(rs.getString("Sexe"));
+                        e.setDate_Creation(rs.getDate("Date_Creation"));
+                        e.setRole(rs.getString("Role"));
+                        e.setBlock(rs.getBoolean("BLOCK"));
+                        e.setID_CLUB(rs.getInt("ID_ClUB"));
+                        e.setNom_Club(rs.getString("Nom_Club"));
+                        e.setPhoto_Club(rs.getString("Photo_Club"));
+
+                        esprit_entraide.Esprit_Entraide.getInstance().setLoggedUser(e);
+                        System.out.println(e);
                         return 4; //email et mdp vrais Responsable des club
+                    } else {
+                        Professeur e = new Professeur();
+                        e.setID(rs.getInt("ID"));
+                        e.setEmail(rs.getString("Email"));
+                        e.setUsername(rs.getString("Username"));
+                        e.setPassword(rs.getString("password"));
+                        e.setNom(rs.getString("Nom"));
+                        e.setPrenom(rs.getString("Prenom"));
+                        e.setTelephone(rs.getString("Telephone"));
+                        e.setPhoto(rs.getString("Photo"));
+                        e.setSexe(rs.getString("Sexe"));
+                        e.setDate_Creation(rs.getDate("Date_Creation"));
+                        e.setRole(rs.getString("Role"));
+                        e.setBlock(rs.getBoolean("BLOCK"));
+                        //  e.setID_CLUB(rs.getInt("ID_ClUB"));
+                        e.setSpecialite(rs.getString("Specialite"));
+                        esprit_entraide.Esprit_Entraide.getInstance().setLoggedUser(e);
+                        System.out.println(e);
+                        return 5;//email et mdp vrais Professeur
                     }
                 } else {
                     return 1;//mdp incorrect
@@ -215,7 +378,27 @@ public class UtilisateurService implements IutilisateurService {
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                u = new Utilisateur(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11));
+                u = new Utilisateur(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12));
+                u.setRole(rs.getString("Role"));
+                u.setID(rs.getInt("ID"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return u;
+    }
+
+    @Override
+    public Utilisateur findbynum(String num) {
+        String req = "select * from utilisateur where Telephone =?";
+        Utilisateur u = null;
+
+        try {
+            ps = connection.prepareStatement(req);
+            ps.setString(1, num);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                u = new Utilisateur(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11), rs.getBoolean(12));
                 u.setRole(rs.getString("Role"));
                 u.setID(rs.getInt("ID"));
             }
@@ -283,5 +466,5 @@ public class UtilisateurService implements IutilisateurService {
         return existe;
 
     }
-    
+
 }

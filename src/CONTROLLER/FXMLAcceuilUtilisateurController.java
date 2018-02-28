@@ -19,7 +19,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -27,6 +29,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import tray.notification.TrayNotification;
 
 /**
@@ -52,6 +55,10 @@ public class FXMLAcceuilUtilisateurController implements Initializable {
     private AnchorPane rootpane;
     @FXML
     private JFXButton MesAnnonces;
+    @FXML
+
+    private JFXButton Reclamation;
+
     @FXML
     private JFXButton MesReservation;
     @FXML
@@ -148,7 +155,7 @@ public class FXMLAcceuilUtilisateurController implements Initializable {
             TrayNotification tray = new TrayNotification();
             tray.setTitle("Notification covoiturage");
             tray.setMessage("Vous avez " + rs.findByChauffeurb(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getID(), false).stream().count() + " demande de covoiturage ");
-            tray.showAndDismiss(Duration.seconds(4));
+            tray.showAndDismiss(Duration.seconds(3));
             notif.setText(String.valueOf(rs.findByChauffeurb(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getID(), false).stream().count()));
         }
 
@@ -177,6 +184,17 @@ public class FXMLAcceuilUtilisateurController implements Initializable {
     }
 
     @FXML
+    private void On_btn_Reclamation(ActionEvent event) {
+        AnchorPane pane = new AnchorPane();
+        try {
+            pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLAcceuilReclamation.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLAcceuilReclamationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        rootpane.getChildren().setAll(pane);
+    }
+
+    @FXML
     private void On_btn_MesAnnonces(ActionEvent event) {
         AnchorPane pane = new AnchorPane();
         try {
@@ -195,6 +213,15 @@ public class FXMLAcceuilUtilisateurController implements Initializable {
             pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLReservationSalle.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(FXMLDetailsCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        rootpane.getChildren().setAll(pane);
+
+    private void btn_colocation(ActionEvent event) {
+        AnchorPane pane = new AnchorPane();
+        try {
+            pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLAfficheCollocation.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLAfficheCollocationController.class.getName()).log(Level.SEVERE, null, ex);
         }
         rootpane.getChildren().setAll(pane);
     }
@@ -232,4 +259,14 @@ public class FXMLAcceuilUtilisateurController implements Initializable {
         rootpane.getChildren().setAll(pane);
     }
 
+    @FXML
+    private void On_btn_Profil(ActionEvent event) {
+        AnchorPane pane = new AnchorPane();
+        try {
+            pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLProfilUtilisateur.fxml"));
+        } catch (IOException ex) {
+            Logger.getLogger(FXMLDetailsCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        rootpane.getChildren().setAll(pane);
+    }
 }

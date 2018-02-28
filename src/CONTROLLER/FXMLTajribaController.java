@@ -200,42 +200,51 @@ public class FXMLTajribaController implements Initializable {
         }
         if (depart.equals("") && arrive.equals("")) {
             covoiturages = new Covoiturage_service().getAll().stream()
-                    .filter(s->s.getID_USER()!=ID)
-                    .filter(s -> s.getComfort().contains(ComfortCombobox.getValue()))
-                    .filter(s -> s.getPrix() >= Integer.parseInt(min.getText()))
-                    .filter(s -> s.getPrix() <= Integer.parseInt(max.getText()))
-                    .collect(Collectors.toList());
+
+              
+                .filter(s -> s.getComfort().contains(CharSequence.class.cast(ComfortCombobox.getValue())))
+                .filter(s -> s.getPrix() >= Integer.parseInt(min.getText()))
+                .filter(s -> s.getPrix() <= Integer.parseInt(max.getText()))
+                .collect(Collectors.toList());
         }
+       
         if (depart.equals("") && (!arrive.equals(""))) {
 
             covoiturages = new Covoiturage_service().getAll().stream()
                     .filter(s->s.getID_USER()!=ID)
                     .filter(s -> s.getArrive().equals(arrive))
-                    .filter(s -> s.getComfort().contains(ComfortCombobox.getValue()))
+                    .filter(s -> s.getComfort().contains(CharSequence.class.cast(ComfortCombobox.getValue())))
                     .filter(s -> s.getPrix() >= Integer.parseInt(min.getText()))
                     .filter(s -> s.getPrix() <= Integer.parseInt(max.getText()))
                     .collect(Collectors.toList());
+
         }
         if ((!depart.equals("")) && (arrive.equals(""))) {
 
             covoiturages = new Covoiturage_service().getAll().stream()
-                    .filter(s->s.getID_USER()!=ID)
-                    .filter(s -> s.getDepart().equals(depart))
-                    .filter(s -> s.getComfort().contains(ComfortCombobox.getValue()))
-                    .filter(s -> s.getPrix() >= Integer.parseInt(min.getText()))
-                    .filter(s -> s.getPrix() <= Integer.parseInt(max.getText()))
-                    .collect(Collectors.toList());
+
+                .filter(s -> s.getDepart().equals(depart))
+           
+                .filter(s -> s.getComfort().contains(CharSequence.class.cast(ComfortCombobox.getValue())))
+                .filter(s -> s.getPrix() >= Integer.parseInt(min.getText()))
+                .filter(s -> s.getPrix() <= Integer.parseInt(max.getText()))
+                .collect(Collectors.toList());
         }
-        if ((!depart.equals("")) && (!arrive.equals(""))) {
-            covoiturages = new Covoiturage_service().getAll().stream()
-                    .filter(s->s.getID_USER()!=ID)
-                    .filter(s -> s.getDepart().equals(depart))
-                    .filter(s -> s.getArrive().equals(arrive))
-                    .filter(s -> s.getComfort().contains(ComfortCombobox.getValue()))
-                    .filter(s -> s.getPrix() >= Integer.parseInt(min.getText()))
-                    .filter(s -> s.getPrix() <= Integer.parseInt(max.getText()))
-                    .collect(Collectors.toList());
-        }
+        if((!depart.equals(""))&&(!arrive.equals("")))
+        {covoiturages = new Covoiturage_service().getAll().stream()
+                .filter(s -> s.getDepart().equals(depart))
+                .filter(s -> s.getArrive().equals(arrive))
+                .filter(s -> s.getComfort().contains(CharSequence.class.cast(ComfortCombobox.getValue())))
+                .filter(s -> s.getPrix() >= Integer.parseInt(min.getText()))
+                .filter(s -> s.getPrix() <= Integer.parseInt(max.getText()))
+                .collect(Collectors.toList()); }
+        
+        
+        
+
+         
+        
+
 
         ObservableList<Covoiturage> items = FXCollections.observableArrayList(covoiturages);
         System.out.println(covoiturages);

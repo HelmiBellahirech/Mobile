@@ -215,5 +215,25 @@ public class ReservationcovService implements IreservationcovService {
         }
         return reservationcovs;
     }
+@Override
+    public List<Reservationcov> findByReserveb(Integer r, Boolean b) {
+        Reservationcov reservationcov = null;
+        List<Reservationcov> reservationcovs = new ArrayList<>();
+        String req = "select * from reservationcovoiturage where ID_RESERVE=? AND ETAT=?";
 
+        PreparedStatement preparedStatement;
+        try {
+            preparedStatement = connection.prepareStatement(req);
+            preparedStatement.setInt(1, r);
+            preparedStatement.setBoolean(2, b);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                reservationcov = new Reservationcov(resultSet.getInt("ID"), resultSet.getInt("ID_RESERVE"), resultSet.getInt("ID_CHAUFFEUR"), resultSet.getInt("ID_ANNONCE"), resultSet.getBoolean("ETAT"), resultSet.getInt("NBPLACES"));
+                reservationcovs.add(reservationcov);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return reservationcovs;
+    }
 }

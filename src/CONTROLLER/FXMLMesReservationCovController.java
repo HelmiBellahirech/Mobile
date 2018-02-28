@@ -67,7 +67,6 @@ public class FXMLMesReservationCovController implements Initializable {
     private AnchorPane rootpane;
     @FXML
     private JFXButton Retour;
-    @FXML
     private JFXComboBox<String> EtatCombobox;
     ObservableList<String> Comfortoption
             = FXCollections.observableArrayList("Approuvées", "En Attente");
@@ -77,7 +76,7 @@ public class FXMLMesReservationCovController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-                EtatCombobox.setItems(Comfortoption);
+//                EtatCombobox.setItems(Comfortoption);
 
         Covoiturage_service cs = new Covoiturage_service();
         ReservationcovService rs = new ReservationcovService();
@@ -190,7 +189,4 @@ public class FXMLMesReservationCovController implements Initializable {
         rootpane.getChildren().setAll(pane);
     }
 
-    @FXML
-    private void On_Combo_etat(ActionEvent event) {
-    }
 }

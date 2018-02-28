@@ -61,8 +61,6 @@ public class FXMLVoirResapprouveController implements Initializable {
     ReservationcovService rs = new ReservationcovService();
     @FXML
     private AnchorPane rootpane;
-    @FXML
-    private JFXTextField Recherche;
     /**
      * Initializes the controller class.
      */
@@ -84,7 +82,7 @@ public class FXMLVoirResapprouveController implements Initializable {
                     if (e != null) {
                         Covoiturage c = cs.findId(e.getID_ANNONCE());
                         Utilisateur U = new Utilisateur();
-                        U = us.getById(c.getID_USER());
+                         U = us.getById(e.getID_RESERVE());
                        
                         
                         //    File file = new File(ps.findById(e.getPassager().getId()).getAvatar());
