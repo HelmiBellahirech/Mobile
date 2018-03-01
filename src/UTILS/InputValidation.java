@@ -31,6 +31,7 @@ public class InputValidation {
         }
         return i;
     }
+    
 
     public static int validModifPwd(String mdp, String VMdp) {
         int i = 0;
@@ -49,7 +50,7 @@ public class InputValidation {
 
         String emailPattern = "^[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9-]+)*(\\.[A-Za-z]{2,})$";
         Pattern pattern = Pattern.compile(emailPattern);
-        Matcher matcher = pattern.matcher(email);
+        Matcher matcher = pattern.matcher(CharSequence.class.cast(email));
         if (matcher.matches()) {
             status = true;
         }
@@ -61,7 +62,7 @@ public class InputValidation {
 
         String usernamePattern = "^[a-zA-Z]+[A-Za-z0-9-]*$";
         Pattern pattern = Pattern.compile(usernamePattern);
-        Matcher matcher = pattern.matcher(username);
+        Matcher matcher = pattern.matcher(CharSequence.class.cast(username));
         if (matcher.matches()) {
             status = true;
         }
@@ -89,6 +90,16 @@ public class InputValidation {
                 return i;
             }
         }
+        return i;
+    }
+     public static int isNumber(String ch) {
+       int i=0;
+            try {
+                i = Integer.parseInt(ch);
+            } catch (NumberFormatException e) {
+                return i;
+            }
+        
         return i;
     }
 

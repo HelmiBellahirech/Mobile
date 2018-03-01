@@ -11,6 +11,8 @@ import com.jfoenix.controls.JFXTextField;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -29,8 +31,6 @@ public class FXMLAfficheCovoiturageController implements Initializable {
     
 
     @FXML
-    private AnchorPane anchorpane3;
-    @FXML
     private ImageView img11;
     @FXML
     private JFXTextField DepartInput;
@@ -42,6 +42,8 @@ public class FXMLAfficheCovoiturageController implements Initializable {
     private JFXButton Ajouter;
     public static String Depart;
     public static String Arrive;
+    @FXML
+    private AnchorPane rootpane;
 
     /**
      * Initializes the controller class.
@@ -55,26 +57,38 @@ public class FXMLAfficheCovoiturageController implements Initializable {
     private void On_btn_Rechercher(ActionEvent event) throws IOException {
         Depart=DepartInput.getText(); 
         Arrive=ArriveInput.getText(); 
-        esprit_entraide.Esprit_Entraide.getInstance().getStage().hide();
-        esprit_entraide.Esprit_Entraide.getInstance().ChangeScene(new Scene(FXMLLoader.load(getClass().getResource("/GUI/FXMLTajriba.fxml"))));
-        esprit_entraide.Esprit_Entraide.getInstance().getStage().show();
+        AnchorPane pane = new AnchorPane();
+                                    try {
+                                        pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLTajriba.fxml"));
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(FXMLDetailsCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                    rootpane.getChildren().setAll(pane);
 
     }
 
     @FXML
     private void On_btn_Ajouter(ActionEvent event) throws IOException {
-        esprit_entraide.Esprit_Entraide.getInstance().getStage().hide();
-        esprit_entraide.Esprit_Entraide.getInstance().ChangeScene(new Scene(FXMLLoader.load(getClass().getResource("/GUI/FXMLAjoutCovoiturage.fxml"))));
-        esprit_entraide.Esprit_Entraide.getInstance().getStage().show();
+         AnchorPane pane = new AnchorPane();
+                                    try {
+                                        pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLAjoutCovoiturage.fxml"));
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(FXMLAjoutCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                    rootpane.getChildren().setAll(pane);
 
     }
 
-    public String getDepart() {
-        return DepartInput.getText();
+    @FXML
+    private void On_btn_Menu(ActionEvent event) {
+        AnchorPane pane = new AnchorPane();
+            try {
+                                        pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLAcceuilUtilisateur.fxml"));
+                                    } catch (IOException ex) {
+                                        Logger.getLogger(FXMLAjoutCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+                                    }
+                                    rootpane.getChildren().setAll(pane);
     }
 
-    public String getArrive() {
-        return ArriveInput.getText();
-    }
-
+   
 }

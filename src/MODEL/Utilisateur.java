@@ -23,9 +23,12 @@ public class Utilisateur {
     private String Photo;
     private String Sexe;
     private Date Date_Creation;
+    private String Matricule;
     private String Role;
+    
+  
 
-    public Utilisateur(String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Sexe, Date Date_Creation, String Role) {
+    public Utilisateur(String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Sexe, String Matricule) {
         this.Email = Email;
         this.username = username;
         this.Password = Password;
@@ -33,11 +36,23 @@ public class Utilisateur {
         this.Prenom = Prenom;
         this.Telephone = Telephone;
         this.Sexe = Sexe;
-        this.Date_Creation = Date_Creation;
-        this.Role = Role;
+
+        this.Matricule = Matricule;
+     
+
     }
 
-    public Utilisateur(int ID, String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe, String Role) {
+    public Utilisateur(String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Sexe) {
+        this.Email = Email;
+        this.username = username;
+        this.Password = Password;
+        this.Nom = Nom;
+        this.Prenom = Prenom;
+        this.Telephone = Telephone;
+        this.Sexe = Sexe;
+    }
+
+    public Utilisateur(int ID, String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe, String Matricule, String Role) {
         this.ID = ID;
         this.Email = Email;
         this.username = username;
@@ -47,11 +62,64 @@ public class Utilisateur {
         this.Telephone = Telephone;
         this.Photo = Photo;
         this.Sexe = Sexe;
+        this.Matricule = Matricule;
         this.Role = Role;
+       
     }
 
+
     public Utilisateur() {
+
+    }
+
+    public Utilisateur(String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe, String Matricule) {
+        this.Email = Email;
+        this.username = username;
+        this.Password = Password;
+        this.Nom = Nom;
+        this.Prenom = Prenom;
+        this.Telephone = Telephone;
+        this.Photo = Photo;
+        this.Sexe = Sexe;
+        this.Matricule = Matricule;
      
+    }
+
+    public Utilisateur(int ID, String Email, String username, String Telephone, String Photo) {
+        this.ID = ID;
+        this.Email = Email;
+        this.username = username;
+        this.Telephone = Telephone;
+        this.Photo = Photo;
+    }
+
+    public Utilisateur(int ID, String Email, String username, String Password, String Nom, String Prenom, String Telephone, String Photo, String Sexe, Date Date_Creation, String Matricule, String Role) {
+        this.ID = ID;
+        this.Email = Email;
+        this.username = username;
+        this.Password = Password;
+        this.Nom = Nom;
+        this.Prenom = Prenom;
+        this.Telephone = Telephone;
+        this.Photo = Photo;
+        this.Sexe = Sexe;
+        this.Date_Creation = Date_Creation;
+        this.Matricule = Matricule;
+        this.Role = Role;
+       
+      
+
+    }
+
+   
+
+    
+    public String getMatricule() {
+        return Matricule;
+    }
+
+    public void setMatricule(String Matricule) {
+        this.Matricule = Matricule;
     }
 
     public int getID() {
@@ -135,6 +203,7 @@ public class Utilisateur {
     }
 
     public String getRole() {
+        System.out.println(Role);
         return Role;
     }
 
@@ -142,9 +211,13 @@ public class Utilisateur {
         this.Role = Role;
     }
 
+    
+
+    
+
     @Override
     public String toString() {
-        return "Utilisateur{" + "ID=" + ID + ", Email=" + Email + ", username=" + username + ", Password=" + Password + ", Nom=" + Nom + ", Prenom=" + Prenom + ", Telephone=" + Telephone + ", Photo=" + Photo + ", Sexe=" + Sexe + ", Date_Creation=" + Date_Creation + ", Role=" + Role + '}';
+        return "Utilisateur{" + "ID=" + ID + ", Email=" + Email + ", username=" + username + ", Password=" + Password + ", Nom=" + Nom + ", Prenom=" + Prenom + ", Telephone=" + Telephone + ", Photo=" + Photo + ", Sexe=" + Sexe + ", Date_Creation=" + Date_Creation + ", Matricule=" + Matricule + ", Role=" + Role + '}';
     }
 
     @Override
