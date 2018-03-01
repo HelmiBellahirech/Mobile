@@ -12,7 +12,6 @@ import MODEL.Professeur;
 import MODEL.Responsable;
 import MODEL.Utilisateur;
 import java.sql.Connection;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -140,7 +139,6 @@ public class UtilisateurService implements IutilisateurService {
             PreparedStatement preparedStatement;
             java.util.Date date_util = new java.util.Date();
 //Tu fais tes traitement sur date_util...
-
 //Tu castes à la fin pour insérer en base.
             java.sql.Date date_sql = new java.sql.Date(date_util.getTime());
             try {

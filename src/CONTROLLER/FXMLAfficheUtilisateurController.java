@@ -6,8 +6,6 @@
 package CONTROLLER;
 
 import MODEL.Etudiant;
-import MODEL.Etudiant;
-import MODEL.Reclamation;
 import MODEL.Utilisateur;
 import SERVICE.EtudiantService;
 import SERVICE.UtilisateurService;
@@ -36,7 +34,6 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -142,7 +139,7 @@ private  int id ;
     private void On_btn_Bloquer(ActionEvent event) {
         
         
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Etes vous sur de vouloir supprimer " + " ?", ButtonType.YES, ButtonType.NO, ButtonType.CANCEL);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Etes vous sur de vouloir supprimer " + " ?", ButtonType.YES, ButtonType.CANCEL);
         alert.showAndWait();
 
 if (alert.getResult() == ButtonType.YES) {

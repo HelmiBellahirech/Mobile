@@ -43,7 +43,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceDialog;
@@ -52,13 +51,10 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Stage;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -285,49 +281,7 @@ public class FXMLDetailsCovoiturageController implements Initializable, MapCompo
       String str = "http://maps.googleapis.com/maps/api/geocode/json?address=" + locationAddres + "&sensor=true";
 
         String str1 = "http://maps.googleapis.com/maps/api/geocode/json?address=" + locationAddres1 + "&sensor=true";
-/*
-        try {
-            JSONObject json = readJsonFromUrl(str);
-            JSONObject geoMetryObject = new JSONObject();
-            JSONObject locations = json;
-            JSONArray jarr = json.getJSONArray("results");
-            int i;
-            for (i = 0; i < jarr.length(); i++) {
-                json = jarr.getJSONObject(i);
-                geoMetryObject = json.getJSONObject("geometry");
-                locations = geoMetryObject.getJSONObject("location");
-                l = locations.getDouble("lat");
-                log = locations.getDouble("lng");
 
-            }
-
-        } catch (IOException ex) {
-            Logger.getLogger(FXMLDetailsCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (JSONException ex) {
-            Logger.getLogger(FXMLDetailsCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        try {
-            JSONObject json1 = readJsonFromUrl(str1);
-            JSONObject geoMetryObject1 = new JSONObject();
-            JSONObject locations1 = json1;
-            JSONArray jarr = json1.getJSONArray("results");
-            int i;
-            for (i = 0; i < jarr.length(); i++) {
-                json1 = jarr.getJSONObject(i);
-                geoMetryObject1 = json1.getJSONObject("geometry");
-                locations1 = geoMetryObject1.getJSONObject("location");
-                l1 = locations1.getDouble("lat");
-                log1 = locations1.getDouble("lng");
-
-            }
-
-        } catch (IOException ex) {
-            Logger.getLogger(FXMLDetailsCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (JSONException ex) {
-            Logger.getLogger(FXMLDetailsCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-*/
         MapOptions mapOptions = new MapOptions();
 
         mapOptions.center(new LatLong(l, log))

@@ -5,10 +5,7 @@
  */
 package CONTROLLER;
 
-import MODEL.Covoiturage;
 import MODEL.Etudiant;
-import MODEL.Utilisateur;
-import SERVICE.Covoiturage_service;
 import SERVICE.EtudiantService;
 import SERVICE.UtilisateurService;
 import UTILS.InputValidation;
@@ -114,8 +111,6 @@ public class FXMLProfilUtilisateurController implements Initializable {
         ValidMdp.setVisible(false);
         ValidMdplbl.setVisible(false);
 
-        //   if(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getRole().equals("Etudiant"))
-        //Etudiant e = (Etudiant) esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser() ; 
         Date_Creation.setText("Compte Crée le " + esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getDate_Creation());
         NomPrenom.setText(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getNom() + " " + esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getPrenom());
         if (esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser() instanceof Etudiant) {
@@ -153,7 +148,7 @@ public class FXMLProfilUtilisateurController implements Initializable {
             img.setImage(IMAGE_RUBY);
             EmailInput.setText(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getEmail());
             TelInput.setText(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getTelephone());
-            //Mdp.setText(esprit_entraide.Esprit_Entraide.getInstance().getLoggedUser().getPassword());
+
         }
 
     }
@@ -181,40 +176,38 @@ public class FXMLProfilUtilisateurController implements Initializable {
         String email = EmailInput.getText();
         String Username = UsernameInput.getText();
         String Telephone = TelInput.getText();
-        
+
         u.setEmail(email);
         u.setTelephone(Telephone);
         u.setUsername(Username);
         u.setPhoto(uuid);
-            if(Mdp.getText().equals(""))
-            {
-                Mdp.setPromptText("Champ Obligatoire");
-            }
-            else{
-        if (InputValidation.validPwd(mdp, Vmdp) == 0) {
-            Alert alertMDP = new InputValidation().getAlert("Mot de passe", "Les mots de passe ne correspondent pas.");
-            alertMDP.showAndWait();
+        if (Mdp.getText().equals("")) {
+            Mdp.setPromptText("Champ Obligatoire");
         } else {
-            u.setPassword(mdp);
-            
-        }
+            if (InputValidation.validPwd(mdp, Vmdp) == 0) {
+                Alert alertMDP = new InputValidation().getAlert("Mot de passe", "Les mots de passe ne correspondent pas.");
+                alertMDP.showAndWait();
+            } else {
+                u.setPassword(mdp);
 
-        es.update(u);
-         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("Modification Profil");
-                alert.setHeaderText(null);
-                alert.setContentText("Modification aboutie! \n"+"Redirection au menu principal");
+            }
 
-                alert.showAndWait();
-                AnchorPane pane = new AnchorPane();
-        try {
-            pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLAcceuilUtilisateur.fxml"));
-        } catch (IOException ex) {
-            Logger.getLogger(FXMLAjoutCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+            es.update(u);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Modification Profil");
+            alert.setHeaderText(null);
+            alert.setContentText("Modification aboutie! \n" + "Redirection au menu principal");
+
+            alert.showAndWait();
+            AnchorPane pane = new AnchorPane();
+            try {
+                pane = FXMLLoader.load(getClass().getResource("/GUI/FXMLAcceuilUtilisateur.fxml"));
+            } catch (IOException ex) {
+                Logger.getLogger(FXMLAjoutCovoiturageController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            rootpane.getChildren().setAll(pane);
+
         }
-        rootpane.getChildren().setAll(pane);
-            
-    }
     }
 
     @FXML
@@ -230,9 +223,8 @@ public class FXMLProfilUtilisateurController implements Initializable {
             esprit_entraide.Esprit_Entraide.getInstance().ChangeScene(new Scene(FXMLLoader.load(getClass().getResource("/GUI/FXMLLogin.fxml"))));
             esprit_entraide.Esprit_Entraide.getInstance().getStage().show();
             Alert alert1 = new Alert(AlertType.INFORMATION, "Votre compte a été supprimer", ButtonType.OK);
-       alert1.setTitle("Supprission du compte");
-       
-       
+            alert1.setTitle("Supprission du compte");
+
             alert1.showAndWait();
         }
 
